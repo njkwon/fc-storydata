@@ -1,20 +1,36 @@
-# 클라우드를 활용한 데이터 파이프라인 구축  
+# 7개 프로젝트로 완벽하게 끝내는 AWS데이터 파이프라인 구축
 
-: [클라우드를 활용한 데이터 파이프라인 구축](https://fastcampus.co.kr/data_online_pipeline) 강의 자료
+:  [7개 프로젝트로 완벽하게 끝내는 AWS데이터 파이프라인 구축](https://bit.ly/3v7oJuB ) 강의 자료
 
 ## 목적 : 
-클라우드에서 데이터 분석환경을 가격 효율적으로 구축하기 위한 기초 교육
- 
-# 알면 좋은 것들
+클라우드에서 데이터 수집 분석 시각화 환경을 가격 효율적으로 구축하기 위한 기초 교육
+Why, What, How 를 기반한 실습
+
+# Requirements
 * Spark 
-* Scala 언어
-* AWS 환경
+* Scala , Python 언어
+* AWS 개발 환경 사용
+
+# 활용하는 AWS 서비스 
+* EC2
+* IAM
+* API Gateway
+* Kinesis data stream
+* Kinesis data firehose
+* Kinesis analytics
+* S3
+* EMR
+* OpenSearch
+* Redshift
+* Lambda
+* RDS
+  
 
 ## 이해 했다면 더 했으면 하는것들
 * Docker
 * Kubernetes
 * IaC (infrastructure as code) 개발 : 인프라를 코딩으로 하기 
-* 분석가가 어떻게 하면 손쉽게 분석할 수 있을까? 에 대한 고민
+* 분석가와 데이터사이언티스트 입장에서의 환경만들기 .. EndToEnd
 * Airflow - Scheduler 
  
 ## Repository 구조
