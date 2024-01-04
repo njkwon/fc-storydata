@@ -1,4 +1,11 @@
+# windows 에서 접속하기 
+putty 를 이용해서 접속한다. 
+
+
 # mac os 접속하기
+# 1. AWS Console 에서 EC2 Instance medium type 을 생성한다. 
+# 2. key pair 를 생성해서 다운로드 받는다. (window : .ppk , MAC OS : .pem)
+# 3. 운영체제에 맞는 터미널을 이용해서 실습용 EC2 에 접속한다. 
 
 $ sudo chmod 400 njkwon-fc-seoul.pem 
 $ ssh -i "njkwon-fc-seoul.pem" ec2-user@**********.ap-northeast-1.compute.amazonaws.com
@@ -7,10 +14,10 @@ $ ssh -i "njkwon-fc-seoul.pem" ec2-user@**********.ap-northeast-1.compute.amazon
 $ sudo yum install git -y 
 
 #source 다운로드 받기 
-$ git clone -b master --single-branch https://github.com/njkwon/fc-bigdata/ 
-$ cd fc-bigdata 
+$ git clone -b master --single-branch https://github.com/njkwon/fc-storydata/ 
+$ cd fc-storydata 
 
-#s3 버킷 만들기
-$ export bucketname=fc-myclass
+#s3 버킷 만들기 : 버킷은 중복생성이 안되기때문에 본인 개인에 맞는 버킷을 생성한다.
+$ export bucketname=fc-storydata
 $ aws s3 mb s3://$my-bucket --region ap-norteast-2
 $ aws s3 sync . s3://$my-bucket --exclude '.git/*'
