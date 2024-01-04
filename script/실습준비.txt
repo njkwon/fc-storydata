@@ -14,7 +14,7 @@ $ ssh -i "njkwon-fc-seoul.pem" ec2-user@**********.ap-northeast-1.compute.amazon
 $ sudo yum install git -y 
 
 #source 다운로드 받기 
-$ git clone -b master --single-branch https://github.com/njkwon/fc-storydata/ 
+$ git clone -b main --single-branch https://github.com/njkwon/fc-storydata/ 
 $ cd fc-storydata 
 
 #s3 버킷 만들기 : 버킷은 중복생성이 안되기때문에 본인 개인에 맞는 버킷을 생성한다.
