@@ -1,0 +1,232 @@
+# window 환경
+1. putty download 받는다
+2. AWS Console 에서 EC2 -> 네트워크 및 보안 -> 키 페어 -> 키 페어 생성 -> .ppk 로 다운로드 
+3. 2번의 키 페어를 활용해서 putty 로 접속하면 됩니다.  
+
+# mac os 접속하기
+
+$ sudo chmod 400 njkwon-fc-seoul.pem 
+$ ssh -i "njkwon-fc-seoul.pem" ec2-user@**********.ap-northeast-1.compute.amazonaws.com
+
+
+- desc : ec2에 웹서비스를 빠르게 실행해본다. 
+1. web service 실행1
+sudo yum update -y 
+sudo yum install httpd -y 
+sudo service httpd start
+sudo su - 
+echo  "<html><h1> <br> <br> <center> 7개 프로젝트로 완벽하게 끝내는 AWS 데이터 파이프라인 구축 </center> </h1></html>" > /var/www/html/index.html 
+ 
+
+2. web service 실행2- ec2 생성시
+
+#!/bin/bash 
+yum update -y 
+yum install httpd -y 
+sudo service httpd start
+
+echo  "<html><h1> <br> <br> <center> 7개 프로젝트로 완벽하게 끝내는 AWS 데이터 파이프라인 구축 </center> </h1></html>" > /var/www/html/index.html 
+
+3. java 설치 
+
+$ sudo yum install -y java-11-amazon-corretto
+$ java –version
+
+@ Kafka 실습을 위해서 3개의 EC2 Instance 를 생성한다. medium type 
+4. EC2에 kafka Server설치  
+
+4.1. Download & Unzip
+$ wget https://downloads.apache.org/kafka/3.6.1/kafka_2.13-3.6.1.tgz
+$ tar xvf kafka_2.13-3.6.1.tgz
+$ ln -s kafka_2.13-3.6.1 kafka
+
+% 다운로드가 안될경우
+1. 구글에서 " kafka download " 로 조회
+2. kaftka download 페이지로 이동 
+3. Binary downloads --> Scala 2.13 --> 우측마우스클릭 --> 링크주소 복사 
+4. wget [해당링크주소 붙여넣기]
+
+4.2. START THE KAFKA ENVIRONMENT  
+
+# Start the Kafka broker service 
+$ ln -s kafka_2.13-3.0.0 kafka  (키보드에서 직접 넣어준다.)
+$ cd kafka
+
+$ ./bin/zookeeper-server-start.sh config/zookeeper.properties & (마지막에 & 표시는 백그라운드로 실행을 의미한다.)
+
+start kakfa broker 
+$ ./bin/kafka-server-start.sh config/server.properties & 
+
+# 데몬확인
+$ sudo netstat -anp | egrep "9092|2181"
+
+# Topic 생성 
+# 이름은 apartinfo 
+
+ 
+$ bin/kafka-topics.sh --create --topic apartinfo --partitions 1 --replication-factor 1 --bootstrap-server localhost:9092  &
+... 
+Created topic apartinfo.
+
+# Topic 확인 
+$ bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+
+4.3. Kafka Server에서 consumer 실행 - kafka server
+: Producer 에서 
+
+$ ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic apartinfo --from-beginning
+
+@ EC2 Producer Server 활용 
+5. Producer 설치 
+
+: kafka 와 logstash 설치 
+
+$ sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+$ sudo vi /etc/yum.repos.d/logstash.repo
+[logstash-8.x]
+name=Elastic repository for 8.x packages
+baseurl=https://artifacts.elastic.co/packages/8.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+
+
+$ sudo yum install logstash -y
+Elastic repository for 8.x packages                                                                                          40 MB/s |  44 MB     00:01    
+Last metadata expiration check: 0:00:11 ago on Thu Nov 30 01:01:17 2023.
+Dependencies resolved.
+
+- 초기화 파일에 추가해준다. : 어느 폴더에서도 logstash 실행가능 
+$ vi ~/.bash_profile
+
+export LS_HOME=/usr/share/logstash
+PATH=$PATH:$LS_HOME/bin
+
+$ source ~/.bash_profile
+
+$ logstash --version
+
+$ vi apartinfo_test.conf
+input {
+      s3 {
+        sincedb_path => "/dev/null"
+        access_key_id => "accesskey"
+        secret_access_key => "security_key"
+        region => "ap-northeast-2"
+        prefix => "ods/danji_master.json/" #bucket 하위 폴더를 지정해준다. 
+        bucket => "fc-storydata"                         #bucket 명을 지정해준다.
+        additional_settings => {
+          force_path_style => true
+          follow_redirects => false
+        }
+      }
+    }
+
+output {
+  stdout { }
+}
+
+$ logstash -f /home/ec2-user/apartinfo_test.conf
+
+$ sudo chmod 777 /usr/share/logstash/data
+
+
+$ cp apartinfo_test.conf aprtinfo.conf 
+input {
+      s3 {
+        access_key_id => "accesskey"
+        secret_access_key => "security_key"
+        region => "ap-northeast-2"
+        prefix => "ods/danji_master.json/" #bucket 하위 폴더를 지정해준다. 
+        bucket => "fc-storydata"                         #bucket 명을 지정해준다.
+        additional_settings => {
+          force_path_style => true
+          follow_redirects => false
+        }
+      }
+    }
+
+output {
+  stdout { }
+    kafka {
+        codec => json
+        topic_id => "apartinfo"
+        bootstrap_servers =>  ["[172.31.6.238:kafka server ip]:9092"]
+    }  
+}
+
+
+
+5.1. kafka client 설치 및 consumer 실행 
+
+$ vi consumer_ls.conf
+
+input {
+    kafka {
+        bootstrap_servers => "172.31.6.238:9092"
+        group_id => "apart_info"
+        topics => ["apartinfo"] # Topic 이름 지정
+        consumer_threads => 1 # Consumer 처리 Thread갯수 지정
+        }
+}
+
+
+output {
+  stdout { codec => rubydebug }
+}
+
+
+$ logstash -f /home/ec2-user/consumer_ls.conf 
+
+@ Kafka Consumer Server 
+% producer 에서 데이터를 제공하는 프로그램을 실행한다. 
+
+$ sudo yum install pip -y
+$ pip install confluent_kafka
+$ vi consumer_ph.py
+from confluent_kafka import Consumer, KafkaError
+
+# Define the Kafka consumer configuration
+conf = {
+    'bootstrap.servers': '172.31.6.238:9092',  # Replace with your Kafka bootstrap servers
+    'group.id': 'apartinfo',           # Replace with your consumer group ID
+    'auto.offset.reset': 'earliest',                # Set to 'earliest' to read from the beginning of the topic
+}
+
+
+# Create the Kafka consumer
+consumer = Consumer(conf)
+
+# Subscribe to the Kafka topic
+topic = 'apartinfo'  # Replace with the Kafka topic you want to consume
+consumer.subscribe([topic])
+
+# Poll for messages
+try:
+    while True:
+        msg = consumer.poll(1.0)  # Poll for messages, with a timeout of 1 second
+
+        if msg is None:
+            continue
+        if msg.error():
+            if msg.error().code() == KafkaError._PARTITION_EOF:
+                # End of partition event
+                print(f"Reached end of partition for {msg.topic()} [{msg.partition()}]")
+            else:
+                print(f"Error: {msg.error()}")
+        else:
+            # Process the received message
+            print(f"Received message: {msg.value().decode('utf-8')}\n")
+
+except KeyboardInterrupt:
+    pass
+finally:
+    # Close down consumer to commit final offsets.
+    consumer.close()
+
+$ python3 consumer_ph.py
+
+
