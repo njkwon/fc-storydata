@@ -313,5 +313,5 @@ for i in range(0, len(event_data), num_columns):
             if st.button(event_params['conversion_name'], key=event_params['conversion_name']):
                 send_post_request(event_params)
 
-
+$ streamlit run event_event_form.py
 
