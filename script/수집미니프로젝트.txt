@@ -5,9 +5,12 @@
 
 1.1. Api Gateway 설정 - V2 
 
-Content-Type
+HTTP HEADER 
+Name : Content-Type	
+Mapped from : 'application/x-amz-json-1.1'
 
-application/json
+
+Content-Type : application/json
 
 #set ( $enter = "
 ")
@@ -125,4 +128,45 @@ for i in range(0, len(event_data), num_columns):
 # 실시간 테스트용
 # 매물상세 클릭에 대한 내용만 모아준다. 
 
+2. 
+
+2.1. API Gateway 
+
+HTTP HEADER 
+Name : Content-Type	
+Mapped from : 'application/x-amz-json-1.1'
+
+Content-Type :
+application/x-www-form-urlencoded
+
+예시 : 
+
+
+#set ( $d = '"')
+#set ( $enter = "
+")
+#set($jsonInnerStr = "")
+#foreach( $token in $input.path('$').split('&') )
+#set( $keyVal = $token.split('=') )
+#set( $keyValSize = $keyVal.size() )
+#if( $keyValSize >= 1 )
+#set( $key = $util.urlDecode($util.urlDecode($keyVal[0]) ))
+#if( $keyValSize >= 2 )
+#set( $val = $util.urlDecode($util.urlDecode($keyVal[1])) )
+#else
+#set( $val = '' )
+#end
+#set($jsonInnerStr = "${jsonInnerStr}${d}${key}${d} : ${d}${val}${d}")
+#if($foreach.hasNext) #set($jsonInnerStr = "$jsonInnerStr,")#end
+#end
+#end
+#set($json = "{$jsonInnerStr}$enter")
+{
+"Data": "$util.base64Encode("$json")",
+"PartitionKey": "$input.params('X-Amzn-Trace-Id')",
+"StreamName": "$input.params('stream-name')"
+}
+
+테스트 
+$ curl -d "param1=value1&param2=value2&param3=패스트캠퍼스" -H "Content-Type: application/x-www-form-urlencoded" -X POST https://xxxxf8.execute-api.ap-northeast-2.amazonaws.com/PROD/v1/class
 
