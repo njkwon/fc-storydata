@@ -51,9 +51,8 @@ urllib3                1.26.18
 $ vi api_test.py
 import requests
 
-url = 'http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTrade?_wadl&type=xml'
-params ={'serviceKey' : '43ShfBW0KpotiijFbKbxPN5RvWndjxuDkKpKKirq2kSsLcKXgip5nbIAr6RIoQ+B7sgo4E21wLdNBSrwuCztxQ==', 'pageNo' : '1', 'numOfRows' : '1', 'LAWD_CD' : '11110
-', 'DEAL_YMD' : '202312' }
+url = 'http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTrade'
+params ={'serviceKey' : '43ShfBW0KpotiijFbKbxPN5RvWndjxuDkKpKKirq2kSsLcKXgip5nbIAr6RIoQ+B7sgo4E21wLdNBSrwuCztxQ==', 'LAWD_CD' : '11110', 'DEAL_YMD' : '202312' }
 
 response = requests.get(url, params=params)
 print(response.content)
