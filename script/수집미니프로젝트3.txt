@@ -129,6 +129,16 @@ $ python3 apart_real_sales.py
 3. 군구   : MID(B2, FIND(" ", B2) + 1, FIND(" ", B2, FIND(" ", B2) + 1) - FIND(" ", B2) - 1)
 4. 동     : RIGHT(B2, LEN(B2) - FIND(" ",B2, FIND(" ", B2) + 1))
 
+# 법정동코드 테이블 생성
+create table law_code_tb(
+law_code varchar(10)  COMMENT   '법정동코드',
+sido varchar(100)  COMMENT   '시도',
+sigu varchar(100)  COMMENT   '군구',
+dong varchar(100)  COMMENT   '동',
+create_at datetime   COMMENT   '입력일시'
+)
+
+
 
 
 
