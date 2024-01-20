@@ -1,1 +1,134 @@
+#
+# 목적 : 아파트 실거래 데이터
+# 데이터 소스 : https://www.data.go.kr/ 
+# 데이터 저장 위치 : aws rds - mariadb 
+#        Table : apart_real_cost
+# 수집 방법 : aws lambda 프로그램
+# 수집 주기 : 1달에 1번  
+#      수집 scheduler : aws Event_bridge
+python version : Python 3.9.16
+
+$ mkdir open_api
+$ cd open_api
+$ python3 -m venv open_env
+$ source ./open_env/bin/activate
+$ pip install mysql-connector-python
+$ pip install requests
+$ pip install bs4
+$ pip install pandas
+$ pip install lxml
+$ pip install pyarrow
+
+$ pip list
+Package                Version
+---------------------- ------------
+beautifulsoup4         4.12.3
+boto3                  1.34.23
+botocore               1.34.23
+bs4                    0.0.2
+certifi                2023.11.17
+charset-normalizer     3.3.2
+idna                   3.6
+install                1.3.5
+jmespath               1.0.1
+lxml                   5.1.0
+mysql-connector-python 8.3.0
+numpy                  1.26.3
+pandas                 2.2.0
+pip                    23.3.2
+pyarrow                14.0.2
+python-dateutil        2.8.2
+pytz                   2023.3.post1
+requests               2.31.0
+s3transfer             0.10.0
+setuptools             59.6.0
+six                    1.16.0
+soupsieve              2.5
+tzdata                 2023.4
+urllib3                1.26.18
+
+
+$ vi api_test.py
+import requests
+
+url = 'http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTrade?_wadl&type=xml'
+params ={'serviceKey' : '43ShfBW0KpotiijFbKbxPN5RvWndjxuDkKpKKirq2kSsLcKXgip5nbIAr6RIoQ+B7sgo4E21wLdNBSrwuCztxQ==', 'pageNo' : '1', 'numOfRows' : '1', 'LAWD_CD' : '11110
+', 'DEAL_YMD' : '202312' }
+
+response = requests.get(url, params=params)
+print(response.content)
+
+$ python3 api_test.py
+
+$ vi apart_real_sales.py
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import urllib.request
+
+req = urllib.request
+d_key = '43ShfBW0KpotiijFbKbxPN5RvWndjxuDkKpKKirq2kSsLcKXgip5nbIAr6RIoQ%2BB7sgo4E21wLdNBSrwuCztxQ%3D%3D'
+
+
+
+def getRTMSDataSvcAptTrade(LAWD_CD, DEAL_YMD, serviceKey):
+    url = "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTrade"
+    url = url + "?&LAWD_CD=" + LAWD_CD
+    url = url + "&DEAL_YMD=" + DEAL_YMD
+    url = url + "&serviceKey=" + serviceKey
+
+    xml = req.urlopen(url)
+    result = xml.read()
+    soup = BeautifulSoup(result, 'lxml-xml')
+
+    items = soup.findAll("item")
+    aptTrade = pd.DataFrame()
+
+    for item in items:
+        dealAmount = item.find("거래금액").text
+        dealYear = item.find("년").text
+        dong = item.find("법정동").text
+        apartmentName = item.find("아파트").text
+        dealMonth = item.find("월").text
+        dealDay = item.find("일").text
+        areaForExclusiveUse = item.find("전용면적").text
+        regionalCode = item.find("지역코드").text
+        floor = item.find("층").text
+
+        try:
+            jibun = item.find("지번").text
+        except:
+            jibun = ""
+        try:
+            buildYear = item.find("건축년도").text
+        except:
+            buildYear = ""
+
+        temp = pd.DataFrame(([
+            [dealAmount, buildYear, dealYear, dong, apartmentName, dealMonth, dealDay, areaForExclusiveUse, jibun,
+             regionalCode, floor]]),
+                            columns=["dealAmount", "buildYear", "dealYear", "dong", "apartmentName", "dealMonth",
+                                     "dealDay", "areaForExclusiveUse", "jibun", "regionalCode", "floor"])
+
+        aptTrade = pd.concat([aptTrade, temp])
+
+    aptTrade = aptTrade.reset_index(drop=True)
+    return aptTrade
+
+print(getRTMSDataSvcAptTrade('11110', '202304', d_key))
+
+$ python3 apart_real_sales.py
+
+# database 에 아파트 실거래 정보를 저장한다. 
+
+
+# 엑셀 법정동코드 데이터 핸들링 : 
+#엑셀데이터 처리 
+1. 구코드  : MID(A3,1,5)  
+2. 시도   : LEFT(B2, FIND(" ", B2) - 1)
+3. 군구   : MID(B2, FIND(" ", B2) + 1, FIND(" ", B2, FIND(" ", B2) + 1) - FIND(" ", B2) - 1)
+4. 동     : RIGHT(B2, LEN(B2) - FIND(" ",B2, FIND(" ", B2) + 1))
+
+
+
 
