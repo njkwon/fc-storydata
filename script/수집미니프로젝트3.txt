@@ -129,14 +129,19 @@ $ python3 apart_real_sales.py
 4. 동     : RIGHT(B2, LEN(B2) - FIND(" ",B2, FIND(" ", B2) + 1))
 
 # 법정동코드 테이블 생성
-create table law_code_tb(
-law_code varchar(10)  COMMENT   '법정동코드',
-sido varchar(100)  COMMENT   '시도',
-sigu varchar(100)  COMMENT   '군구',
-dong varchar(100)  COMMENT   '동',
-create_at datetime   COMMENT   '입력일시'
-)
+create table law_code_info(
+    law_code varchar(10) comment '법정동코드',
+    law_area_name varchar(300) comment '법정동명',
+    gucode varchar(5) comment '구코드',
+    sido varchar(100) comment '시도',
+    gungu varchar(100) comment '군구',
+    dong varchar(100) comment '동리',
+    create_at datetime comment '입력일시'
+);
 
+# 법정동 데이터 insert 하기 
+"insert into law_code_info (law_code, law_area_name, gucode, sido, gungu, dong, create_at)
+values ('"&A4&"','"&B4&"','"&C4&"','"&D4&"','"&E4&"','"&F4&"',now());"
 
 
 
