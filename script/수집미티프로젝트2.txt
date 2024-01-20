@@ -1,0 +1,186 @@
+2. 외부 SaaS 서비스 이벤트로그 수집
+
+2.1. API Gateway 
+
+HTTP HEADER 
+Name : Content-Type	
+Mapped from : 'application/x-amz-json-1.1'
+
+Content-Type :
+application/x-www-form-urlencoded
+
+예시 : 
+
+
+#set ( $d = '"')
+#set ( $enter = "
+")
+#set($jsonInnerStr = "")
+#foreach( $token in $input.path('$').split('&') )
+#set( $keyVal = $token.split('=') )
+#set( $keyValSize = $keyVal.size() )
+#if( $keyValSize >= 1 )
+#set( $key = $util.urlDecode($util.urlDecode($keyVal[0]) ))
+#if( $keyValSize >= 2 )
+#set( $val = $util.urlDecode($util.urlDecode($keyVal[1])) )
+#else
+#set( $val = '' )
+#end
+#set($jsonInnerStr = "${jsonInnerStr}${d}${key}${d} : ${d}${val}${d}")
+#if($foreach.hasNext) #set($jsonInnerStr = "$jsonInnerStr,")#end
+#end
+#end
+#set($json = "{$jsonInnerStr}$enter")
+{
+"Data": "$util.base64Encode("$json")",
+"PartitionKey": "$input.params('X-Amzn-Trace-Id')",
+"StreamName": "$input.params('stream-name')"
+}
+
+테스트 
+$ curl -d "param1=value1&param2=value2&param3=패스트캠퍼스" -H "Content-Type: application/x-www-form-urlencoded" -X POST https://xxxxf8.execute-api.ap-northeast-2.amazonaws.com/PROD/v1/class
+
+$vi event_event_form.py
+
+import streamlit as st
+import requests
+import datetime
+import json
+
+
+button_style = """
+    padding: 10px 20px; /* Adjust padding to change button size */
+    font-size: 16px;   /* Adjust font size */
+    width: 80%;
+"""
+
+st.markdown(f'<style>{button_style}</style>', unsafe_allow_html=True)
+
+
+
+# Function to send a POST request based on the button clicked
+
+
+
+def send_post_request(event_params):
+    # API Gateway endpoint 입력
+    url = "https://kulm48byf8.execute-api.ap-northeast-2.amazonaws.com/PROD/v1/class1"
+
+# event_params를 x-www-form-urlencoded 형식으로 변환
+    form_data = {
+        key: str(value) for key, value in event_params.items()
+    }
+
+    # POST request 보내기
+    response = requests.post(url, data=form_data, headers={'Content-Type': 'application/x-www-form-urlencoded'})  # data 파라미터 사용
+
+
+
+# 현재 날짜 및 시간을 얻습니다.
+current_time = datetime.datetime.now()
+
+# 현재 날짜 및 시간을 long 값으로 변환 (Unix 시간의 밀리초 버전)
+long_timestamp = int(current_time.timestamp() * 1000)
+print("Long 값:", long_timestamp)
+# 현재 시간을 원하는 형식으로 출력
+formatted_time = current_time.strftime("%Y-%m-%d %H:%M:%S")
+print("현재 시간 (형식화):", formatted_time)
+
+
+# Define your event data
+event_data = [
+{'serviceType':'자연유입','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' PC 페이지 팝업','conversion_name':'conversion_name','platform':'android','user_type':'re-open'} , 
+{'serviceType':'자연유입','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' PC 페이지 팝업','conversion_name':' PC 홈페이지_앱설치 팝업_AOS_원룸_O_170901_#2221745','platform':'ios','user_type':'re-install'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Google Search Network (Google Play included)','conversion_name':' PC 홈페이지_앱설치 팝업_iOS_원룸_O_170901_#329722','platform':'android','user_type':'re-install'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Band_Banner','conversion_name':'[아파트] 모바일_일반','platform':'android','user_type':'new_user'} , 
+{'serviceType':'브랜드및기타','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'페이스북_성락','conversion_name':'#181012_BAND_띠배너_아파트_1안_우리아파트_AOS_NR','platform':'android','user_type':'re-open'} , 
+{'serviceType':'브랜드및기타','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'페이스북_성락','conversion_name':'#4778050_160630_페이스북 게시물','platform':'android','user_type':'new_user'} , 
+{'serviceType':'브랜드및기타','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Facebook(설치형/MAIA)','conversion_name':'#5546775_170123_유튜브','platform':'android','user_type':'re-open'} , 
+{'serviceType':'브랜드및기타','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'페이스북_성락','conversion_name':'#7605816_170818_페이스북_AND_self_NR_트래픽_HS','platform':'ios','user_type':'re-install'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 다음홈앤쿠킹','conversion_name':'170524_네이버포스트_6월','platform':'android','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'페이스북_아파트','conversion_name':'1709_다음홈앤쿠킹_아파트','platform':'android','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'페이스북_성락','conversion_name':'171002_아파트행동유도버튼','platform':'android','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 다음홈앤쿠킹','conversion_name':'1712_페이스북_아파트','platform':'android','user_type':'new_user'} , 
+{'serviceType':'브랜드및기타','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 유튜브 채널','conversion_name':'1802_다음_아파트','platform':'android','user_type':'re-open'} , 
+{'serviceType':'브랜드및기타','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 유튜브 채널','conversion_name':'1803_유튜브_직터뷰','platform':'android','user_type':'re-open'} , 
+{'serviceType':'브랜드및기타','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 유튜브 채널','conversion_name':'1804_부동산랭킹쇼','platform':'android','user_type':'re-open'} , 
+{'serviceType':'브랜드및기타','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 유튜브 채널','conversion_name':'1805_유튜브_직터뷰','platform':'android','user_type':'re-open'} , 
+{'serviceType':'브랜드및기타','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 유튜브 채널','conversion_name':'1806_유튜브_직터뷰','platform':'android','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 다음홈앤쿠킹','conversion_name':'1807_유튜브_직터뷰','platform':'android','user_type':'re-open'} , 
+{'serviceType':'브랜드및기타','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 유튜브 채널','conversion_name':'1808_다음_아파트','platform':'android','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 다음홈앤쿠킹','conversion_name':'1808_유튜브_직터뷰','platform':'android','user_type':'new_user'} , 
+{'serviceType':'브랜드및기타','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 유튜브 채널','conversion_name':'1809_다음_아파트','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 네이버 포스트','conversion_name':'1809_유튜브_직터뷰','platform':'ios','user_type':'re-install'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 다음홈앤쿠킹','conversion_name':'1810_네이버포스트_아파트','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'유튜브 채널','conversion_name':'1810_다음_아파트','platform':'android','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':' 네이버 포스트','conversion_name':'1810_유튜브_아파트','platform':'android','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'공식블로그','conversion_name':'1811_네이버포스트_아파트','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'공식블로그','conversion_name':'2017_09월_공식블로그_아파트','platform':'android','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'공식블로그','conversion_name':'2017_10월_공식블로그_아파트','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'브랜드및기타','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'안양톡 카페배너 (온라인파트)','conversion_name':'2017_12월_공식블로그_아파트','platform':'android','user_type':'re-install'} , 
+{'serviceType':'자연유입','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'네이버 모바일 브랜드 검색','conversion_name':'게시글 배너','platform':'android','user_type':'new_user'} , 
+{'serviceType':'자연유입','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'네이버 모바일 브랜드 검색','conversion_name':'브검 네이버_AOS_O_170425_#2733818','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'SmartPosting2 (스마트포스팅2)','conversion_name':'브검 네이버_iOS_O_170424_#3626952','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'ADMAX','conversion_name':'스마트포스팅2_AOS_아파트_N_180118_#3993154','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'ADMAX','conversion_name':'애드맥스_AOS_아파트_N_180917_#3528105','platform':'ios','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'adpick','conversion_name':'애드맥스_IOS_아파트_N_180917_#4443397','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'adpick','conversion_name':'애드픽_AOS_아파트_N_180523_#5068160','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'브랜드및기타','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'온라인파트_인스타그램','conversion_name':'애드픽_IOS_아파트_N_180523_#5408459','platform':'android','user_type':'new_user'} , 
+{'serviceType':'자연유입','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'모바일 홈페이지','conversion_name':'온라인파트_인스타그램_설치링크','platform':'android','user_type':'new_user'} , 
+{'serviceType':'자연유입','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'모바일 홈페이지','conversion_name':'자연유입_AOS_O_180903_#4845016','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'빌라','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'tenping (텐핑,10ping)','conversion_name':'자연유입_iOS_O_180903_#7903851','platform':'android','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'tenping (텐핑,10ping)','conversion_name':'텐핑_AOS_빌라_N_181029_#2334538','platform':'android','user_type':'re-install'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'tenping (텐핑,10ping)','conversion_name':'텐핑_AOS_아파트_N_181025_#5040978','platform':'ios','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'BAND_FullScreen','conversion_name':'텐핑_IOS_아파트_N_181025_#1871145','platform':'android','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'band','conversion_name':'BAND_풀스크린_AOS_아파트_2안_2억원대_181010_','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Facebook(설치형/MAIA)','conversion_name':'Bandnative_AOS_아파트_N_180917_#1805308','platform':'android','user_type':'new_user'} , 
+{'serviceType':'빌라','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Facebook(설치형/MAIA)','conversion_name':'FB 트래픽_AOS_아파트_N_181017_# 9047636','platform':'android','user_type':'new_user'} , 
+{'serviceType':'빌라','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Facebook(설치형/MAIA)','conversion_name':'FB_인스타_AOS_빌라_181001_#7957213','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Facebook(설치형/MAIA)','conversion_name':'FB_인스타_IOS_빌라_181001_#7191176','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Facebook(설치형/MAIA)','conversion_name':'FB_인스타그램_관심사_AOS_아파트_N_#6911736','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Facebook(설치형/MAIA)','conversion_name':'FB_인스타그램_소재테스트_IOS_아파트_180730_#3029076','platform':'android','user_type':'re-install'} , 
+{'serviceType':'빌라','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Facebook(설치형/MAIA)','conversion_name':'FB_ADID타겟_AOS_아파트_180919','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Facebook(설치형/MAIA)','conversion_name':'FB_AOS_소재테스트_빌라__N_181019_#','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'FocusM','conversion_name':'FB_IOS_아파트_인스타그램_소형아파트_N_181101','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'InMobi','conversion_name':'FocusM_AOS_아파트_N_171128_#8111584','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'InMobi','conversion_name':'Inmobi_AOS_아파트_N_181029_#5747297','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Kakao(카카오)','conversion_name':'Inmobi_IOS_아파트_N_181029_#6956668','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Kakao(카카오)','conversion_name':'Kakao_연령타겟_빅배너_AOS_아파트_N_181019_#373395','platform':'android','user_type':'re-install'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'nate','conversion_name':'Kakao_ADID타겟_AOS_아파트_N_181019_#4521479','platform':'ios','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'nate','conversion_name':'NATE_메인빅배너_iOS_아파트_N_CPM_181031_#8896967','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'nate','conversion_name':'NATE_브랜딩배너_AOS_아파트_N_180927_#868388','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'nate','conversion_name':'NATE_브랜딩배너_IOS_아파트_N_180927_#1828004','platform':'ios','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'nate','conversion_name':'NATE_브랜딩배너_iOS_아파트_N_CPM_181031_#8635088','platform':'android','user_type':'re-install'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'nate','conversion_name':'NATE_판섹션배너_AOS_아파트_N_CPM_181031_#3016597','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'구글 키워드','conversion_name':'NATE_판섹션배너_iOS_아파트_N_CPM_181031_#4003363','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'구글 키워드','conversion_name':'SA 구글_AOS_아파트_N_170424_#2527689','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'빌라','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'네이버 키워드','conversion_name':'SA 구글_IOS_아파트_N_170424_#4631315','platform':'android','user_type':'new_user'} , 
+{'serviceType':'빌라','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'네이버 키워드','conversion_name':'SA 네이버_초기Z안_AOS_빌라_N_180813_#9622879','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'네이버 키워드','conversion_name':'SA 네이버_초기Z안_IOS_빌라_N_180813_#4986826','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'네이버 키워드','conversion_name':'SA 네이버_AOS_아파트_N_170424_#4909560','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'빌라','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'다음 키워드','conversion_name':'SA 네이버_IOS_아파트_N_170424_#6931165','platform':'android','user_type':'new_user'} , 
+{'serviceType':'빌라','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'다음 키워드','conversion_name':'SA 다음_초기Z안_AOS_빌라_N_180813_#5187483','platform':'ios','user_type':'re-open'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'다음 키워드','conversion_name':'SA 다음_초기Z안_IOS_빌라_180813_#1029380','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'다음 키워드','conversion_name':'SA 다음_AOS_아파트_N_170721_#3476782','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Google Universal App Campaign','conversion_name':'SA 다음_IOS_아파트_N_170721_#166841','platform':'android','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Google Universal App Campaign','conversion_name':'UAC_소재테스트_AOS_아파트_N_180326_#6756774','platform':'ios','user_type':'new_user'} , 
+{'serviceType':'아파트','gtmLongTime':long_timestamp,'base_dt':formatted_time,'channel_name':'Google Universal App Campaign','conversion_name':'UAC_신규테스트_IOS_아파트_N_180724_#7622263','platform':'android','user_type':'new_user'}
+]
+
+# Number of columns in the grid
+num_columns = 4
+
+# Streamlit app title
+st.title("Event Data \n Post Request Button Grid")
+
+# Create a button grid
+for i in range(0, len(event_data), num_columns):
+    button_row = event_data[i:i+num_columns]
+    # col1, col2, col3, col4,col5,col6,col7,col8 = st.columns(num_columns)
+    col1, col2, col3, col4 = st.columns(num_columns)
+    for j, event_params in enumerate(button_row):
+        with globals()[f"col{j+1}"]:
+            if st.button(event_params['conversion_name'], key=event_params['conversion_name']):
+                send_post_request(event_params)
+
+$ streamlit run event_event_form.py
