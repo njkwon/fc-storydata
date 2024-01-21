@@ -271,8 +271,6 @@ def getRTMSDataSvcAptTrade(LAWD_CD, DEAL_YMD, serviceKey):
     return aptTrade
 
 
-
-
  
 insert_data_into_mysql(getRTMSDataSvcAptTrade('11110', '202312', d_key))
 insert_data_into_mysql(getRTMSDataSvcAptTrade('11350', '202312', d_key))
@@ -283,5 +281,141 @@ $ deactivate
 $ cd open_env/lib/python3.9/site-packages/
 $ zip -r ../../../../apart_real_cost.zip .
 $ cd ../../../../
-$ zip apart_realcost_package.zip lambda_function.py
-$ aws s3 cp apart_realcost_package.zip s3://fc-storydata/
+$ zip apart_real_cost.zip lambda_function.py
+$ aws s3 cp apart_real_cost.zip s3://fc-storydata/
+
+# 250M 이상 람다배포 불가합니다. 
+# 불필요한 library 삭제 
+
+
+import requests
+from bs4 import BeautifulSoup
+import urllib.request
+import mysql.connector
+from mysql.connector import errorcode
+
+req = urllib.request
+d_key = '43ShfBW0KpotiijFbKbxPN5RvWndjxuDkKpKKirq2kSsLcKXgip5nbIAr6RIoQ%2BB7sgo4E21wLdNBSrwuCztxQ%3D%3D'
+
+def lambda_handler(event, context):
+	getRTMSDataSvcAptTrade('11110', '202312', d_key)
+	getRTMSDataSvcAptTrade('11350', '202312', d_key)
+
+
+def insert_data_into_mysql(data):
+    try:
+        connection = mysql.connector.connect(
+            host='datastory-fc.cgfpdcibdeds.ap-northeast-2.rds.amazonaws.com',
+            user='pipeline',
+            password='Epdlxj12#',
+            database='pipelinedb'
+        )
+
+        cursor = connection.cursor()
+
+        for row in data:
+            sql = """
+                INSERT INTO apart_real_cost (
+                    deal_amt, build_year, deal_year, dong, apart_nm, deal_month,
+                    deal_day, area_ex_use, jibun, regional_code, floor
+                ) VALUES (
+                    %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+                )
+            """
+            values = (
+                row['dealAmount'], row['buildYear'], row['dealYear'], row['dong'],
+                row['apartmentName'], row['dealMonth'], row['dealDay'], row['areaForExclusiveUse'],
+                row['jibun'], row['regionalCode'], row['floor']
+            )
+            cursor.execute(sql, values)
+
+        connection.commit()
+
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Access denied: Check your MySQL username and password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print("Error: {}".format(err))
+    finally:
+        if 'connection' in locals() and connection.is_connected():
+            cursor.close()
+            connection.close()
+
+def getRTMSDataSvcAptTrade(LAWD_CD, DEAL_YMD, serviceKey):
+    url = "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTrade"
+    url += "?&LAWD_CD=" + LAWD_CD
+    url += "&DEAL_YMD=" + DEAL_YMD
+    url += "&serviceKey=" + serviceKey
+
+    xml = urllib.request.urlopen(url)
+    result = xml.read()
+    soup = BeautifulSoup(result, 'lxml-xml')
+
+    items = soup.findAll("item")
+    apt_trade_data = []
+
+    try:
+        for item in items:
+            dealAmount = item.find("거래금액").text
+            dealYear = item.find("년").text
+            dong = item.find("법정동").text
+            apartmentName = item.find("아파트").text
+            dealMonth = item.find("월").text
+            dealDay = item.find("일").text
+            areaForExclusiveUse = item.find("전용면적").text
+            regionalCode = item.find("지역코드").text
+            floor = item.find("층").text
+
+            try:
+                jibun = item.find("지번").text
+            except:
+                jibun = ""
+
+            try:
+                buildYear = item.find("건축년도").text
+            except:
+                buildYear = ""
+
+            apt_trade_data.append({
+                'dealAmount': dealAmount,
+                'buildYear': buildYear,
+                'dealYear': dealYear,
+                'dong': dong,
+                'apartmentName': apartmentName,
+                'dealMonth': dealMonth,
+                'dealDay': dealDay,
+                'areaForExclusiveUse': areaForExclusiveUse,
+                'jibun': jibun,
+                'regionalCode': regionalCode,
+                'floor': floor
+            })
+
+        insert_data_into_mysql(apt_trade_data)
+
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Access denied: Check your MySQL username and password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print("Error: {}".format(err))
+
+# 사이즈가큰 panda, pyarrow 삭제
+
+$ cd open_api
+$ rm -r open_env
+$ python3 -m venv open_env
+$ source ./open_env/bin/activate
+$ pip install mysql-connector-python
+$ pip install requests
+$ pip install bs4
+$ pip install lxml
+$ cd open_env/lib/python3.9/site-packages/
+$ zip -r ../../../../apart_real_cost.zip .
+$ cd ../../../../
+$ zip apart_real_cost.zip lambda_function.py
+$ aws s3 cp apart_real_cost.zip s3://fc-storydata/
+
+람다실행을 확인한다.
