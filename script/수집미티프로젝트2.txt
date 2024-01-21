@@ -184,3 +184,102 @@ for i in range(0, len(event_data), num_columns):
                 send_post_request(event_params)
 
 $ streamlit run event_event_form.py
+
+# mariadb 생성 
+# user 생성 
+CREATE USER 'pipeline'@'%' IDENTIFIED BY 'XXX#';
+# database 생성
+CREATE DATABASE pipelinedb CHARACTER SET utf8mb4 collate utf8mb4_general_ci;
+# user 에게 database 사용에 대한 권 
+GRANT ALL PRIVILEGES ON pipelinedb.* TO 'pipeline'@'%';
+
+# Endpoit 메모하기 
+
+# filtering 에서 나온 데이터 저장 
+# 테이블 생성 
+create table channel_marketing_tb
+(
+	serviceType varchar(50) null,
+	gtmLongTime varchar(200) null,
+	base_dt varchar(200) null,
+	channel_name varchar(200) null,
+	conversion_name varchar(200) null,
+	platform varchar(200) null,
+	user_type varchar(200) null
+);
+
+
+# lambda 프로그램 작성 
+
+$ vi lambda_function.py
+
+import base64
+import json
+import mysql.connector 
+
+def lambda_handler(event, context):
+
+        # MySQL database connection
+
+    # MySQL database connection
+    db_config = {
+        'user': 'pipeline',
+        'password': 'Epdlxj12#',
+        'host': 'datastory-fc.cgfpdcibdeds.ap-northeast-2.rds.amazonaws.com',
+        'database': 'pipelinedb',
+    }
+    connection = mysql.connector.connect(**db_config)
+
+    cursor = connection.cursor()
+
+    for record in records['Records']:
+        data = json.loads(record['Data'])
+
+        # Prepare an INSERT statement for the MySQL database
+        insert_query = """
+        INSERT INTO channel_marketing_tb
+        (serviceType, gtmLongTime, base_dt, channel_name, conversion_name, platform, user_type)
+        VALUES
+        (%s, %s, %s, %s, %s, %s, %s);
+        """
+        values = (
+            data['serviceType'],
+            data['gtmLongTime'],
+            data['base_dt'],
+            data['channel_name'],
+            data['conversion_name'],
+            data['platform'],
+            data['user_type']
+            # Add values for other columns as well
+        )
+        cursor.execute(insert_query, values)
+        connection.commit()
+
+    cursor.close()
+    connection.close()
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps(f'Processed and saved {len(records["Records"])} records to MySQL')
+    }
+
+#람다배포준비
+
+$ mkdir saas_api
+$ cd saas_api
+$ python3 -m venv saas_env
+$ source ./saas_env/bin/activate
+$ pip install mysql-connector-python
+$ deactivate
+$ cd saas_env/lib/python3.9/site-packages/
+$ zip -r ../../../../saasapi.zip .
+$ cd ../../../../
+$ zip saasapi.zip lambda_function.py
+$ aws s3 cp saasapi.zip s3://fc-storydata/
+
+# 람다배포
+
+
+
+
+
