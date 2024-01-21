@@ -284,4 +284,4 @@ $ cd open_env/lib/python3.9/site-packages/
 $ zip -r ../../../../apart_real_cost.zip .
 $ cd ../../../../
 $ zip apart_realcost_package.zip lambda_function.py
-$ aws s3 apart_realcost_package.zip s3://fc-storydata/
+$ aws s3 cp apart_realcost_package.zip s3://fc-storydata/
