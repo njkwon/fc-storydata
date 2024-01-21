@@ -144,5 +144,144 @@ create table law_code_info(
 values ('"&A4&"','"&B4&"','"&C4&"','"&D4&"','"&E4&"','"&F4&"',now());"
 
 
+# 공공데이터에서 가져온 아파트 실거래값 저장할 table : apart_real_cost 생성한다. 
+create table apart_real_cost
+(
+    deal_amt       varchar(40) comment '거래금액',
+    build_year     varchar(4) comment '건축년도',
+    deal_year      varchar(4) comment '년',
+    dong           varchar(40) comment '법정동',
+    apart_nm       varchar(40) comment '아파트명',
+    deal_month     varchar(2) comment '계약월',
+    deal_day       varchar(6) comment '일',
+    area_ex_use    varchar(20) comment '전용면적',
+    jibun          varchar(10) comment '지번',
+    regional_code  varchar(5) comment '지역코드',
+    floor          varchar(4) comment '층',
+    cnl_deal_type  varchar(1) comment '해제여부',
+    cnl_deal_day   varchar(8) comment '해제사유발생일',
+    req_gbn        varchar(10) comment '거래유형',
+    rdealer_rawdnm varchar(150) comment '중개사소재지',
+    reg_date       varchar(8) comment '등기일자',
+    create_at      timestamp comment '등록일시' ) ;
+
+# 아파트 실거래가를 Mariadb 에 저장한다. 
+$ vi apartToDB.py
+
+import requests
+from bs4 import BeautifulSoup
+import urllib.request
+import pandas as pd
+import mysql.connector
+from mysql.connector import errorcode
 
 
+req = urllib.request
+d_key = '43ShfBW0KpotiijFbKbxPN5RvWndjxuDkKpKKirq2kSsLcKXgip5nbIAr6RIoQ%2BB7sgo4E21wLdNBSrwuCztxQ%3D%3D'
+
+#Mysql 데이터 입력하기 
+def insert_data_into_mysql(dataframe):
+	    # MySQL 연결 설정
+	    try:
+	        connection = mysql.connector.connect(
+	            host='datastory-fc.cgfpdcibdeds.ap-northeast-2.rds.amazonaws.com',
+	            user='pipeline',
+	            password='Epdlxj12#',
+	            database='pipelinedb'
+	        )
+	
+	        cursor = connection.cursor()
+	
+	        # MySQL 테이블에 데이터프레임의 데이터를 삽입
+	        for index, row in dataframe.iterrows():
+	            sql = """
+									INSERT INTO apart_real_cost (
+                        deal_amt, build_year, deal_year, dong, apart_nm, deal_month,
+                        deal_day, area_ex_use, jibun, regional_code, floor
+	                ) VALUES (
+	                    %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+	                )
+	            """
+	            values = (
+	                row['dealAmount'], row['buildYear'], row['dealYear'], row['dong'],
+	                row['apartmentName'], row['dealMonth'], row['dealDay'], row['areaForExclusiveUse'],
+	                row['jibun'], row['regionalCode'], row['floor']
+	            )
+	            cursor.execute(sql, values)
+	
+	        # 변경사항을 커밋
+	        connection.commit()
+	
+	    except mysql.connector.Error as err:
+	        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+	            print("Access denied: Check your MySQL username and password")
+	        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+	            print("Database does not exist")
+	        else:
+	            print("Error: {}".format(err))
+	    finally:
+	        # 커넥션 닫기
+	        if 'connection' in locals() and connection.is_connected():
+	            cursor.close()
+	            connection.close()
+
+def getRTMSDataSvcAptTrade(LAWD_CD, DEAL_YMD, serviceKey):
+    url = "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTrade"
+    url = url + "?&LAWD_CD=" + LAWD_CD
+    url = url + "&DEAL_YMD=" + DEAL_YMD
+    url = url + "&serviceKey=" + serviceKey
+
+    xml = req.urlopen(url)
+    result = xml.read()
+    soup = BeautifulSoup(result, 'lxml-xml')
+
+    items = soup.findAll("item")
+    aptTrade = pd.DataFrame()
+
+    for item in items:
+        dealAmount = item.find("거래금액").text
+        dealYear = item.find("년").text
+        dong = item.find("법정동").text
+        apartmentName = item.find("아파트").text
+        dealMonth = item.find("월").text
+        dealDay = item.find("일").text
+        areaForExclusiveUse = item.find("전용면적").text
+        regionalCode = item.find("지역코드").text
+        floor = item.find("층").text
+
+        try:
+            jibun = item.find("지번").text
+        except:
+            jibun = ""
+
+        try:
+            buildYear = item.find("건축년도").text
+        except:
+            buildYear = ""
+
+        temp = pd.DataFrame(([
+            [dealAmount, buildYear, dealYear, dong, apartmentName, dealMonth, dealDay, areaForExclusiveUse, jibun,
+             regionalCode, floor]]),
+                            columns=["dealAmount", "buildYear", "dealYear", "dong", "apartmentName", "dealMonth",
+                                     "dealDay", "areaForExclusiveUse", "jibun", "regionalCode", "floor"])
+
+        aptTrade = pd.concat([aptTrade, temp])
+
+    aptTrade = aptTrade.reset_index(drop=True)
+    return aptTrade
+
+
+
+
+ 
+insert_data_into_mysql(getRTMSDataSvcAptTrade('11110', '202312', d_key))
+insert_data_into_mysql(getRTMSDataSvcAptTrade('11350', '202312', d_key))
+
+# 위 python 프로그램을 패킹하여 lambda 에 등록한다. 
+$ mv apartToDB.py lambda_function.py
+$ deactivate
+$ cd open_api/lib/python3.12/site-packages
+$ zip -r ../../../../apart_real_cost.zip .
+$ cd ../../../../
+$ zip apart_realcost_package.zip lambda_function.py
+$ aws s3 apart_realcost_package.zip s3://fc-storydata/
