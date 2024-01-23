@@ -1,1 +1,112 @@
 
+
+
+
+# Table 생성
+
+create table apart_sales_info
+(
+    id         int auto_increment primary key,
+    base_date  varchar(8)                           null,
+    apart_id   varchar(200)                         null,
+    sido       varchar(200)                         null,
+    gugun      varchar(200)                         null,
+    dong       varchar(200)                         null,
+    bunji      varchar(200)                         null,
+    buildDate  varchar(200)                         null,
+    apart_name varchar(200)                         null,
+    price      varchar(200)                         null,
+    rent       varchar(200)                         null,
+    rent_max   varchar(200)                         null,
+    rent_min   varchar(200)                         null,
+    sales      varchar(200)                         null,
+    sales_max  varchar(200)                         null,
+    sales_min  varchar(200)                         null,
+    create_at  datetime default current_timestamp() not null
+);
+
+
+
+import requests
+import mysql.connector
+from datetime import datetime 
+
+
+def getToday():
+    today = datetime.now()
+    return today
+
+# Fetching data from the API
+api_url = "https://apis.zigbang.com/property/apartments/location/v3?e=&geohash=wydm6&markerType=large&n=&q=type%3Dsales%2Cprice%3D0~-1%2CfloorArea%3D99~132&s=&serviceType[0]=apt&serviceType[1]=offer&serviceType[2]=preOffer&w="
+headers = {
+    'User-Agent': 'Security-Token,ZigbangOsType,ZigbangDeviceId,ZigbangUserToken,User-Agent,X-Requested-With,Zigbang-UserToken'
+}
+
+
+
+response = requests.get(api_url, headers=headers)
+
+if response.status_code == 200:
+    data = response.json()  # Assuming the response is in JSON format
+
+    apartments = data.get('filtered', [])  # Extracting apartments data
+    # print(apartments)
+    # Connecting to MariaDB
+    conn = mysql.connector.connect(
+        host="xxx.co.kr",
+        user="pipeline",
+        port="3306",
+        password="22!",
+        database="pipelinedb"
+    )
+
+    # Creating a cursor object using cursor() method
+    cursor = conn.cursor()
+
+    # Inserting data into MariaDB
+    for apartment in apartments:
+        # 전체 데이터를 찍는다.
+        print(apartment)
+        apart_id = apartment.get('id', 0)
+        sido = apartment.get('sido', '')
+        gugun = apartment.get('gugun', '')
+        dong = apartment.get('dong', '')
+        bunji = apartment.get('bunji', '')
+        buildDate = apartment.get('buildDate', '')
+        apart_name = apartment.get('name', '')
+        price = apartment.get('price', 0)
+        rent = price.get('rent', 0)
+        rent_max = rent.get('max', 0)
+        rent_min = rent.get('min', 0)
+        sales = price.get('sales', 0)
+        sales_max = sales.get('max', 0)
+        sales_min = sales.get('min', 0)
+
+        # Extract other required data
+        print(apart_id, sido, gugun, dong, bunji, buildDate, apart_name, price, rent, rent_max, rent_min, sales, sales_max, sales_min)
+        # SQL query to insert data into a table
+
+        sql = "INSERT INTO apart_sales_info (base_date, apart_id, sido, gugun, dong, bunji, buildDate, apart_name,  rent_max, rent_min, sales, sales_max, sales_min) VALUES ( %s, %s, %s, %s, %s, %s, %s, %s,%s,%s,%s,%s,%s)"
+
+        base_date = getToday().strftime('%Y%m%d')
+        # Execute the SQL command
+        # cursor.execute(sql, (apart_id, sido, gugun, dong, bunji, buildDate, apart_name, price, rent, rent_max, rent_min, sales, sales_max, sales_min))
+        # values = base_date, apart_id, sido, gugun, dong, bunji, buildDate, apart_name, price, rent, rent_max, rent_min, sales, sales_max, sales_min
+        values = (str(base_date), str(apart_id), str(sido), str(gugun), str(dong), str(bunji), str(buildDate), str(apart_name),  str(rent_max), str(rent_min), str(sales), str(sales_max), str(sales_min))
+
+        cursor.execute(sql, values)
+        conn.commit()
+
+        # Commit your changes in the database
+        # - 테스트 할때 사용한다.
+        # - 한번만 찍고 빠져나온다.
+
+    # Commit your changes in the database
+
+    # Close the database connection
+    conn.close()
+
+else:
+    print("Failed to fetch data from the API")
+
+#도곡한신 {'rent': {'min': 91000, 'max': 91000, 'avg': 91000, 'perArea': 2965}, 'sales': {'min': 193000, 'max': 193000, 'avg': 193000, 'perArea': 6288}, 'offer': {'min': None, 'max': None, 'avg': None, 'perArea': None}}
