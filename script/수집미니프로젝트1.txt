@@ -53,8 +53,8 @@ st.markdown(f'<style>{button_style}</style>', unsafe_allow_html=True)
 # Function to send a POST request based on the button clicked
 
 def send_post_request(event_params):
-  # url = "https://kulm48byf8.execute-api.ap-northeast-2.amazonaws.com/PROD/v1/class1"
-  url = "https://z8lp2g97el.execute-api.ap-northeast-2.amazonaws.com/PROD/v2/class1"
+  # url = "https://kuxxxbyf8.execute-api.ap-northeast-2.amazonaws.com/PROD/v1/class1"
+  url = "https://z8xxx7el.execute-api.ap-northeast-2.amazonaws.com/PROD/v2/class1"
   json_data = json.dumps(event_params)
   response = requests.post(url, data=json_data, headers={'Content-Type': 'application/json'})
 
