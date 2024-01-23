@@ -52,7 +52,7 @@ $ vi api_test.py
 import requests
 
 url = 'http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTrade'
-params ={'serviceKey' : '43ShfBW0KpotiijFbKbxPN5RvWndjxuDkKpKKirq2kSsLcKXgip5nbIAr6RIoQ+B7sgo4E21wLdNBSrwuCztxQ==', 'LAWD_CD' : '11110', 'DEAL_YMD' : '202312' }
+params ={'serviceKey' : '43ShfBW0KpotxxxbxPN5RvWndjxuDkKpKKirq2kSsLcKXgip5nbIAr6RIoQ+B7sgo4E21wLdNBSrwuCztxQ==', 'LAWD_CD' : '11110', 'DEAL_YMD' : '202312' }
 
 response = requests.get(url, params=params)
 print(response.content)
@@ -66,7 +66,7 @@ import pandas as pd
 import urllib.request
 
 req = urllib.request
-d_key = '43ShfBW0KpotiijFbKbxPN5RvWndjxuDkKpKKirq2kSsLcKXgip5nbIAr6RIoQ%2BB7sgo4E21wLdNBSrwuCztxQ%3D%3D'
+d_key = '43ShfBW0KpotiijFbKbxPN5RvWndjxuDkKpKKxxxp5nbIAr6RIoQ%2BB7sgo4E21wLdNBSrwuCztxQ%3D%3D'
 
 
 
@@ -177,14 +177,14 @@ from mysql.connector import errorcode
 
 
 req = urllib.request
-d_key = '43ShfBW0KpotiijFbKbxPN5RvWndjxuDkKpKKirq2kSsLcKXgip5nbIAr6RIoQ%2BB7sgo4E21wLdNBSrwuCztxQ%3D%3D'
+d_key = '43ShfBW0KpotiijFbKbxPN5RvWndjxuDkKpKKirq2kSsLcxxxr6RIoQ%2BB7sgo4E21wLdNBSrwuCztxQ%3D%3D'
 
 #Mysql 데이터 입력하기 
 def insert_data_into_mysql(dataframe):
 	    # MySQL 연결 설정
 	    try:
 	        connection = mysql.connector.connect(
-	            host='datastory-fc.cgfpdcibdeds.ap-northeast-2.rds.amazonaws.com',
+	            host='datxxxry-fc.cgfpdcibdeds.ap-northeast-2.rds.amazonaws.com',
 	            user='pipeline',
 	            password='Epdlxj12#',
 	            database='pipelinedb'
@@ -295,7 +295,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 req = urllib.request
-d_key = '43ShfBW0KpotiijFbKbxPN5RvWndjxuDkKpKKirq2kSsLcKXgip5nbIAr6RIoQ%2BB7sgo4E21wLdNBSrwuCztxQ%3D%3D'
+d_key = '43ShfBW0KpotiijFbKbxxxxndjxuDkKpKKirq2kSsLcKXgip5nbIAr6RIoQ%2BB7sgo4E21wLdNBSrwuCztxQ%3D%3D'
 
 def lambda_handler(event, context):
 	getRTMSDataSvcAptTrade('11110', '202312', d_key)
@@ -305,7 +305,7 @@ def lambda_handler(event, context):
 def insert_data_into_mysql(data):
     try:
         connection = mysql.connector.connect(
-            host='datastory-fc.cgfpdcibdeds.ap-northeast-2.rds.amazonaws.com',
+            host='datxxxory-fc.cgfpdcibdeds.ap-northeast-2.rds.amazonaws.com',
             user='pipeline',
             password='Epdlxj12#',
             database='pipelinedb'
