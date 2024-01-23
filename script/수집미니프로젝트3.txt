@@ -177,7 +177,7 @@ from mysql.connector import errorcode
 
 
 req = urllib.request
-d_key = '43ShfBW0KpotiijFbKbxPN5RvWndjxuDkKpKKirq2kSsLcxxxr6RIoQ%2BB7sgo4E21wLdNBSrwuCztxQ%3D%3D'
+d_key = '43ShfBW0KxxxxjFbKbxPN5RvWndjxuDkKpKKirq2kSsLcxxxr6RIoQ%2BB7sgo4E21wLdNBSrwuCztxQ%3D%3D'
 
 #Mysql 데이터 입력하기 
 def insert_data_into_mysql(dataframe):
@@ -186,7 +186,7 @@ def insert_data_into_mysql(dataframe):
 	        connection = mysql.connector.connect(
 	            host='datxxxry-fc.cgfpdcibdeds.ap-northeast-2.rds.amazonaws.com',
 	            user='pipeline',
-	            password='Epdlxj12#',
+	            password='Epxxxj12#',
 	            database='pipelinedb'
 	        )
 	
