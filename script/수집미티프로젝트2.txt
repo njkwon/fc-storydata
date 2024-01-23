@@ -64,7 +64,7 @@ st.markdown(f'<style>{button_style}</style>', unsafe_allow_html=True)
 
 def send_post_request(event_params):
     # API Gateway endpoint 입력
-    url = "https://kulm48byf8.execute-api.ap-northeast-2.amazonaws.com/PROD/v1/class1"
+    url = "https://kuxxxxyf8.execute-api.ap-northeast-2.amazonaws.com/PROD/v1/class1"
 
 # event_params를 x-www-form-urlencoded 형식으로 변환
     form_data = {
@@ -221,8 +221,8 @@ def lambda_handler(event, context):
     # MySQL database connection
     db_config = {
         'user': 'pipeline',
-        'password': 'Epdlxj12#',
-        'host': 'datastory-fc.cgfpdcibdeds.ap-northeast-2.rds.amazonaws.com',
+        'password': 'Epxxj12#',
+        'host': 'dataxxfc.cgfpdcibdeds.ap-northeast-2.rds.amazonaws.com',
         'database': 'pipelinedb',
     }
     connection = mysql.connector.connect(**db_config)
