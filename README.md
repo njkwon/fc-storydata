@@ -48,4 +48,4 @@ Why, What, How 를 기반한 실습
 
 ## 강이가 아니더라도 클라우드에서 데이터 관련된 내용 질의 응답은 아래 게시판에서 
 
-[Q/A](https://fastcampus.co.kr/qna/206742) 문의하기
+[Q/A](https://fastcampus.co.kr/qna/235202/) 문의하기
