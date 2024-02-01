@@ -38,6 +38,5 @@ $ SHARD_ITERATOR=$(aws kinesis get-shard-iterator --shard-id shardId-00000000000
 
 $ aws kinesis get-records --shard-iterator $SHARD_ITERATOR
 
-$ java -jar sendPost.jar -f ../ods/danji_master.csv -u https://hkfsxxxx.execute-api.ap-northeast-2.amazonaws.com/PROD/v1
 
  
