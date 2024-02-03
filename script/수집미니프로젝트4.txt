@@ -82,7 +82,7 @@ if response.status_code == 200:
 
             insert_data = {
                 'id': json_data['id'],
-				'name': json_data['name'],
+		'name': json_data['name'],
                 'lat': json_data['lat'],
                 'lng': json_data['lng'],
                 'total_units': json_data.get('총세대수'),
