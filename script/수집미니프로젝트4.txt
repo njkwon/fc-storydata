@@ -161,11 +161,11 @@ def lambda_handler(event, context):
 
         # Connecting to MariaDB
         conn = mysql.connector.connect(
-            host="tripforu.co.kr",
-            user="tripforu",
+            host="xxixxxco.kr",
+            user="tripxxxru",
             port="3307",
-            password="Dugodtkfkd04!",
-            database="smartf"
+            password="xxxx!",
+            database="sxxtf"
         )
 
         # Creating a cursor object using cursor() method
