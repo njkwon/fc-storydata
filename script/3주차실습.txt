@@ -1,0 +1,9 @@
+
+
+# 프라이머리 노드에 연결 
+$ ssh -i ~/storydata_seoul.pem hadoop@ec2-3-37-89-144.ap-northeast-2.compute.amazonaws.com
+
+# mysql JDBC Driver 설치
+$ wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.28/mysql-connector-java-8.0.28.jar
+
+$ sudo mv mysql-connector-java-8.0.28.jar /usr/lib/spark/jars/
