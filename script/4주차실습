@@ -60,21 +60,59 @@ from logs
 
 to_date(base_date, 'yyyy-MM-dd') as base_date 
 
+# 아파트 단지별 조회수 
+기준일자 ADID 단지ID 이벤트일시
+
+# 데이터 확인
+select  adid,
+       building_id as apart_id,
+       timestamp as base_dt,
+       base_date
+from story_data.applog
+where item_category = '아파트'
 
 
+# 테이블 생성
 CREATE EXTERNAL TABLE  danji_user_view_silver
 (
-  base_dt timestamp, 
-  danji_id int, 
-  adid string
+  adid string, 
+  apart_id string,
+  base_dt timestamp
 )
 PARTITIONED BY ( 
   base_date date )
 STORED AS PARQUET
-LOCATION 's3://fc-bigdata/silver/danji_user_view_silver'
+LOCATION 's3://fc-storydata/silver/danji_user_view_silver'
 tblproperties ("parquet.compress"="SNAPPY" ,"classification"="parquet")
 ;
 
+
+# 아파트 매물별 사용자 조회수
+기준일자 ADID 이벤트일시 단지ID 매물ID
+
+# 데이터 확인
+    select base_date,
+           adid, 
+           timestamp as base_dt,
+           building_id as apart_id, 
+           item_id 
+    from logs 
+    where item_category = '아파트'
+
+# 테이블 생성
+CREATE EXTERNAL TABLE  danji_item_view_silver
+(
+  adid string,
+  base_dt timestamp, 
+  apart_id string,
+  item_id  
+)
+PARTITIONED BY ( 
+  base_date date )
+STORED AS PARQUET
+LOCATION 's3://fc-storydata/silver/danji_item_view_silver'
+tblproperties ("parquet.compress"="SNAPPY" ,"classification"="parquet")
+;
 
 
 [hadoop@ip-172-20-91 ~]$ cd /usr/lib/zeppelin/conf
