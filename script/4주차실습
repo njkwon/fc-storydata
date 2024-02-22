@@ -73,7 +73,7 @@ where item_category = '아파트'
 
 
 # 테이블 생성
-CREATE EXTERNAL TABLE  danji_user_view_silver
+CREATE EXTERNAL TABLE  story_data.danji_user_view_silver
 (
   adid string, 
   apart_id string,
@@ -100,12 +100,12 @@ tblproperties ("parquet.compress"="SNAPPY" ,"classification"="parquet")
     where item_category = '아파트'
 
 # 테이블 생성
-CREATE EXTERNAL TABLE  danji_item_view_silver
+CREATE EXTERNAL TABLE  story_data.danji_item_view_silver
 (
   adid string,
   base_dt string, 
   apart_id string,
-  item_id  
+  item_id  string
 )
 PARTITIONED BY ( 
   base_date date )
