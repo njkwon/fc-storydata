@@ -77,7 +77,7 @@ CREATE EXTERNAL TABLE  danji_user_view_silver
 (
   adid string, 
   apart_id string,
-  base_dt timestamp
+  base_dt string
 )
 PARTITIONED BY ( 
   base_date date )
@@ -103,7 +103,7 @@ tblproperties ("parquet.compress"="SNAPPY" ,"classification"="parquet")
 CREATE EXTERNAL TABLE  danji_item_view_silver
 (
   adid string,
-  base_dt timestamp, 
+  base_dt string, 
   apart_id string,
   item_id  
 )
