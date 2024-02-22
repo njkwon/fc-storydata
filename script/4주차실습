@@ -114,6 +114,23 @@ LOCATION 's3://fc-storydata/silver/danji_item_view_silver'
 tblproperties ("parquet.compress"="SNAPPY" ,"classification"="parquet")
 ;
 
+#### Gold Data ###
+# 테이블 생성
+CREATE EXTERNAL TABLE  story_data.danji_user_view_summary_gold
+(
+  base_date, 
+  danji_id, 
+  danji_name, 
+  sido, 
+  sigungu, 
+  dong, 
+  view_count 
+)
+STORED AS PARQUET
+LOCATION 's3://fc-storydata/gold/danji_user_view_summary_gold'
+tblproperties ("parquet.compress"="SNAPPY" ,"classification"="parquet")
+;
+
 
 [hadoop@ip-172-20-91 ~]$ cd /usr/lib/zeppelin/conf
 [hadoop@ip-172-20-91 conf]$ sudo cp zeppelin-site.xml.template zeppelin-site.xml
