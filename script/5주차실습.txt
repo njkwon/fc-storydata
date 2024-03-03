@@ -1,9 +1,9 @@
 # presto 설정
 
-$ /usr/lib/presto/bin/presto-cli-0.227-executable --server localhost:8889 --catalog hive --schema class
+$ /usr/lib/presto/bin/presto-cli-0.227-executable --server localhost:8889 --catalog hive --schema story_data
 
 presto:default> show tables ;
-presto:default> select * from hive.njkwon.danji_user_view;
+presto:default> select * from hive.story_data.danji_user_view_summary;
 
 # SQL 샘플
 # 시나리오 : 서울 아파트단지중에서 2024년도 1월 26일 가장 많이 조회한 단지?
