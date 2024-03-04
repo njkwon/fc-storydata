@@ -40,7 +40,7 @@ select a.base_date,
        count(*) as view_count
 from hive.story_data.danji_user_view_silver a 
 join mysql.pipelinedb.danji_csv b
-on a.apart_id = b.id 
+on cast(a.apart_id as int) = b.id 
 group by a.base_date, 
        a.apart_id, 
        b.danji_name,
