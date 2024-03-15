@@ -29,3 +29,257 @@ group by a.base_date,
        b.sido,
        b.sigungu,
        b.dong
+
+
+# Snowflake 
+-------------------------------------------------------------------------------------------
+    -- Step 1: To start, let's set the Role and Warehouse context
+        -- USE ROLE: https://docs.snowflake.com/en/sql-reference/sql/use-role
+        -- USE WAREHOUSE: https://docs.snowflake.com/en/sql-reference/sql/use-warehouse
+-------------------------------------------------------------------------------------------
+
+
+---> set the Role
+USE ROLE accountadmin;
+
+
+
+---> set the Warehouse
+USE WAREHOUSE compute_wh;
+
+-- 혹은 
+// IAC (infrastructure as a Code) 를 통한 클러스터 생성
+// 쉽게 cluster 를 바꿀수 있음.
+// 생성 시간은 10초
+// 1분동안 사용안하면 클러스터 자체가 suspend 되어 비용이 발생하지 않음.
+
+create or replace warehouse DS_WH WITH 
+    WAREHOUSE_SIZE = 'MEDIUM' 
+    WAREHOUSE_TYPE = 'STANDARD' 
+    AUTO_SUSPEND = 60 
+    AUTO_RESUME = TRUE 
+    MIN_CLUSTER_COUNT = 1 
+    MAX_CLUSTER_COUNT = 1 
+    SCALING_POLICY = 'STANDARD';
+    
+alter warehouse DS_WH SET WAREHOUSE_SIZE = 'LARGE';
+alter warehouse DS_WH SET WAREHOUSE_SIZE = 'SMALL';
+use warehouse DS_WH;
+
+-------------------------------------------------------------------------------------------
+    -- Step 2: With context in place, let's now create a Database, Schema, and Table
+        -- CREATE DATABASE: https://docs.snowflake.com/en/sql-reference/sql/create-database
+        -- CREATE SCHEMA: https://docs.snowflake.com/en/sql-reference/sql/create-schema
+        -- CREATE TABLE: https://docs.snowflake.com/en/sql-reference/sql/create-table
+-------------------------------------------------------------------------------------------
+
+---> create the Tasty Bytes Database
+CREATE OR REPLACE DATABASE datastory;
+
+---> create the Raw POS (Point-of-Sale) Schema
+CREATE OR REPLACE SCHEMA datastory.blonze;
+
+--- 1. create table app log 
+CREATE OR REPLACE TABLE DATASTORY.BLONZE.applog
+(
+    adid VARCHAR,
+    uuid VARCHAR,
+    name VARCHAR,
+    timestamp VARCHAR,
+    gtmTimes VARCHAR,
+    screen_name VARCHAR,
+    item_id VARCHAR,
+    content_type VARCHAR,
+    item_category VARCHAR,
+    is_zb_agent VARCHAR,
+    building_id VARCHAR,
+    area_type_id VARCHAR,
+    agent_id VARCHAR,
+    status VARCHAR,
+    button_name VARCHAR
+);
+
+drop table danji_master;
+
+CREATE OR REPLACE TABLE danji_master
+(
+    id  number(9),
+    danji_name varchar(200),
+    sido varchar(200),
+    sigungu varchar(200),
+    dong varchar(200),
+    address2 varchar(200),
+    new_address varchar(200),
+    house_count varchar(200),
+    dong_count varchar(200),
+    build_ym varchar(200)
+)
+;
+
+
+CREATE OR REPLACE FILE FORMAT app_json_format
+  TYPE = JSON;
+
+ COPY INTO datastory.blonze.applog
+  FROM s3://fc-storydata/target/applog_json/ credentials=(AWS_KEY_ID='AK5HMZTB4HK' AWS_SECRET_KEY='ErSTT6TuXx/YsBqE7l0T')
+  FILE_FORMAT = (FORMAT_NAME = app_json_format)
+MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE
+ON_ERROR = CONTINUE;  
+
+ COPY INTO datastory.blonze.danji_master
+  FROM s3://fc-storydata/target/danji_json/ credentials=(AWS_KEY_ID='AHMZTB4HK' AWS_SECRET_KEY='EWUtXQev+Xx/YsBqE7l0T')
+  FILE_FORMAT = (FORMAT_NAME = app_json_format)
+MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE
+ON_ERROR = CONTINUE; 
+
+-- 실버데이터 생성 
+select to_date(timestamp) as base_date,
+    adid, 
+    timestamp as base_dt,
+    building_id as apart_id, 
+    item_id 
+from applog 
+where item_category = '아파트';
+
+    
+CREATE TABLE danji_item_view_silver as 
+select to_date(timestamp) as base_date,
+       adid, 
+       timestamp as base_dt,
+       building_id as apart_id, 
+       item_id 
+from applog 
+where item_category = '아파트';
+
+select *
+from danji_item_view_silver;
+
+select count(*)
+from danji_master 
+;
+
+
+
+select a.base_date, 
+       a.adid, 
+       b.danji_name, 
+       b.sido,
+       b.sigungu,
+       b.dong,
+       b.house_count, 
+       b.dong_count, 
+       b.build_ym,
+       a.base_dt
+from danji_item_view_silver a 
+join danji_master b 
+on TRY_CAST(a.apart_id as integer)   = b.id 
+;
+
+
+select a.base_date, 
+       a.apart_id,
+       b.danji_name, 
+       b.sido,
+       b.sigungu,
+       b.dong,
+       count(*) as view_count
+from danji_item_view_silver a 
+join danji_master b 
+on TRY_CAST(a.apart_id as integer)   = b.id 
+group by a.base_date, 
+       a.apart_id,
+       b.danji_name, 
+       b.sido,
+       b.sigungu,
+       b.dong
+ order by view_count desc       
+;
+
+
+-- gold data 
+CREATE TABLE danji_user_view_summary_gold as 
+select a.base_date, 
+       a.apart_id,
+       b.danji_name, 
+       b.sido,
+       b.sigungu,
+       b.dong,
+       count(*) as view_count
+from danji_item_view_silver a 
+join danji_master b 
+on TRY_CAST(a.apart_id as integer)   = b.id 
+group by a.base_date, 
+       a.apart_id,
+       b.danji_name, 
+       b.sido,
+       b.sigungu,
+       b.dong
+ order by view_count desc       
+;
+
+------------------------------------
+Spark --> Snowflake ( 텍스트 데이터 처리 )
+import org.json4s._
+import org.json4s.jackson.JsonMethods._
+import org.json4s.JsonDSL._
+
+import spark.implicits._
+import org.apache.spark.sql.Encoder
+
+ val log1=spark.sparkContext.textFile("s3://fc-storydata/logs/*.gz")
+
+case class Cflog(base_date: String, adid: String, uuid: String,name: String, timestamp: String, gtmTimes: String, screen_name: String
+                , item_id: String, content_type: String, item_category: String, is_zb_agent: String, building_id: String, area_type_id: String
+                , agent_id: String, status: String , button_name: String) 
+
+def parseRawJson(line: String) = {
+     val pieces = line.split("\\|") 
+     
+     val adid = pieces.apply(1).toString
+     val uuid = pieces.apply(2).toString
+     val name = pieces.apply(3).toString
+     val timestamp = pieces.apply(8).toString
+     val gtmTimes =pieces.apply(7).toString  
+    //JSON Parse
+    val jsonString = pieces.apply(9).toString
+    implicit val formats = DefaultFormats
+    val result = parse(jsonString)
+
+    var screen_name      = (result \ "screen_name").extractOpt[String].getOrElse("NULL").replaceAll("nil", "NULL")
+    var item_id           = (result \ "item_id").extractOpt[String].getOrElse("NULL").replaceAll("nil", "NULL")
+    val	content_type     = (result \ "content_type").extractOpt[String].getOrElse("NULL").replaceAll("nil", "NULL")
+    val	item_category    = (result \ "item_category").extractOpt[String].getOrElse("NULL").replaceAll("nil", "NULL")
+    val	is_zb_agent      = (result \ "is_zb_agent").extractOpt[String].getOrElse("NULL").replaceAll("nil", "NULL")
+    val	building_id      = (result \ "building_id").extractOpt[String].getOrElse("NULL").replaceAll("nil", "NULL")
+    val	area_type_id     = (result \ "area_type_id").extractOpt[String].getOrElse("NULL").replaceAll("nil", "NULL")
+    val	agent_id         = (result \ "agent_id").extractOpt[String].getOrElse("NULL").replaceAll("nil", "NULL")
+    val	button_name         = (result \ "button_name").extractOpt[String].getOrElse("NULL").replaceAll("nil", "NULL")
+    val status  = (result \ "status").extractOpt[String].getOrElse("NULL").replaceAll("nil", "NULL")
+    val base_date = timestamp.substring(0,10)
+    
+    
+    Cflog(base_date, adid, uuid, name, timestamp, gtmTimes, screen_name, item_id, content_type, item_category, is_zb_agent, building_id, area_type_id, agent_id, status , button_name)
+}
+
+val logsDFAll = log1.map(line => parseRawJson(line)).toDF()
+
+
+// Snowflake 접속정보 
+
+    val snowflakeOptions = Map(
+      "sfURL" -> "hw2221538.ap-northeast-2.aws.snowflakecomputing.com",
+      "sfUser" -> "njkwon",
+      "sfPassword" -> "Epj12#",
+      "sfDatabase" -> "datastory",
+      "sfSchema" -> "blonze",
+      "sfWarehouse" -> "compute_wh"
+    )
+
+    // Snowflake에 데이터 쓰기
+    logsDFAll.write
+      .format("net.snowflake.spark.snowflake")
+      .options(snowflakeOptions)
+      .option("dbtable", "logs").mode("append") // Append 모드로 데이터 추가
+      .save()
+
+
