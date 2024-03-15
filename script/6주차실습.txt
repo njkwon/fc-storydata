@@ -1,0 +1,31 @@
+
+
+
+
+
+
+Redshift spectrum
+
+--------------------------------------------------------
+create external schema red_class from data catalog 
+database 'story_db' 
+iam_role 'arn:aws:iam::675xxx2:role/classpectrum' 
+region 'ap-northeast-2';
+--------------------------------------------------------
+
+select a.base_date, 
+       a.danji_id, 
+       b.danji_name,
+       b.sido,
+       b.sigungu,
+       b.dong,
+       count(*) as view_count
+from "sample_data_dev"."red_class".danji_user_view_silver a 
+join "sample_data_dev"."red_class".danji_parquet b
+on a.danji_id = b.id 
+group by a.base_date, 
+       a.danji_id, 
+       b.danji_name,
+       b.sido,
+       b.sigungu,
+       b.dong
