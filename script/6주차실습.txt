@@ -217,8 +217,10 @@ group by a.base_date,
  order by view_count desc       
 ;
 
-------------------------------------
+-------------------------------------
 Spark --> Snowflake ( 텍스트 데이터 처리 )
+--------------------------------------
+
 import org.json4s._
 import org.json4s.jackson.JsonMethods._
 import org.json4s.JsonDSL._
