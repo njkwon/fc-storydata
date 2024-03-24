@@ -1,0 +1,1276 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "\n\n val log1=spark.read.textFile(\"s3://fc-class/newlogs/*.gz\")",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-23T00:54:09+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mlog1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981727_471955966",
+      "id": "20240323-004941_810463164",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "dateStarted": "2024-03-23T00:54:09+0000",
+      "dateFinished": "2024-03-23T00:54:10+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:10044"
+    },
+    {
+      "text": "\nlog1.take(10).foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-23T00:54:16+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "5308579580663|bbfdfe3b-a1af-4ab3-bca0-a7bc8facde4d|0df72fbb-f1df-4fc5-b7a5-7ee4778684bd|view_item|ZigbangApp/4.13.22 (com.chbreeze.jikbang4a; build:239; Android 7.0; SM-G930L; RELEASE)|182.224.45.98|101c79938cc1f258723f91921e3078ea2e2af4e7268a38d308b75eabd344d2ef1fab396cbd78e810d9a991b4ba292a418bbef43a571a1abc46e043aa73e9b89e|1516913010218|2024-01-26 05:43:31|{\"screen_name\":\"원룸 매물상세\",\"room_type\":\"쓰리룸+\",\"item_deposit\":12000,\"near_subway\":\"-\",\"item_category\":\"원룸\",\"activity_name\":\"DetailViewActivity\",\"local3\":\"용이동\",\"local1\":\"경기도\",\"local2\":\"평택시\",\"item_name\":\"★용죽지구 신축!쓰리룸! 전세★\",\"item_price\":0,\"previous_activity\":\"ListItemsActivity\",\"item_id\":10413961}\n1760936602045|427c101a-3ef6-4cdf-858d-c69227f2300e|00480185-4422-4450-bead-686c3179c6f0|zb_screen_view|ZigbangApp/4.13.22 (com.chbreeze.jikbang4a; build:239; Android 6.0; LG-F600K; RELEASE)|110.70.58.157|103c58e329fb3b88639b9bd4ddda0078e978b1a6c160e935619fcb5be60e23c3777fa6d8d8a9a20862fb489956880036bf7c7ecf457279bbc82cb47ec656f893|1516949690772|2024-01-26 15:54:53|{\"screen_name\":\"원룸 매물상세\",\"activity_name\":\"DetailViewActivity\",\"previous_activity\":\"AgentDetailActivity\",\"test_type\":\"ROOM_NUDGE_STRING_2ND_A\"}\n2422361558569|BEBDA003-E1A3-488C-BAFC-860630508779|F724E848-FB96-4FA6-8CE2-21A492FA1CAF|zb_screen_view|ZigbangApp/4.13.22 (com.chbreeze.jikbang4i; build:18; iOS 11.2.2; iPhone 7; RELEASE)|223.38.17.182|105d6ce8a5f609674496c99b0e702b258258901f809690f758df81e191cf255f6e7bf2c5b82d52fca0eb32bc7b66d39e48b26fb9e442007d2886acdb667cd49a|1516958910|2024-01-26 18:28:30|{\"event_name\":\"zb_screen_view\",\"screen_name\":\"메인\",\"activity_name\":\"ZBMainViewController\"}\n3049426793769|C2B561CD-09C6-4D24-B6CE-24A0B700B3D1|DB555C6D-879C-46D3-933E-6139D765C776|zb_screen_view|ZigbangApp/4.13.22 (com.chbreeze.jikbang4i; build:18; iOS 11.0.3; iPhone 8; RELEASE)|175.223.34.36|1083fa72a2ea1c98b9a88b29e931c2f5b81de8532dcf4af240cee92b1b6dae2f74f81e378bd6ce3688b3d3325af41918a4ecb2199ec7e8fd4c094b86e00d239f|1516967780|2024-01-26 20:56:20|{\"event_name\":\"zb_screen_view\",\"screen_name\":\"원룸 매물상세\",\"activity_name\":\"ZBRoomDetailViewController\"}\n1005022352137|07BA404E-71BC-40AE-AF1D-B3ED5B4CEFC0|6752002D-4CAE-41DC-9CE9-041E62732649|zb_view_contents|ZigbangApp/4.13.22 (com.chbreeze.jikbang4i; build:18; iOS 11.2.2; iPhone 6S Plus; RELEASE)|220.122.9.66|10a8101046191f6ad92ae5e59e1d33a67c61cb2280b74fbf69155ae24808d217e281024f8d824fe030f968201c0c960693f0521b27a933560a0ef9a1e1f125aa|1516939036|2024-01-26 12:57:16|{\"event_name\":\"zb_view_contents\",\"screen_name\":\"아파트 지역상세\",\"activity_name\":\"ZBAPTLocalDetailViewController\",\"local_id\":\"27290116\"}\n3384434237880|509e191f-2e10-4a42-aae9-068bf4e30032|d11daa28-9698-4d59-af92-ec8d8c20073b|zb_screen_view|ZigbangApp/4.13.22 (com.chbreeze.jikbang4a; build:239; Android 7.0; SM-N920K; RELEASE)|58.143.58.73|10cd89970f77e6fc9fb2c3ea6170b7e06bbb448d1f5b7aeb34d72d596c47a0bb6bf84abc9f9db22e4c90a2f08b6283a939c6baa3a86ec6d51a0c3d6831635ab|1516972443389|2024-01-26 22:14:03|{\"screen_name\":\"원룸 최근본방\",\"activity_name\":\"ListUserItemsReadActivity\",\"previous_activity\":\"MainActivity\",\"test_type\":\"ROOM_NUDGE_STRING_2ND_A\"}\n2147483660453|6541b750-20d1-424e-9d65-a08710be4d64|3d682946-5cf1-4e18-8183-e71466dbfe1d|view_item|ZigbangApp/4.13.22 (com.chbreeze.jikbang4a; build:239; Android 7.0; SM-G920K; RELEASE)|223.38.18.235|10f3cfe54c3e0bbd97b59ccc53f25d004ffea478ab796db32c5eb001bb8714493712f1ef7127382c9994489f28c16a6c55f056714e8354d03d2a1062ac8e1710|1516955101555|2024-01-26 17:25:02|{\"screen_name\":\"원룸 매물상세\",\"room_type\":\"투룸\",\"item_deposit\":23000,\"near_subway\":\"가좌역(경의선), 홍대입구역(2호선,경의선,공항철도), 망원역(6호선)\",\"item_category\":\"원룸\",\"activity_name\":\"DetailViewActivity\",\"local3\":\"성산동\",\"local1\":\"서울시\",\"local2\":\"마포구\",\"item_name\":\"신축급 넓은집\",\"item_price\":0,\"previous_activity\":\"ListItemsActivity\",\"item_id\":10386049}\n2765958953268|E8E19D69-5090-4BBC-930F-A0120A703D78|782EC501-7E6F-46D0-9BF4-69DD83E7BA11|zb_screen_view|ZigbangApp/4.13.22 (com.chbreeze.jikbang4i; build:18; iOS 10.3.2; iPhone 6S Plus; RELEASE)|223.62.10.86|111a1c5c738e6276ab376b76b3b243bc40ffe78c7e2b72a267fad68d0321ed49d2a198985c91133233388745d8a79cae71ddf52a7289db726b874d62eac47f0|1516963817|2024-01-26 19:50:17|{\"event_name\":\"zb_screen_view\",\"screen_name\":\"원룸 매물상세\",\"activity_name\":\"ZBRoomDetailViewController\"}\n4200478025421|DAA7D546-6C57-4F0A-8EA1-74965F98F0FC|6EF09D83-A6EE-49DB-B944-AEFCE8409F70|zb_screen_view|ZigbangApp/4.13.22 (com.chbreeze.jikbang4i; build:18; iOS 11.2.2; iPhone 8 Plus; RELEASE)|211.228.65.91|114187d5246afd5985017a129dcd9f2bfc7d8d0c9189758574c3893748fa13b088e4e94698f127ae5e273ed5e2246d3b4b263b0d8264973cbaca2243d8547643|1516897488|2024-01-26 01:24:48|{\"test_type\":\"ios_anim_transition_1st_B\",\"event_name\":\"zb_screen_view\",\"screen_name\":\"원룸 지역목록\",\"activity_name\":\"ListAllMapViewController\"}\n4277787436164|1ff65a33-2354-42f5-878f-b2b3313b2db8|7390cc5b-ff06-4540-b0aa-328869589e66|zb_dialog_show|ZigbangApp/4.13.22 (com.chbreeze.jikbang4a; build:239; Android 7.0; SM-G928S; RELEASE)|110.13.198.84|11578709a5e8c55a32f0b073d92e01d1ba64155431c448470b107451f5b6f8052d8a14125d69347a549c5667214e1d98acdbaac917d9dde9aa7ca522e94bdf95|1516898576610|2024-01-26 01:42:58|{\"screen_name\":\"원룸 매물상세\",\"item_category\":\"\",\"activity_name\":\"DetailViewActivity\",\"previous_activity\":\"ListItemsActivity\",\"test_type\":\"ROOM_NUDGE_STRING_2ND_A\",\"dialog_name\":\"문의유도팝업1\"}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=1",
+              "$$hashKey": "object:10835"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981727_598919820",
+      "id": "20240323-004941_160556574",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "dateStarted": "2024-03-23T00:54:16+0000",
+      "dateFinished": "2024-03-23T00:54:22+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:10045"
+    },
+    {
+      "text": "\n// 날짜를 변경해서 월 ~ 금요일 데이터를 생성한다. \n\nval log22 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-22\"))\nval log23 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-23\"))\nval log24 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-24\"))\nval log25 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-25\"))\nval log26 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-26\"))\nval log27 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-27\"))\nval log28 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-28\"))\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T09:54:14+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mlog22\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n\u001b[1m\u001b[34mlog23\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n\u001b[1m\u001b[34mlog24\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n\u001b[1m\u001b[34mlog25\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n\u001b[1m\u001b[34mlog26\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n\u001b[1m\u001b[34mlog27\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n\u001b[1m\u001b[34mlog28\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981727_130474622",
+      "id": "20240323-004941_359587913",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "dateStarted": "2024-03-24T09:54:14+0000",
+      "dateFinished": "2024-03-24T09:54:15+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:10046"
+    },
+    {
+      "text": "\nimport org.json4s._\nimport org.json4s.jackson.JsonMethods._\nimport org.json4s.JsonDSL._\n\ncase class Cflog(base_date: String, adid: String, uuid: String,name: String, timestamp: String, gtmTimes: String, screen_name: String\n                , item_id: String, content_type: String, item_category: String, is_zb_agent: String, building_id: String, area_type_id: String\n                , agent_id: String, status: String , button_name: String) \n\ndef parseRawJson(line: String) = {\n     val pieces = line.split(\"\\\\|\") \n     \n     val adid = pieces.apply(1).toString\n     val uuid = pieces.apply(2).toString\n     val name = pieces.apply(3).toString\n     val timestamp = pieces.apply(8).toString\n     val gtmTimes =pieces.apply(7).toString  \n    //JSON Parse\n    val jsonString = pieces.apply(9).toString\n    implicit val formats = DefaultFormats\n    val result = parse(jsonString)\n\n    var screen_name      = (result \\ \"screen_name\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    var item_id           = (result \\ \"item_id\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\tcontent_type     = (result \\ \"content_type\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\titem_category    = (result \\ \"item_category\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\tis_zb_agent      = (result \\ \"is_zb_agent\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\tbuilding_id      = (result \\ \"building_id\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\tarea_type_id     = (result \\ \"area_type_id\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\tagent_id         = (result \\ \"agent_id\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\tbutton_name         = (result \\ \"button_name\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val status  = (result \\ \"status\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val base_date = timestamp.substring(0,10)\n    \n    \n    Cflog(base_date, adid, uuid, name, timestamp, gtmTimes, screen_name, item_id, content_type, item_category, is_zb_agent, building_id, area_type_id, agent_id, status , button_name)\n}",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T09:54:17+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.json4s._\nimport org.json4s.jackson.JsonMethods._\nimport org.json4s.JsonDSL._\ndefined class Cflog\n\u001b[1m\u001b[34mparseRawJson\u001b[0m: \u001b[1m\u001b[32m(line: String)Cflog\u001b[0m\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981727_655688161",
+      "id": "20240323-004941_1938902898",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "dateStarted": "2024-03-24T09:54:17+0000",
+      "dateFinished": "2024-03-24T09:54:17+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:10047"
+    },
+    {
+      "text": "val df22 = log22.map(line => parseRawJson(line)).toDF()\nval df23 = log23.map(line => parseRawJson(line)).toDF()\nval df24 = log24.map(line => parseRawJson(line)).toDF()\nval df25 = log25.map(line => parseRawJson(line)).toDF()\nval df26 = log26.map(line => parseRawJson(line)).toDF()\nval df27 = log27.map(line => parseRawJson(line)).toDF()\nval df28 = log28.map(line => parseRawJson(line)).toDF()",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T09:54:20+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdf22\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid: string ... 14 more fields]\n\u001b[1m\u001b[34mdf23\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid: string ... 14 more fields]\n\u001b[1m\u001b[34mdf24\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid: string ... 14 more fields]\n\u001b[1m\u001b[34mdf25\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid: string ... 14 more fields]\n\u001b[1m\u001b[34mdf26\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid: string ... 14 more fields]\n\u001b[1m\u001b[34mdf27\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid: string ... 14 more fields]\n\u001b[1m\u001b[34mdf28\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid...\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711155269539_763752584",
+      "id": "paragraph_1711155269539_763752584",
+      "dateCreated": "2024-03-23T00:54:29+0000",
+      "dateStarted": "2024-03-24T09:54:20+0000",
+      "dateFinished": "2024-03-24T09:54:22+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:10048"
+    },
+    {
+      "text": "\n//  날짜별 샘플데이터를 생성한다. \n// option 의 순서에 따라서 압축이 안되었다. ㅠ.ㅠ\n\ndf22.repartition(25).sample(false, 0.2).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240122/eventlog20240122\")\ndf23.repartition(25).sample(false, 0.4).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240123/eventlog20240123\")\ndf24.repartition(25).sample(false, 0.5).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240124/eventlog20240124\")\ndf25.repartition(25).sample(false, 0.7).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240125/eventlog20240125\")\ndf26.repartition(25).sample(false, 0.8).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240126/eventlog20240126\")\ndf27.repartition(25).sample(false, 0.9).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240125/eventlog20240125\")\ndf28.repartition(25).sample(false, 1).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240126/eventlog20240126\")",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T09:56:08+0000",
+      "progress": 32,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=12",
+              "$$hashKey": "object:11039"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=13",
+              "$$hashKey": "object:11040"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=14",
+              "$$hashKey": "object:11041"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=15",
+              "$$hashKey": "object:11042"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=16",
+              "$$hashKey": "object:11043"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=17",
+              "$$hashKey": "object:11044"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=18",
+              "$$hashKey": "object:11045"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=19",
+              "$$hashKey": "object:11046"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=20",
+              "$$hashKey": "object:11047"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=21",
+              "$$hashKey": "object:11048"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=22",
+              "$$hashKey": "object:11049"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=23",
+              "$$hashKey": "object:11050"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=24",
+              "$$hashKey": "object:11051"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=25",
+              "$$hashKey": "object:11052"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981727_822915967",
+      "id": "20240323-004941_912735731",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "dateStarted": "2024-03-24T09:56:08+0000",
+      "dateFinished": "2024-03-24T10:00:16+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:10049"
+    },
+    {
+      "text": "// 데이터확인작업\nval logDF=spark.read.json(\"s3://fc-class/marketing/logs/*/*\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T09:57:04+0000",
+      "progress": 94,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mlogDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [adid: string, agent_id: string ... 14 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=26",
+              "$$hashKey": "object:11162"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=27",
+              "$$hashKey": "object:11163"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981727_368280055",
+      "id": "20240323-004941_817929271",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "dateStarted": "2024-03-24T09:57:04+0000",
+      "dateFinished": "2024-03-24T10:00:31+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:10050"
+    },
+    {
+      "text": "\nlogDF.createOrReplaceTempView(\"marketingtb\")\nsqlContext.cacheTable(\"marketingtb\")",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T09:57:09+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981727_1835608791",
+      "id": "20240323-004941_1380863694",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "dateStarted": "2024-03-24T10:00:16+0000",
+      "dateFinished": "2024-03-24T10:00:31+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:10051"
+    },
+    {
+      "text": "%sql\n\n-- 일주일동안의 DAU 흐름파악하기 \n-- 신규사용자는 어떻게 할것인가?\n-- 그래프로 확인해본다. \n\nselect base_date\n      , count(distinct adid) as cnt\nfrom marketingtb\ngroup by base_date\norder by base_date ",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T10:01:28+0000",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "base_date": "string",
+                      "cnt": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "base_date\tcnt\n2024-01-22\t246377\n2024-01-23\t311507\n2024-01-24\t334549\n2024-01-27\t384863\n2024-01-28\t388207\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=31",
+              "$$hashKey": "object:11307"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=32",
+              "$$hashKey": "object:11308"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=33",
+              "$$hashKey": "object:11309"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_1520384672",
+      "id": "20240323-004941_727544106",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "dateStarted": "2024-03-24T10:01:28+0000",
+      "dateFinished": "2024-03-24T10:01:30+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:10052"
+    },
+    {
+      "text": "%sql \n\n-- 밑에서 그래프 확인작업\nselect count(distinct adid) as dau_cnt\nfrom marketingtb\nwhere base_date = \"2024-01-22\"",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T10:01:31+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "dau_cnt": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "dau_cnt\n246377\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=34",
+              "$$hashKey": "object:11415"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=35",
+              "$$hashKey": "object:11416"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=36",
+              "$$hashKey": "object:11417"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_2097351936",
+      "id": "20240323-004941_609896727",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "dateStarted": "2024-03-24T10:01:28+0000",
+      "dateFinished": "2024-03-24T10:01:30+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:10053"
+    },
+    {
+      "text": "%sql \n-- 사용자만 뽑는다. \n-- 2024-01-22 12:12:24 \n-- \n\nselect base_date,  \n     adid, \n     min(timestamp) as base_dt\nfrom marketingtb\nwhere base_date = \"2024-01-22\"\nand adid != ''\ngroup by base_date, adid ",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T10:23:00+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_2078485697",
+      "id": "20240323-004941_282019983",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "status": "READY",
+      "$$hashKey": "object:10054"
+    },
+    {
+      "text": "%sql \n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T10:23:53+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[UNRESOLVED_ROUTINE] Cannot resolve function `current_time` on search path [`system`.`builtin`, `system`.`session`, `spark_catalog`.`default`].; line 2 pos 7"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_697690621",
+      "id": "20240323-004941_819420262",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "dateStarted": "2024-03-24T10:23:49+0000",
+      "dateFinished": "2024-03-24T10:23:49+0000",
+      "status": "ERROR",
+      "$$hashKey": "object:10055"
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T10:23:09+0000",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_282940827",
+      "id": "20240323-004941_1883488119",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "status": "READY",
+      "$$hashKey": "object:10056"
+    },
+    {
+      "text": "%python\n%sql\n\n-- 일주일동안의 DAU 흐름파악하기 \n-- 신규사용자는 어떻게 할것인가?\n-- 그래프로 확인해본다. \n\nselect base_date\n      , count(distinct adid) as cnt\nfrom marketingtb\ngroup by base_date\norder by base_date ",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-23T00:49:41+0000",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/text",
+        "editorHide": false,
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_1072785419",
+      "id": "20240323-004941_111624857",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "status": "READY",
+      "$$hashKey": "object:10057"
+    },
+    {
+      "text": "%python\n%sql \n\n-- 밑에서 그래프 확인작업\nselect count(distinct adid) as dau_cnt\nfrom marketingtb\nwhere base_date = \"2024-01-22\"",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-23T00:49:41+0000",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/text",
+        "editorHide": false,
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_514792045",
+      "id": "20240323-004941_1824979442",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "status": "READY",
+      "$$hashKey": "object:10058"
+    },
+    {
+      "text": "%python\n// csv gzip 압축 \n// json 압축이 안된다.\n\ndf22.sample(false, 0.2).write.mode(\"overwrite\").option(\"header\", \"true\").option(\"compression\", \"gzip\").csv(\"s3://fc-class/marketing/20240122/eventlog20240122.log\")\ndf23.sample(false, 0.4).write.mode(\"overwrite\").option(\"header\", \"true\").option(\"compression\", \"gzip\").csv(\"s3://fc-class/marketing/20240123/eventlog20240123.log\")\ndf24.sample(false, 0.6).write.mode(\"overwrite\").option(\"header\", \"true\").option(\"compression\", \"gzip\").csv(\"s3://fc-class/marketing/20240124/eventlog20240124.log\")\ndf25.sample(false, 0.8).write.mode(\"overwrite\").option(\"header\", \"true\").option(\"compression\", \"gzip\").csv(\"s3://fc-class/marketing/20240125/eventlog20240125.log\")\ndf26.sample(false, 1).write.mode(\"overwrite\").option(\"header\", \"true\").option(\"compression\", \"gzip\").csv(\"s3://fc-class/marketing/20240126/eventlog20240126.log\")",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-23T00:49:41+0000",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/text",
+        "editorHide": false,
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_222458510",
+      "id": "20240323-004941_1727577184",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "status": "READY",
+      "$$hashKey": "object:10059"
+    },
+    {
+      "text": "%python\ndf22.repartition(20).sample(false, 0.2).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/20240122/eventlog20240122.log\")",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-23T00:49:41+0000",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/text",
+        "editorHide": false,
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_985874404",
+      "id": "20240323-004941_195895247",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "status": "READY",
+      "$$hashKey": "object:10060"
+    },
+    {
+      "text": "%python\n%sql\n\nselect name, count(*)\nfrom logs\ngroup by name ",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-23T00:49:41+0000",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/text",
+        "editorHide": false,
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_1909085624",
+      "id": "20240323-004941_924985257",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "status": "READY",
+      "$$hashKey": "object:10061"
+    },
+    {
+      "text": "%sql\n\n-- 1월 22일 월요일 날짜별로 를 구한다. \n\nselect date_add(to_date(base_date),-4) as base_date\n,adid\n,uuid\n,name\n,timestamp (to_timestamp('yyyy-MM-dd HH:mm:ss', timestamp)) as timestamp\n,gtmTimes\n,screen_name\n,item_id\n,content_type\n,item_category\n,is_zb_agent\n,building_id\n,area_type_id\n,agent_id\n,status\n,button_name\nfrom logs",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T10:02:12+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_550440345",
+      "id": "20240323-004941_1827684822",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "status": "READY",
+      "$$hashKey": "object:10062"
+    },
+    {
+      "text": "%sql\nselect adid, \n      (timestamp) as base_dt\nfrom marketingtb\nwhere base_date = \"2024-01-22\"\nand adid = '0000787A-6350-43FA-9208-2E74EF481725'\norder by timestamp",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T10:07:34+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "adid": "string",
+                      "base_dt": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "adid\tbase_dt\n0000787A-6350-43FA-9208-2E74EF481725\t2024-01-22 11:12:45\n0000787A-6350-43FA-9208-2E74EF481725\t2024-01-22 11:12:46\n0000787A-6350-43FA-9208-2E74EF481725\t2024-01-22 12:12:24\n0000787A-6350-43FA-9208-2E74EF481725\t2024-01-22 12:21:07\n0000787A-6350-43FA-9208-2E74EF481725\t2024-01-22 12:21:31\n0000787A-6350-43FA-9208-2E74EF481725\t2024-01-22 12:22:07\n0000787A-6350-43FA-9208-2E74EF481725\t2024-01-22 19:05:43\n0000787A-6350-43FA-9208-2E74EF481725\t2024-01-22 19:09:58\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=51",
+              "$$hashKey": "object:11911"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711274803921_1438086995",
+      "id": "paragraph_1711274803921_1438086995",
+      "dateCreated": "2024-03-24T10:06:43+0000",
+      "dateStarted": "2024-03-24T10:07:33+0000",
+      "dateFinished": "2024-03-24T10:07:34+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:10063"
+    },
+    {
+      "text": "%sql\n\n-- 사용자만 뽑는다. \n-- 2024-01-22 12:12:24 \n-- \n\nselect base_date,  \n     adid, \n     min(timestamp) as base_dt\nfrom marketingtb\nwhere base_date = \"2024-01-22\"\nand adid != ''\ngroup by base_date, adid \n\n\n\n/* -- \n\n\n--*/\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T10:09:12+0000",
+      "progress": 94,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "base_date": "string",
+                      "adid": "string",
+                      "base_dt": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "base_date\tadid\tbase_dt\n2024-01-22\t00000089-1A9E-4306-9498-99D82C3D3C2B\t2024-01-22 19:09:52\n2024-01-22\t0000787A-6350-43FA-9208-2E74EF481725\t2024-01-22 11:12:45\n2024-01-22\t00009EFB-D49A-4BD4-B9FA-272AC8FD3195\t2024-01-22 19:46:21\n2024-01-22\t0000C929-BD0B-4347-A106-1C31F406B6B2\t2024-01-22 05:51:30\n2024-01-22\t0000a39a-10da-42a9-a579-3de3437006e0\t2024-01-22 17:35:10\n2024-01-22\t0000e42b-a04d-41c9-9139-cb01a0232ee8\t2024-01-22 19:23:40\n2024-01-22\t0001007F-C6A8-438E-B60A-99A00FBEC018\t2024-01-22 16:35:35\n2024-01-22\t00014df7-7022-4668-90e1-9e11d6125a13\t2024-01-22 18:51:26\n2024-01-22\t00015203-B0E2-4841-8218-601B80A20BB6\t2024-01-22 08:57:45\n2024-01-22\t0001CF23-5196-439C-8415-96BF43361C8D\t2024-01-22 16:34:00\n2024-01-22\t0001d6ec-69bd-43fe-8dca-5cf4848d2551\t2024-01-22 10:25:10\n2024-01-22\t00020414-16C6-4356-81A3-BE913549C91D\t2024-01-22 16:35:08\n2024-01-22\t00021FC7-FD2A-4394-815D-AD251117EC5E\t2024-01-22 16:21:43\n2024-01-22\t0002B998-DC66-404A-A12C-9065DAE8069F\t2024-01-22 10:32:20\n2024-01-22\t0002fdf2-0c4a-4915-915b-b1c2302a9214\t2024-01-22 16:11:08\n2024-01-22\t000355bd-bebd-4df6-87fc-d4b1bae60517\t2024-01-22 02:06:34\n2024-01-22\t0003899c-bcb8-44a8-84a3-a13300ececcd\t2024-01-22 16:28:49\n2024-01-22\t0003F032-973C-41B9-BBFB-9F842A6CC607\t2024-01-22 16:03:18\n2024-01-22\t0003aa80-fa46-4619-a548-b1c6b10afa50\t2024-01-22 23:43:26\n2024-01-22\t00047a25-1a33-4d30-9140-b49685f7637f\t2024-01-22 04:10:24\n2024-01-22\t0004A1E6-DEF1-4EA1-8F15-8F7EB6928930\t2024-01-22 16:36:22\n2024-01-22\t0004d0d3-5b0e-462e-80f0-952a0d542073\t2024-01-22 16:51:25\n2024-01-22\t00052909-1A70-4EAF-8CAA-A22DD3C7A4E5\t2024-01-22 16:33:08\n2024-01-22\t00057F0B-296C-434F-8088-4BBBBA155C21\t2024-01-22 02:37:31\n2024-01-22\t00057F9E-510F-4F00-ABFD-5531D4043B03\t2024-01-22 22:04:16\n2024-01-22\t0005D3A8-6841-4C8E-BAE6-50E23416B541\t2024-01-22 16:39:13\n2024-01-22\t0005f127-16e6-44e0-9482-5b8c46bdd466\t2024-01-22 17:28:58\n2024-01-22\t00064E07-9954-4D98-89AE-A653B461CED5\t2024-01-22 16:34:36\n2024-01-22\t00065b7c-7f08-4917-ba89-477946794a79\t2024-01-22 15:06:11\n2024-01-22\t00072fcd-ab6b-4fa9-b85a-b2b68f16851c\t2024-01-22 08:43:05\n2024-01-22\t00073ba0-ac85-4cc7-868c-3e4aa85f3f22\t2024-01-22 16:44:31\n2024-01-22\t00079e91-940a-4596-82ef-f05631379fab\t2024-01-22 16:47:13\n2024-01-22\t0007C4DF-1407-4994-9D34-AD4107B0CC70\t2024-01-22 16:11:44\n2024-01-22\t0007F1D8-FBFA-4720-8285-405785A7A9D6\t2024-01-22 22:14:03\n2024-01-22\t0007a439-6cdb-4a41-b674-763050915813\t2024-01-22 18:40:17\n2024-01-22\t00083370-8da8-404e-937a-d7246ad51db2\t2024-01-22 14:30:15\n2024-01-22\t00083ab7-bd99-4271-a5f9-06e3988bbd01\t2024-01-22 17:37:12\n2024-01-22\t00086be9-e5a4-435e-bb4a-153b80c5cc32\t2024-01-22 12:35:40\n2024-01-22\t0008739E-13C4-4B05-ACC2-E4C40E544D45\t2024-01-22 19:48:02\n2024-01-22\t0008A3CC-1F0D-4394-9C5C-B617CB5DB3D2\t2024-01-22 16:34:21\n2024-01-22\t00090809-20BB-40E6-92B0-44475DBF59E2\t2024-01-22 17:04:06\n2024-01-22\t000927CA-4CAE-4BAC-8A2F-9735E9D0393C\t2024-01-22 22:10:35\n2024-01-22\t00093FBB-AFE6-4119-89BB-7D78C65D7061\t2024-01-22 16:30:19\n2024-01-22\t0009C406-321F-4608-B2B4-2529F2A772A2\t2024-01-22 16:02:51\n2024-01-22\t0009F4C3-B784-4C65-BB0D-91637C596240\t2024-01-22 11:17:23\n2024-01-22\t000A1621-2E52-4915-8CBD-027980AC45F8\t2024-01-22 18:31:36\n2024-01-22\t000A1784-7B31-453F-9709-F09A6CE1A881\t2024-01-22 16:32:19\n2024-01-22\t000A42E4-E8FB-4086-8F7A-C649F136D1A6\t2024-01-22 16:52:16\n2024-01-22\t000A9DD6-FE30-4180-BCDE-0DA9BD259AFC\t2024-01-22 16:57:04\n2024-01-22\t000ABC8D-6D4D-42F0-BF94-8B6566489EBE\t2024-01-22 17:15:27\n2024-01-22\t000B0561-CB61-4064-9220-D3531FF7C206\t2024-01-22 16:54:28\n2024-01-22\t000B4046-621D-4C51-B22C-B06806E2C38D\t2024-01-22 16:37:18\n2024-01-22\t000C18B3-7487-4D1E-96C0-15C54D7DCBFA\t2024-01-22 20:51:51\n2024-01-22\t000D303A-81DE-4922-AE68-5F2C7B636271\t2024-01-22 18:14:33\n2024-01-22\t000D4E03-6F51-4CFB-B8EC-AA19FBBB365B\t2024-01-22 17:02:22\n2024-01-22\t000DDC28-E7D6-43BD-A51E-9E79DE6105DB\t2024-01-22 14:24:15\n2024-01-22\t000EC395-870F-4E27-95F0-AF4B578B41F4\t2024-01-22 18:05:29\n2024-01-22\t000EC82D-EF42-4D9F-91EE-E73F4D772316\t2024-01-22 17:26:17\n2024-01-22\t000F0EF7-05FE-4421-9473-1F48C89BCB86\t2024-01-22 16:20:42\n2024-01-22\t000F1D62-036F-4CED-9825-48FCC1D7E5D8\t2024-01-22 09:07:30\n2024-01-22\t000F4538-931C-4AD1-B57C-180BFCFB71D9\t2024-01-22 12:15:21\n2024-01-22\t000a9527-ebd5-4cbb-8d65-8227c4f067de\t2024-01-22 14:00:09\n2024-01-22\t000a9ead-3229-4b1c-9a92-b4de95a59b0b\t2024-01-22 13:00:58\n2024-01-22\t000acd3f-2f03-4ec6-8f2e-33b83bebf8a0\t2024-01-22 18:48:24\n2024-01-22\t000b002b-f5a8-4b77-b02a-22cb1d8208c6\t2024-01-22 03:12:54\n2024-01-22\t000b1366-184c-4b3b-b6a1-ee19719a87d2\t2024-01-22 00:27:21\n2024-01-22\t000c7bb0-ca85-4f8e-aa98-73e50593a4ac\t2024-01-22 20:24:00\n2024-01-22\t000d5ee7-12cb-44c4-8311-206290015d5f\t2024-01-22 14:03:52\n2024-01-22\t000dbbcc-ee37-4ef7-9182-87b7df45c0a0\t2024-01-22 08:34:50\n2024-01-22\t000f2717-0866-406b-a26c-2b218ed142d1\t2024-01-22 07:45:13\n2024-01-22\t000f630e-34f5-4fe2-b223-4d6825152f40\t2024-01-22 19:17:31\n2024-01-22\t000f7161-d021-4fb9-bbde-6fa0d955a5e2\t2024-01-22 17:20:22\n2024-01-22\t000f7983-4f69-40d4-83f4-c2f6b3cbe7d3\t2024-01-22 12:40:56\n2024-01-22\t0010D837-EBAB-49A7-89D3-A2F92ABF36BE\t2024-01-22 12:09:16\n2024-01-22\t0010F638-311E-4AD8-8BFE-B5D8319B3CD6\t2024-01-22 16:27:18\n2024-01-22\t0011D3E2-C776-4FC2-A4DD-42DD2D0BCF64\t2024-01-22 16:47:43\n2024-01-22\t0011efe9-d0c1-4a36-9253-a6c7c476ba13\t2024-01-22 13:29:55\n2024-01-22\t0011ff2c-97af-40e0-b360-037588a192f1\t2024-01-22 09:21:13\n2024-01-22\t00123f37-3f5d-4072-8892-872abe7cbcfe\t2024-01-22 17:33:44\n2024-01-22\t00125E9E-1B15-4DE4-A967-F1281E76B3F2\t2024-01-22 16:14:42\n2024-01-22\t0012F2B3-245F-4703-AE91-9240CF9B7DBD\t2024-01-22 16:37:33\n2024-01-22\t0012d12d-9842-4b5f-bf24-331781e63a0b\t2024-01-22 02:58:50\n2024-01-22\t0012e1a5-9394-46b1-b0aa-8ce8226a13c2\t2024-01-22 21:33:37\n2024-01-22\t001311C8-0AD4-410A-B363-FF28542DEB53\t2024-01-22 16:11:42\n2024-01-22\t00132d16-59ad-4943-a647-66c3d31a58f3\t2024-01-22 18:26:59\n2024-01-22\t00134577-7c0c-4890-8cf5-f464ec72b954\t2024-01-22 11:58:41\n2024-01-22\t0013778a-081f-49ec-8259-e3595bf848bf\t2024-01-22 19:54:31\n2024-01-22\t0013B4D9-7CAE-41A0-AE42-A2C2ED3F80D1\t2024-01-22 18:08:23\n2024-01-22\t0013DF7A-EF44-4B2D-BFE7-5F1F345C459C\t2024-01-22 16:44:37\n2024-01-22\t00142E90-7A6F-4384-A215-B97A71E1E4DC\t2024-01-22 16:37:05\n2024-01-22\t00149CD9-17F9-4308-A450-A0D7CAAC86CC\t2024-01-22 21:42:04\n2024-01-22\t00151f95-2730-4e5c-aa3c-4bd6ed3d2bff\t2024-01-22 15:14:30\n2024-01-22\t0015F46D-A9BB-4AC8-BF6C-4D4B201C2053\t2024-01-22 16:04:09\n2024-01-22\t001674b1-1628-4532-b27f-75d11984bd6a\t2024-01-22 15:02:58\n2024-01-22\t001717EF-ACFA-4CED-B6AD-C6A18CB055C5\t2024-01-22 16:45:07\n2024-01-22\t00178095-be04-46ad-a7ea-da19f2c70305\t2024-01-22 23:26:09\n2024-01-22\t00179927-8AC6-4270-A6FA-A959FCA8C3B1\t2024-01-22 17:09:34\n2024-01-22\t00183D71-D7FD-42AD-9975-1FE7D42FA86C\t2024-01-22 05:22:49\n2024-01-22\t0018c200-9579-4697-83f4-bddd727c1fbe\t2024-01-22 11:21:59\n2024-01-22\t0019057d-5f4c-48d6-a05f-f878036664be\t2024-01-22 21:14:42\n2024-01-22\t001934A2-E6DB-4902-980A-ECA21E15369D\t2024-01-22 16:47:11\n2024-01-22\t0019739e-af6b-424f-b1ee-35273fa81e13\t2024-01-22 20:34:05\n2024-01-22\t00199b2d-ef42-4966-b36b-fa568a36e541\t2024-01-22 17:49:48\n2024-01-22\t0019c812-f2fa-4838-9435-b35efd5fedbe\t2024-01-22 19:16:27\n2024-01-22\t0019d51f-903f-47d4-95db-ee1c8ecf7007\t2024-01-22 01:29:34\n2024-01-22\t001CC886-9CF9-4EF6-A574-0C46FF03807F\t2024-01-22 21:43:54\n2024-01-22\t001D6DBF-822D-49AF-BEEB-88F7357235B1\t2024-01-22 17:03:25\n2024-01-22\t001D718F-3BD6-4AC5-B6A7-CF4634138E96\t2024-01-22 20:20:35\n2024-01-22\t001E5735-BC8F-4EC6-AD3E-948F410460B8\t2024-01-22 11:15:41\n2024-01-22\t001EB465-5828-45CB-A3FF-60FE9CF30063\t2024-01-22 16:36:19\n2024-01-22\t001F16F5-29A8-4E49-84BC-84B3ABC520DF\t2024-01-22 16:39:39\n2024-01-22\t001ab2ab-d0e3-45cc-94e9-01643e769a1d\t2024-01-22 19:57:34\n2024-01-22\t001b816f-4bde-483e-97e5-a56f3f964c84\t2024-01-22 20:51:48\n2024-01-22\t001b944f-377e-421a-b607-f098969502f9\t2024-01-22 15:21:48\n2024-01-22\t001bd5f5-dbbf-443a-ab83-79e5c5c70215\t2024-01-22 16:18:05\n2024-01-22\t001cc32a-934f-41aa-a617-88bd43d85445\t2024-01-22 15:12:36\n2024-01-22\t001ccc2b-7891-4519-847c-73c809883689\t2024-01-22 13:42:55\n2024-01-22\t001ccdbd-849f-4292-818d-5413cf214beb\t2024-01-22 10:11:15\n2024-01-22\t001cd3f5-f896-4e86-b38b-18ef286b976d\t2024-01-22 12:08:39\n2024-01-22\t001d8db3-3a52-4281-adb2-01fd84c037ee\t2024-01-22 17:29:57\n2024-01-22\t001dc97f-69e6-446c-a482-988a03756964\t2024-01-22 03:56:10\n2024-01-22\t001e07c7-8031-4b4a-81e8-0968f4220c47\t2024-01-22 12:04:06\n2024-01-22\t001e111b-d9fc-4b59-81e6-abb3e2115868\t2024-01-22 17:00:44\n2024-01-22\t001e1b39-573d-44a2-92a7-22f831a667fc\t2024-01-22 16:43:15\n2024-01-22\t001e3f40-a028-403e-ad4f-d1d03f1d21e2\t2024-01-22 04:42:04\n2024-01-22\t001ea727-94aa-46fe-853f-a2fcb3030a23\t2024-01-22 12:55:01\n2024-01-22\t001eb017-69ef-4260-8569-f00465818146\t2024-01-22 19:01:43\n2024-01-22\t001ed166-53e6-431b-80e7-4d4b22a78019\t2024-01-22 23:32:40\n2024-01-22\t001f017e-7ee2-4b81-91cd-384cc238a667\t2024-01-22 12:09:24\n2024-01-22\t001f5ec5-610c-4f3c-a527-2f526d61d4e4\t2024-01-22 06:02:27\n2024-01-22\t00204ea3-7b7d-4bd7-b00d-9d4f477804cd\t2024-01-22 12:06:06\n2024-01-22\t002051d8-0425-471a-bcbf-e1f7d410b7aa\t2024-01-22 01:07:53\n2024-01-22\t0020C772-AAA0-46FA-ACA1-0016324C090A\t2024-01-22 16:55:43\n2024-01-22\t0020EADC-E6E8-4DAC-84B5-AEA2FF6E135F\t2024-01-22 17:27:21\n2024-01-22\t00211854-ef2c-46cd-8e14-8d9825d7bddd\t2024-01-22 12:20:45\n2024-01-22\t00214617-06A8-4C1C-A4EB-C950E1FE401D\t2024-01-22 15:22:20\n2024-01-22\t002167F2-CEE2-44D0-84D5-5F683A236120\t2024-01-22 13:12:57\n2024-01-22\t00217496-caf2-497f-9c9a-d9c715f23f64\t2024-01-22 07:53:50\n2024-01-22\t00219067-954c-4b6e-9c39-6531982eb5ed\t2024-01-22 00:46:33\n2024-01-22\t002194c7-13c4-4a59-a471-a269010b1ef0\t2024-01-22 12:22:34\n2024-01-22\t0021d566-042b-4c44-b8ce-9d9520a45e8a\t2024-01-22 14:35:53\n2024-01-22\t0022298A-1EB7-4DE0-865D-A92F19002BB7\t2024-01-22 16:36:27\n2024-01-22\t002247CA-17E9-4A58-9144-26573F57CE90\t2024-01-22 15:35:28\n2024-01-22\t00226B20-82FF-4BF7-8B37-81C0700BE04F\t2024-01-22 06:08:17\n2024-01-22\t00226EA5-718C-4C27-A306-A1DDDCA5D2F5\t2024-01-22 17:20:20\n2024-01-22\t00227598-D2B5-4B1C-9AD7-78962EAFC775\t2024-01-22 16:22:54\n2024-01-22\t0022981c-7cbc-4bd2-a5e3-fa3a838fbc93\t2024-01-22 12:04:15\n2024-01-22\t0022d4f8-1669-4763-88d6-130d6dc2c39e\t2024-01-22 11:57:24\n2024-01-22\t0022fb21-17de-4ca0-83dd-9e558bdbca88\t2024-01-22 22:21:07\n2024-01-22\t00231096-3EA9-44CB-9555-FA941C9E69FC\t2024-01-22 14:21:36\n2024-01-22\t002347EE-564E-41A8-B9C1-E89A97600D4F\t2024-01-22 15:33:05\n2024-01-22\t002368fa-7d53-4537-942d-b35f2f0f2a9e\t2024-01-22 02:59:54\n2024-01-22\t00238416-77cd-4e32-ae0c-cc2a9f910e74\t2024-01-22 22:00:27\n2024-01-22\t00239d1c-33ff-45f3-bf69-2a77e5da3f37\t2024-01-22 22:52:50\n2024-01-22\t00248A15-5348-484A-BE10-A0C8AEE2EAF2\t2024-01-22 16:35:30\n2024-01-22\t00249a92-084a-4436-a3ef-769a554386a6\t2024-01-22 17:34:17\n2024-01-22\t0024F8D1-B211-4D5D-A070-7666786E0982\t2024-01-22 17:02:08\n2024-01-22\t0026823d-dff7-409e-b2a3-e5588ef19e22\t2024-01-22 09:56:56\n2024-01-22\t00269B4E-9953-496C-BC8A-A6FA12226F53\t2024-01-22 16:05:47\n2024-01-22\t0026a237-1720-407e-b95d-4d9e365ad773\t2024-01-22 02:57:00\n2024-01-22\t0026e5bf-07ec-4682-9a19-691479d189fa\t2024-01-22 17:05:25\n2024-01-22\t00271172-79a7-4ab8-9551-7813586bf2b5\t2024-01-22 00:00:30\n2024-01-22\t00271F51-7E2D-4121-B908-D6A4A05B2298\t2024-01-22 16:38:35\n2024-01-22\t0027271A-6012-4826-8D81-C8B8D3D6E84E\t2024-01-22 17:35:20\n2024-01-22\t00275179-4189-44cc-8cd6-f1eb615e6b5d\t2024-01-22 10:15:10\n2024-01-22\t0027ae3b-e40e-416b-b28e-3c74af2bbdfe\t2024-01-22 10:51:39\n2024-01-22\t00280E07-FA64-4FFD-89D3-0A6446EA842A\t2024-01-22 13:15:48\n2024-01-22\t002842a9-3b2e-4e94-9192-10d457cecd9a\t2024-01-22 22:05:52\n2024-01-22\t0028856b-b430-498d-8900-d290f26c96b8\t2024-01-22 07:30:10\n2024-01-22\t00288650-4d6d-4fb2-83d7-935bcd8bbaf8\t2024-01-22 21:48:07\n2024-01-22\t00290321-e157-4b4a-8793-b23ffd60cd71\t2024-01-22 17:38:04\n2024-01-22\t0029113D-0EBB-4F47-8B38-1220DF05E6CD\t2024-01-22 18:31:26\n2024-01-22\t00298235-e608-49df-847e-305df12580e6\t2024-01-22 18:03:52\n2024-01-22\t0029f214-1756-44d2-9be1-dc61907fa5e1\t2024-01-22 22:59:30\n2024-01-22\t002A25DC-F908-4890-BA86-651DA0AEABF0\t2024-01-22 19:11:24\n2024-01-22\t002A5B4F-8429-415D-9E78-9C957B2E191D\t2024-01-22 16:34:24\n2024-01-22\t002A991D-C6FD-4E97-97BA-2E3786E6B1DF\t2024-01-22 16:18:49\n2024-01-22\t002AE395-302C-4E7F-9B45-6FF5759E3ADF\t2024-01-22 08:50:20\n2024-01-22\t002AF733-CFDF-427F-848F-C7A68A085B49\t2024-01-22 16:28:16\n2024-01-22\t002B4C73-1F7C-4BC2-84B7-95AC65D7E9D1\t2024-01-22 15:44:35\n2024-01-22\t002B6437-45B7-465D-80FF-B6D9AAA52AE2\t2024-01-22 17:28:54\n2024-01-22\t002C0373-869E-4481-8B4C-15CCF988F6FC\t2024-01-22 16:36:43\n2024-01-22\t002C6E7C-0D42-43F5-A546-D122FD06B1AC\t2024-01-22 18:40:17\n2024-01-22\t002CA452-FAF0-4FF1-9578-D34D164A5EEC\t2024-01-22 10:35:17\n2024-01-22\t002D35E1-7D3B-4C1F-B18B-1EF44EBFFFAF\t2024-01-22 15:44:11\n2024-01-22\t002D8594-5932-4342-BE35-F3405F823569\t2024-01-22 17:01:35\n2024-01-22\t002DB4D8-3EB7-48A6-8CA7-8ADEB8B99A36\t2024-01-22 19:57:47\n2024-01-22\t002E190A-03BE-4B8A-9A68-64B41B726072\t2024-01-22 16:36:35\n2024-01-22\t002a6b54-9932-4087-8c42-fb8eb030bbd9\t2024-01-22 11:01:11\n2024-01-22\t002b7571-c52e-427c-b532-0cba5a126f49\t2024-01-22 22:00:11\n2024-01-22\t002c5db5-56ed-4630-83c1-74b7f2a00c76\t2024-01-22 16:46:09\n2024-01-22\t002c8f33-521d-4bdf-a53d-3ff98dff8737\t2024-01-22 12:22:20\n2024-01-22\t002e1fd2-7044-4c4c-81e9-2f3c74353a85\t2024-01-22 19:31:49\n2024-01-22\t002ef774-26d6-4197-8ba1-fa0749d1b882\t2024-01-22 23:48:51\n2024-01-22\t0030F1BA-695A-4841-97F2-3F494D96DB8B\t2024-01-22 16:36:12\n2024-01-22\t00311981-AEBF-4317-ADA6-7FB2AC37BE94\t2024-01-22 16:39:19\n2024-01-22\t00315691-0c51-476d-9e96-952553d96656\t2024-01-22 00:47:43\n2024-01-22\t00316B53-246B-40A8-9BCF-6B8D90977D41\t2024-01-22 15:10:11\n2024-01-22\t0031c841-9886-4c35-ae80-3ee12bbdae3e\t2024-01-22 08:53:30\n2024-01-22\t0031cc89-8101-4da1-b87e-062fcd3f7012\t2024-01-22 11:43:10\n2024-01-22\t0031db3e-e647-48f1-95ce-863cb529c982\t2024-01-22 12:27:59\n2024-01-22\t00320757-f43b-4d0c-b11b-7463206504a1\t2024-01-22 07:35:37\n2024-01-22\t00324EA5-C596-4D16-AF7E-A67484088BE3\t2024-01-22 13:12:11\n2024-01-22\t00325417-7852-4d23-98b6-6f2141885cf8\t2024-01-22 12:08:13\n2024-01-22\t003296ad-2c75-4967-bc64-b71775aa2bd2\t2024-01-22 01:09:34\n2024-01-22\t0032dfbb-6372-479f-87c4-73dce9dae09a\t2024-01-22 23:24:34\n2024-01-22\t003306a4-7206-480f-a60d-4978eda68249\t2024-01-22 14:13:48\n2024-01-22\t00330ADB-070A-4EAC-B6E6-604182C943C5\t2024-01-22 16:31:35\n2024-01-22\t00337B0C-D55A-45CA-9F6D-D1F1F1BAEED1\t2024-01-22 17:27:31\n2024-01-22\t0033980a-5635-49f8-b181-3fc7c02d56d8\t2024-01-22 17:55:55\n2024-01-22\t0033D7D6-C99E-4EB8-B933-9A6DE2C7B585\t2024-01-22 17:18:18\n2024-01-22\t00341A7B-57AE-4F47-9535-D1037CA8F411\t2024-01-22 16:53:36\n2024-01-22\t0034772b-c752-4c48-803e-b1a78a0a190c\t2024-01-22 07:57:00\n2024-01-22\t00348B1E-DAA3-48DD-89A0-15F39FA1BDD5\t2024-01-22 17:44:47\n2024-01-22\t0034B0B7-AD62-473E-AC8C-64D82378D68F\t2024-01-22 14:16:35\n2024-01-22\t0035361b-1d4e-4bea-b9b4-41cda25b62a4\t2024-01-22 17:13:05\n2024-01-22\t003583a8-ba9a-4f6e-845d-2f52fb896f68\t2024-01-22 17:27:48\n2024-01-22\t0035c84e-06ef-4f59-939c-a44fbe05d522\t2024-01-22 17:12:13\n2024-01-22\t0036528A-20C2-4912-9BF1-9C9158378B83\t2024-01-22 15:02:23\n2024-01-22\t003653E0-74C9-4E26-B028-47F35DB27BCD\t2024-01-22 15:41:13\n2024-01-22\t003657CC-D1FB-4746-A27A-61DD1275507C\t2024-01-22 21:55:17\n2024-01-22\t00369F58-E650-4640-8206-9E4C23168B7A\t2024-01-22 18:37:18\n2024-01-22\t0037030B-255F-4429-B4AA-94F6CB9B4C93\t2024-01-22 08:33:09\n2024-01-22\t00372BBB-A5FF-460A-A738-177312EF42B1\t2024-01-22 18:57:33\n2024-01-22\t0038097f-9ab6-4792-a032-a95201142aa0\t2024-01-22 17:57:43\n2024-01-22\t0038923F-5676-4F79-972C-018FCF36A589\t2024-01-22 16:14:28\n2024-01-22\t0038A653-CFEE-4D88-8DC6-79DBDBD908FB\t2024-01-22 03:58:15\n2024-01-22\t0038B56C-16D0-4BF6-B14F-C0A8925A0411\t2024-01-22 21:25:22\n2024-01-22\t0038f74a-b355-4b40-ad9f-903842729ecb\t2024-01-22 17:23:06\n2024-01-22\t00397e98-37cb-4e17-bed3-cdaf543dcdfe\t2024-01-22 07:56:45\n2024-01-22\t0039A693-D6FD-4608-B9DD-AE812A6592E2\t2024-01-22 20:50:13\n2024-01-22\t0039CAB3-D9EB-46B6-A5BC-C0F499E2FE87\t2024-01-22 08:27:35\n2024-01-22\t003A2EDB-AF1D-40BA-9F09-4264A18897DC\t2024-01-22 16:32:02\n2024-01-22\t003AF5A4-7BA4-44DA-820D-33D14D1A9A44\t2024-01-22 00:15:35\n2024-01-22\t003B0940-B7F1-45C1-9EAE-38F01E9B91BB\t2024-01-22 16:56:46\n2024-01-22\t003B89F9-9D5A-499C-B61F-D0582C22935D\t2024-01-22 16:33:39\n2024-01-22\t003D7B33-F791-4AF0-A237-1958EBCE379E\t2024-01-22 22:50:42\n2024-01-22\t003E74B1-7EE7-4C8B-9DC1-8E38CA3833D8\t2024-01-22 23:43:10\n2024-01-22\t003FBE49-953E-4881-BE2F-7609B3E88877\t2024-01-22 16:32:03\n2024-01-22\t003FE0EA-7B43-42C9-B2ED-BB1E08B9EAE3\t2024-01-22 16:58:27\n2024-01-22\t003c72a1-9a26-4478-a6c4-a0c09a2aa356\t2024-01-22 15:11:16\n2024-01-22\t003cf0d8-7112-4b8b-8c14-ee6576ef1338\t2024-01-22 17:57:35\n2024-01-22\t003d7842-3a67-4e4f-8fdd-2cd9e0472fa8\t2024-01-22 15:36:09\n2024-01-22\t003e1804-2a79-4187-940e-8bec14d60165\t2024-01-22 12:19:19\n2024-01-22\t003e6f49-f6cb-41f6-acd1-5ba79a9083ef\t2024-01-22 17:54:19\n2024-01-22\t003f0b7b-9987-4041-a923-e1aad3d2dc3e\t2024-01-22 11:07:49\n2024-01-22\t003f4afe-37b4-4712-b69b-8ddb012bfd2c\t2024-01-22 17:43:58\n2024-01-22\t003f72a7-56cd-40df-a1f8-6bdcbf3f53d6\t2024-01-22 09:07:28\n2024-01-22\t00418a9c-2214-4c3e-82f2-bae692a2a779\t2024-01-22 17:01:45\n2024-01-22\t0041E7A2-B17F-44A7-B0F1-2254EF6AD467\t2024-01-22 17:27:15\n2024-01-22\t0041b75b-ce6d-4e30-997e-afd380e0be6c\t2024-01-22 16:56:48\n2024-01-22\t0042749F-D839-4E56-A862-5AA6E530CA88\t2024-01-22 06:44:31\n2024-01-22\t00431050-71d2-4b05-8e9c-9d0d09c7d2bc\t2024-01-22 17:31:58\n2024-01-22\t00431595-04E5-44C5-9BD4-B12E3FB5D811\t2024-01-22 20:28:42\n2024-01-22\t00436D92-C768-4FD6-BDEC-2F67A2514EB2\t2024-01-22 16:30:21\n2024-01-22\t00438051-9544-4590-b247-0d7af5ea1750\t2024-01-22 19:19:06\n2024-01-22\t004414c9-0d35-4647-92ca-5a7c64334d82\t2024-01-22 17:49:00\n2024-01-22\t0044cefe-1d57-44f7-ab38-eccffe875dd0\t2024-01-22 20:01:54\n2024-01-22\t00450663-8DDC-4A61-BFDE-83D946D2D58B\t2024-01-22 07:02:34\n2024-01-22\t00451111-432A-47AF-910E-AEC61B39612D\t2024-01-22 16:31:53\n2024-01-22\t00451427-e683-42b6-b360-2ee77fffabad\t2024-01-22 17:03:11\n2024-01-22\t00451B99-805B-4D3E-8208-579D1DC7B0FF\t2024-01-22 11:20:01\n2024-01-22\t00453293-FBA5-418C-B919-F603B8BBD35A\t2024-01-22 16:26:25\n2024-01-22\t0045691B-A413-47F0-88E8-3D1BCDF36346\t2024-01-22 16:30:12\n2024-01-22\t004574d5-58c0-436f-9aca-d10a44d7fb11\t2024-01-22 15:32:18\n2024-01-22\t00459922-5D88-4EE1-AF2A-D9A21085F463\t2024-01-22 16:59:31\n2024-01-22\t0045c8ad-ec64-4ff7-bf5a-b56a3d840b86\t2024-01-22 10:53:30\n2024-01-22\t004686a7-d889-4c04-9e80-9b6336251606\t2024-01-22 12:10:59\n2024-01-22\t0046c2f3-e879-42b2-8c0c-29c3ff8ba9e5\t2024-01-22 23:13:37\n2024-01-22\t00473fa5-8175-47e0-b846-a9ddee14700c\t2024-01-22 05:01:27\n2024-01-22\t0047CE64-795E-40C5-852E-44BEF79D19D0\t2024-01-22 16:36:54\n2024-01-22\t0047ff32-8280-48b0-948c-4dc67d4d917a\t2024-01-22 21:25:14\n2024-01-22\t0048252d-da92-406e-a2c6-7112e7e10e51\t2024-01-22 14:15:49\n2024-01-22\t00482a82-aae5-46a3-a2bb-9a733b2fd9fd\t2024-01-22 22:33:52\n2024-01-22\t0048460E-EFCC-44AB-9DEF-43459EE0A9FF\t2024-01-22 16:37:22\n2024-01-22\t004869d3-91be-4e5b-9f52-b89eaeee3f73\t2024-01-22 15:35:31\n2024-01-22\t0049293f-3e46-469b-9634-d03260ae80fd\t2024-01-22 17:52:42\n2024-01-22\t00494d0e-ac87-452c-bf11-09fc9b181faf\t2024-01-22 16:36:26\n2024-01-22\t0049c8fc-afd0-4ff4-b77f-388e1ba979f5\t2024-01-22 07:57:35\n2024-01-22\t004B4297-165F-425C-A129-D362DD4FA1FE\t2024-01-22 17:01:10\n2024-01-22\t004B978C-6ACB-4853-BE5B-4C8032805B2A\t2024-01-22 00:25:56\n2024-01-22\t004C0F55-BAF1-44C0-8D8E-AAE416C6BA00\t2024-01-22 17:07:50\n2024-01-22\t004CF600-8AFD-44A2-AB3B-AD8CC31183D4\t2024-01-22 17:40:04\n2024-01-22\t004D7A57-D91D-42BC-A780-31042A79B481\t2024-01-22 02:38:10\n2024-01-22\t004D8F1E-EEA8-4EED-A33F-DF812C25D227\t2024-01-22 16:55:37\n2024-01-22\t004DD870-A861-4A6C-B9FE-E3A2DF7FC677\t2024-01-22 21:36:36\n2024-01-22\t004FEAC5-E0AB-4459-AB43-F3CA3A644768\t2024-01-22 17:25:01\n2024-01-22\t004aa505-3c0a-4e09-84d1-454dabee4ca4\t2024-01-22 23:58:08\n2024-01-22\t004aae4d-f571-4978-9c7c-fefd20a0beb3\t2024-01-22 17:54:02\n2024-01-22\t004b3233-298f-497f-b44e-a3464a78cbf5\t2024-01-22 13:06:30\n2024-01-22\t004c1a6b-892c-451c-bac3-b0a8c837aa3b\t2024-01-22 00:04:52\n2024-01-22\t004cb5f1-9c69-4836-8e47-6533c0812da6\t2024-01-22 12:50:47\n2024-01-22\t004d2a04-8879-4e0b-9a3a-0eb23adac023\t2024-01-22 12:18:15\n2024-01-22\t004ed181-4150-4ada-a4fe-0721fa224a22\t2024-01-22 16:51:24\n2024-01-22\t004fa953-7c1e-415a-9a1b-b565bf682693\t2024-01-22 17:03:40\n2024-01-22\t004fc104-a999-452f-9c57-ca3a73c2ad6c\t2024-01-22 19:01:09\n2024-01-22\t0050292b-ee1f-42ac-9eff-3ec7dcac40ea\t2024-01-22 01:05:13\n2024-01-22\t00508cfd-e90e-41ae-8c3e-ada954f858bb\t2024-01-22 00:07:01\n2024-01-22\t0050EC59-A335-47A0-B9F3-52369065ACE6\t2024-01-22 16:38:50\n2024-01-22\t0050d66a-1b48-4c2a-87d8-717c11c7a8a8\t2024-01-22 00:17:45\n2024-01-22\t0050f1e9-2647-4f56-ba19-93c0c9fe3d6c\t2024-01-22 16:34:21\n2024-01-22\t005172bf-87c9-427e-a8d5-b27c7c4435b0\t2024-01-22 16:20:13\n2024-01-22\t0051f0ec-2527-449e-91c7-67598e9ec52c\t2024-01-22 20:05:30\n2024-01-22\t0052EDDC-D8A5-4C0B-9CBC-9D00C8E23068\t2024-01-22 00:52:33\n2024-01-22\t0052EF66-4EED-4F2C-AC6A-475F32AD3DA9\t2024-01-22 17:46:53\n2024-01-22\t0052acdf-11bd-4242-b643-9ea15c19a1c3\t2024-01-22 20:48:39\n2024-01-22\t0053A338-90E3-4DCB-9D5F-103C3C317CD5\t2024-01-22 16:33:07\n2024-01-22\t0053A53D-9205-4C0A-8D31-E549ADD1F7E1\t2024-01-22 16:56:32\n2024-01-22\t00541b9a-81b6-4d30-a745-40246aa693ef\t2024-01-22 19:39:11\n2024-01-22\t0054F0A3-EF3C-4868-BD02-C9DBBC39169F\t2024-01-22 04:43:04\n2024-01-22\t0054ae68-7bee-49c0-bb18-25de4e3754f2\t2024-01-22 00:16:46\n2024-01-22\t0054b7a7-fc02-4d89-b47f-28c8994c5a61\t2024-01-22 16:49:00\n2024-01-22\t00553a54-6018-4193-aa6a-0c46014d3a7d\t2024-01-22 15:57:33\n2024-01-22\t00554198-b307-4688-afe9-ebaa91f59965\t2024-01-22 19:39:35\n2024-01-22\t0055576D-BA1B-4CB0-B427-E4425C8786B7\t2024-01-22 20:21:58\n2024-01-22\t00555D50-D648-4910-AD1A-5B3F2A8A5636\t2024-01-22 09:19:02\n2024-01-22\t00560B2B-6887-422D-82EF-C58BBB277881\t2024-01-22 22:14:49\n2024-01-22\t0056293F-3FEB-49C2-85EC-C23FA7CBE273\t2024-01-22 07:58:49\n2024-01-22\t00568BAE-533D-4E64-BA61-1404131F73FD\t2024-01-22 16:43:02\n2024-01-22\t0056D31E-50F5-4DFE-AB2C-37B10B5C3A3E\t2024-01-22 01:57:26\n2024-01-22\t0056a2cc-2742-4cd4-a413-c3819017cf19\t2024-01-22 06:56:19\n2024-01-22\t0056fd55-c599-45db-9b05-a89dbc217477\t2024-01-22 19:56:15\n2024-01-22\t00576a39-0860-46d9-8a31-80fd13947a00\t2024-01-22 17:53:21\n2024-01-22\t00577437-72d7-4d67-b3f7-76f0a2069242\t2024-01-22 22:38:01\n2024-01-22\t0057dfc8-efe3-4dd1-97f9-d4b9426f9572\t2024-01-22 10:12:08\n2024-01-22\t00581c73-71f8-47dd-8436-b6f0df56623d\t2024-01-22 14:40:22\n2024-01-22\t00582085-8bc4-407e-8648-4407671d9bf1\t2024-01-22 16:14:09\n2024-01-22\t00583d3b-ca2e-4a7d-9bf0-511216550965\t2024-01-22 14:13:45\n2024-01-22\t00588F98-6B55-48B9-B0D2-14B323E07488\t2024-01-22 16:30:51\n2024-01-22\t00589FEA-9838-4237-9133-F298717A9E02\t2024-01-22 14:52:45\n2024-01-22\t0058B077-5E98-47B9-B48E-34BE5544BF97\t2024-01-22 12:43:28\n2024-01-22\t005911BC-AB5C-4A6E-BE7C-EF086545681A\t2024-01-22 14:00:51\n2024-01-22\t005A694C-8232-4F48-BB22-40F0BBD12F46\t2024-01-22 16:38:56\n2024-01-22\t005AFF51-5C3E-4F97-91E3-0A3D881F8991\t2024-01-22 16:26:21\n2024-01-22\t005B1739-2DA6-4F4F-8CF1-1D4C04CEDF61\t2024-01-22 13:30:41\n2024-01-22\t005B2BBF-2CD2-406E-8710-C35D106B2329\t2024-01-22 17:05:47\n2024-01-22\t005B531D-5562-4043-B542-3BF89669E685\t2024-01-22 12:40:17\n2024-01-22\t005BB713-0AC4-4DB1-AEF1-8777CD2C0CCC\t2024-01-22 08:46:50\n2024-01-22\t005C2AAA-82D5-4B0A-B4D1-01C8BB804F12\t2024-01-22 14:06:19\n2024-01-22\t005C709A-2FA2-4775-9696-FD67ABC5AB6D\t2024-01-22 18:12:24\n2024-01-22\t005CAFA4-3545-4496-87D6-6D8E85F9E74A\t2024-01-22 02:05:17\n2024-01-22\t005CE617-E9CC-47EB-8DEE-B7EF1261D9A2\t2024-01-22 08:50:25\n2024-01-22\t005CEF1F-36F7-4DDF-9A40-36F6AAB308D9\t2024-01-22 00:13:59\n2024-01-22\t005D4648-33EB-41F9-98C1-B89487B59387\t2024-01-22 17:02:25\n2024-01-22\t005D5357-4B58-4ECE-B290-DFB9528D42EA\t2024-01-22 20:10:24\n2024-01-22\t005D8B9C-4709-453E-8848-836E5650013F\t2024-01-22 17:34:05\n2024-01-22\t005DBC59-E747-4AC8-830E-3D6E6FD02730\t2024-01-22 16:25:39\n2024-01-22\t005E0B96-8FE7-442B-AC3C-008B895BB9D7\t2024-01-22 17:30:57\n2024-01-22\t005E3179-5DF3-4468-809B-C039CC719464\t2024-01-22 15:22:41\n2024-01-22\t005E334B-35C2-419D-A8D0-AE25397CF9C9\t2024-01-22 16:37:21\n2024-01-22\t005EEC7D-B5E8-483A-9B79-BC642C09B077\t2024-01-22 00:30:40\n2024-01-22\t005acca3-cf38-4e08-9b5b-6d248b97b687\t2024-01-22 00:52:37\n2024-01-22\t005c1936-d1d6-464a-940c-b1a2601f4750\t2024-01-22 11:40:15\n2024-01-22\t005d20e7-1592-4770-ba30-8ab6ca27884b\t2024-01-22 12:40:35\n2024-01-22\t005d277b-d484-481e-88b5-064f7ca6d022\t2024-01-22 18:27:07\n2024-01-22\t005d489c-3129-4613-bf96-993f727770fa\t2024-01-22 09:42:02\n2024-01-22\t005e8436-380b-43fc-805a-b42a0f39b3bb\t2024-01-22 16:52:33\n2024-01-22\t005e870a-633b-4282-9ac4-7fcf66c86f69\t2024-01-22 00:11:43\n2024-01-22\t005e9db1-a341-41fb-85b0-9c94fd571ab3\t2024-01-22 17:03:29\n2024-01-22\t005f34f5-8999-4db0-9163-dc42d7dd7881\t2024-01-22 05:24:15\n2024-01-22\t005fa1df-d821-4b85-9dc7-53877b25e2fa\t2024-01-22 14:33:30\n2024-01-22\t005fbba7-5145-460b-8fd8-f0db8d52bbf5\t2024-01-22 02:26:18\n2024-01-22\t005fe034-1f50-491f-aea0-b0f9facc0b3a\t2024-01-22 14:50:57\n2024-01-22\t0060642F-CB96-43C1-9BD6-78F756BE15FD\t2024-01-22 16:40:12\n2024-01-22\t00609BA8-435B-4AA1-A150-80BD72C52176\t2024-01-22 10:00:05\n2024-01-22\t0060c021-dc81-4905-8164-c81f11117e59\t2024-01-22 05:33:20\n2024-01-22\t0061148F-356B-49AF-B3C0-384908930E02\t2024-01-22 22:30:26\n2024-01-22\t006116dc-f3ad-45d0-b23d-41ab3da72d8a\t2024-01-22 18:34:55\n2024-01-22\t00612f84-f430-4730-9545-a1b6d3698567\t2024-01-22 13:22:55\n2024-01-22\t00613a2f-a53a-4409-a139-30a5c71191c9\t2024-01-22 18:31:13\n2024-01-22\t006140A3-A5B0-4903-AFA0-1D2A005C7591\t2024-01-22 16:39:24\n2024-01-22\t00616e05-b07d-4feb-b40a-e1269429097d\t2024-01-22 08:10:11\n2024-01-22\t0061f7cc-c882-4f1e-92e1-e49ce694a2df\t2024-01-22 16:56:09\n2024-01-22\t0061fa61-0763-416a-8df0-886c2324ab9c\t2024-01-22 00:16:41\n2024-01-22\t0062326D-3FA1-47A1-B6A0-6C135E45B93A\t2024-01-22 01:41:36\n2024-01-22\t00623571-6bee-4abd-9a08-e6332083d566\t2024-01-22 07:11:23\n2024-01-22\t0062D4A8-C444-4349-B37C-04A81A1A7298\t2024-01-22 19:37:53\n2024-01-22\t0062D58C-7E01-4CD2-83E8-C0A043DC47CE\t2024-01-22 03:55:56\n2024-01-22\t0062d65e-3da6-49f9-8ca1-8fced0e33ac4\t2024-01-22 16:55:54\n2024-01-22\t0063240D-95CD-4D66-9B8B-2E64F595DF71\t2024-01-22 08:53:10\n2024-01-22\t00632428-1158-49D9-AEFC-447C1797271D\t2024-01-22 22:18:42\n2024-01-22\t00632e26-f0db-4c61-942b-7105b4bf9ab8\t2024-01-22 02:08:43\n2024-01-22\t0063587F-BFC6-4C9F-ACB5-6B55E4142E77\t2024-01-22 08:26:24\n2024-01-22\t00643D2A-6311-4179-A8B8-E6C3B345D5E6\t2024-01-22 16:37:00\n2024-01-22\t00645b5c-9c17-4df0-b114-e416a6e8375e\t2024-01-22 20:49:55\n2024-01-22\t00648E54-7510-4C87-BF8A-087AACA0C791\t2024-01-22 16:07:15\n2024-01-22\t00648FDC-03CA-40F6-A9E4-9C49EFDBF90A\t2024-01-22 16:32:24\n2024-01-22\t0064FA01-41B2-4D8E-91E1-BE7478CF662D\t2024-01-22 16:36:30\n2024-01-22\t0064b1bd-3fef-42bd-bd80-ada066bff3ab\t2024-01-22 08:54:55\n2024-01-22\t006531D5-89F3-446A-A6F6-00A6F26B399E\t2024-01-22 16:59:49\n2024-01-22\t006580ec-9e11-4ab2-8729-1fa51c22d01f\t2024-01-22 11:55:28\n2024-01-22\t0065A34D-DFC9-4F2F-A148-C5F9DBBF3B74\t2024-01-22 12:17:05\n2024-01-22\t0066281F-A0CE-4009-AADC-5E3BCC8D76EB\t2024-01-22 17:27:49\n2024-01-22\t0066434b-04f3-4460-b7ac-dde5d2176cf2\t2024-01-22 17:20:11\n2024-01-22\t0066813D-E616-4D07-891D-E883A3136405\t2024-01-22 16:34:47\n2024-01-22\t006690b7-e106-4156-a495-e7e231e31edf\t2024-01-22 01:09:22\n2024-01-22\t006697BE-7439-4B5E-A8AA-65B63A575430\t2024-01-22 14:44:49\n2024-01-22\t0066D755-8EDE-4010-AC14-A15D4B387838\t2024-01-22 17:05:00\n2024-01-22\t0067056E-3F76-4F6B-AC24-FFF6D64CAA52\t2024-01-22 16:33:58\n2024-01-22\t006799B6-4ACA-4F4F-9A74-CE5F5AFCFD2A\t2024-01-22 18:52:06\n2024-01-22\t0067a966-18e2-44ae-a2a6-7d4e68cc00b9\t2024-01-22 11:08:13\n2024-01-22\t0067ed83-f58d-4420-9a21-4987ebc65d3b\t2024-01-22 23:53:06\n2024-01-22\t0067f683-67ed-44b4-a3d5-1eb5de71d8bf\t2024-01-22 02:28:09\n2024-01-22\t006867DA-92C6-4881-A674-3603F665B783\t2024-01-22 16:43:15\n2024-01-22\t006886CA-BF35-4583-A01D-CD05F23052C1\t2024-01-22 16:34:34\n2024-01-22\t0068E492-D782-479B-B866-D427AC17288D\t2024-01-22 10:57:52\n2024-01-22\t0069bec5-7873-4083-8ef4-50bdcdf19755\t2024-01-22 18:23:23\n2024-01-22\t0069ef7c-d376-43ca-83b6-f955513e4857\t2024-01-22 15:54:29\n2024-01-22\t006AC7C9-3FB3-4378-8365-9CB6C7A719EB\t2024-01-22 18:41:39\n2024-01-22\t006E3F55-8EAF-4873-AEE6-D0A5443C8D9A\t2024-01-22 17:50:06\n2024-01-22\t006E4291-22EA-4C95-A0AC-5C56F72159E3\t2024-01-22 16:07:06\n2024-01-22\t006ECE74-48F4-452D-B840-42E004FC8F87\t2024-01-22 22:52:59\n2024-01-22\t006EF731-39D3-46C1-8018-DB1E02DB3B2B\t2024-01-22 16:33:35\n2024-01-22\t006F15FA-4237-49B6-BF31-68F3D285B81E\t2024-01-22 16:43:14\n2024-01-22\t006F3424-B64F-408A-B1B2-40FF85886433\t2024-01-22 19:45:52\n2024-01-22\t006F3539-1935-440B-8E82-82829C37F5A3\t2024-01-22 16:32:13\n2024-01-22\t006F6264-A7B9-48A8-9F6C-AB26810E5747\t2024-01-22 11:38:06\n2024-01-22\t006c8596-46b6-47c3-b26e-26010eec57e6\t2024-01-22 13:07:20\n2024-01-22\t006c90bf-31fa-4000-a068-09480a94e4fd\t2024-01-22 02:30:50\n2024-01-22\t006e7333-e332-4831-9096-4c89458a6aa2\t2024-01-22 13:01:42\n2024-01-22\t006f82aa-0060-45d9-ae47-9317748a8fa9\t2024-01-22 11:35:31\n2024-01-22\t006fa9fb-bdbf-4baa-95db-cb3ea34499d2\t2024-01-22 00:57:03\n2024-01-22\t007068e5-dffb-431c-a9f7-c3e7ff2aa961\t2024-01-22 11:44:20\n2024-01-22\t0070E043-D054-46BD-8550-FBFAE448845F\t2024-01-22 16:51:04\n2024-01-22\t0070E99C-66E2-45ED-9474-68F03234FC2B\t2024-01-22 16:37:24\n2024-01-22\t0071273e-4cfa-413d-b0c4-6118db08483e\t2024-01-22 15:38:21\n2024-01-22\t0071707e-649b-410f-bf1f-14b97a29192a\t2024-01-22 18:14:57\n2024-01-22\t007170A5-4A03-481D-9629-F1945408CF59\t2024-01-22 16:38:53\n2024-01-22\t007184e2-61a5-460b-b5a7-3b5880dc2d96\t2024-01-22 18:22:51\n2024-01-22\t0071a7b8-6737-439f-86ce-efb1cf017675\t2024-01-22 06:35:18\n2024-01-22\t00720035-c3df-4bc9-94b7-2c3f995b9836\t2024-01-22 05:11:49\n2024-01-22\t0072023A-0BD9-4FC8-84BE-59619D785CA5\t2024-01-22 16:38:03\n2024-01-22\t00721c49-795f-4ac8-ad3b-1b80b1696f31\t2024-01-22 17:03:19\n2024-01-22\t00725FC5-29C9-42AE-ADFC-0782C1EAA514\t2024-01-22 16:46:35\n2024-01-22\t00728864-5C10-4FA7-8676-618A12F3CD16\t2024-01-22 21:41:50\n2024-01-22\t0073596A-C60A-4EC1-BE65-51607CFF04FB\t2024-01-22 17:00:00\n2024-01-22\t0073E9AD-C852-4C39-BC89-3E6292942FE6\t2024-01-22 16:32:25\n2024-01-22\t007425fa-0294-49a3-9839-14a9d2e7fb58\t2024-01-22 21:16:22\n2024-01-22\t00743A1F-7DAC-427B-A929-7E652EBFDB68\t2024-01-22 00:22:17\n2024-01-22\t00744017-D4A9-4BC7-A767-BE291646E47D\t2024-01-22 16:58:10\n2024-01-22\t00745801-51CD-46E1-97A8-C10EEB64D9A2\t2024-01-22 16:38:34\n2024-01-22\t007468FB-413D-4448-A2B4-8320EFBAB703\t2024-01-22 19:47:18\n2024-01-22\t0074EB6A-E2A4-4649-B857-410A61063F1D\t2024-01-22 18:29:48\n2024-01-22\t0074c16c-9065-4dc1-8c3d-7f645554e7c7\t2024-01-22 19:36:18\n2024-01-22\t00751bcd-77f2-43fa-b1e5-e78120f623e1\t2024-01-22 05:51:17\n2024-01-22\t0075F918-6D3B-44FF-AEC7-96012F48E92C\t2024-01-22 17:26:12\n2024-01-22\t00769D76-9B8E-4BF0-8CE4-62C1622E9284\t2024-01-22 23:21:39\n2024-01-22\t0076F3DA-26F1-4F83-97C8-F69ACB3AA557\t2024-01-22 23:24:41\n2024-01-22\t00774049-64A8-4EA2-BDA7-8D467A1C8664\t2024-01-22 16:34:01\n2024-01-22\t00777629-8de7-453d-94d3-7b9f44c8dc74\t2024-01-22 12:13:40\n2024-01-22\t0077814d-cf19-425f-8308-179dde2f7381\t2024-01-22 10:31:58\n2024-01-22\t0077F491-DB95-4EEB-AC3A-E986C055305C\t2024-01-22 15:18:31\n2024-01-22\t0077e6a2-ae30-4bba-818b-6fbe493f88ba\t2024-01-22 02:33:05\n2024-01-22\t007808E0-8482-454F-A896-8951013E576F\t2024-01-22 16:36:37\n2024-01-22\t007865d5-4e2e-44af-ae76-f57c328302cd\t2024-01-22 16:48:03\n2024-01-22\t0078C0CE-7E72-4133-BC59-60C7B74F1DFF\t2024-01-22 16:33:32\n2024-01-22\t0078cbbe-7088-429c-9011-c87b1df69e56\t2024-01-22 14:04:04\n2024-01-22\t00790db3-7b59-4de6-ad69-cf4887cace8f\t2024-01-22 16:52:48\n2024-01-22\t0079fae2-0d9e-4d94-9031-12d589a2ca7f\t2024-01-22 15:07:03\n2024-01-22\t007A2D0D-46E2-486E-B405-1D2CA2B2A37B\t2024-01-22 16:32:11\n2024-01-22\t007AB330-332A-4DC4-AA72-E491B3891BC9\t2024-01-22 05:01:40\n2024-01-22\t007B0D2E-4BFE-4017-BC10-688ABF46586D\t2024-01-22 16:53:47\n2024-01-22\t007B1FA4-96D6-43C2-AB14-F2FB17D32CE1\t2024-01-22 17:13:10\n2024-01-22\t007B84CF-574C-43CD-8716-9E4CADD6BF21\t2024-01-22 16:38:23\n2024-01-22\t007C2D9E-6B3D-4EB0-B751-785C155491EA\t2024-01-22 12:58:04\n2024-01-22\t007CB859-C87B-4D67-9C26-61C8931B606B\t2024-01-22 16:33:08\n2024-01-22\t007CC8F5-0BE5-4384-908E-FCD7802CA6F8\t2024-01-22 04:54:30\n2024-01-22\t007DF18E-6E24-48D5-875C-402B8573751A\t2024-01-22 16:35:58\n2024-01-22\t007E0203-669B-4347-A894-7EA855DCCCC4\t2024-01-22 16:30:11\n2024-01-22\t007EA067-2F83-4047-9C6B-B3EB076B0AD0\t2024-01-22 17:59:34\n2024-01-22\t007F25C4-9ACB-44C3-8B88-AE926387C744\t2024-01-22 16:37:31\n2024-01-22\t007F8F8A-69FA-4B8C-A628-A6AE080ABD0E\t2024-01-22 23:02:14\n2024-01-22\t007bc134-c758-453b-a733-803fe8975e9a\t2024-01-22 02:47:14\n2024-01-22\t007cb94c-385e-44c5-ab81-23a7dcd3e948\t2024-01-22 12:11:43\n2024-01-22\t007dd0b2-a10f-4add-b22a-615df488dd80\t2024-01-22 20:17:34\n2024-01-22\t007f8ea9-abed-497c-9807-f0aef27354fb\t2024-01-22 22:02:24\n2024-01-22\t007fb7bc-b550-44f9-8261-dd0030b52fbd\t2024-01-22 20:07:32\n2024-01-22\t008010fb-42c3-4c6f-baa3-18ed85d81a85\t2024-01-22 19:26:56\n2024-01-22\t008013CB-A506-4D5F-A2D9-AD970034E407\t2024-01-22 16:39:59\n2024-01-22\t008024A3-4C44-41E4-B2C3-13F302C47559\t2024-01-22 01:49:54\n2024-01-22\t0080AA92-E855-4D94-BC78-23245E3691B4\t2024-01-22 16:42:14\n2024-01-22\t0080f9d2-9001-4f41-89bf-adfc0fbd9e94\t2024-01-22 11:41:47\n2024-01-22\t0081AC00-5301-4183-A83D-689CA6800499\t2024-01-22 16:37:51\n2024-01-22\t0081B7AD-4F2A-4E17-BD1A-A651C526931F\t2024-01-22 00:57:17\n2024-01-22\t0081E7DB-3971-4CD1-8AE3-AB19909ADC41\t2024-01-22 05:14:02\n2024-01-22\t0081FE60-4F71-4EDC-958F-9CC4C3419131\t2024-01-22 00:00:11\n2024-01-22\t0081a177-1a49-45c6-8145-6dc3e77c769c\t2024-01-22 21:22:01\n2024-01-22\t0081b7df-9280-495f-906e-45fc02fb9444\t2024-01-22 17:43:17\n2024-01-22\t008219A8-71E1-4C4A-BD10-ADE0C2B92C87\t2024-01-22 18:16:11\n2024-01-22\t00827E66-CD80-4AEF-8567-BA24728C4001\t2024-01-22 20:02:51\n2024-01-22\t00829672-8e10-438d-ae63-dbf381fe85a8\t2024-01-22 22:24:54\n2024-01-22\t0082AECD-F637-4A38-8645-EC8D39B3D422\t2024-01-22 00:29:39\n2024-01-22\t00832c99-b348-4e51-9d8b-6815c5b6e064\t2024-01-22 12:47:46\n2024-01-22\t0083ADCE-0610-49FB-9DD0-42C1DD030F1F\t2024-01-22 21:42:26\n2024-01-22\t0083af33-e77c-4bd9-97d5-c5145504ea54\t2024-01-22 02:32:01\n2024-01-22\t0083ed2d-cadd-4c3d-9d12-f2c074297c1b\t2024-01-22 05:29:58\n2024-01-22\t008417BB-218B-49A1-BC4F-77CD810FCF35\t2024-01-22 16:30:07\n2024-01-22\t008499df-fe8d-4593-b8a8-b5dfd8f0d891\t2024-01-22 22:00:53\n2024-01-22\t00849a08-34d2-4a3d-bb45-97daa3f9bfc5\t2024-01-22 15:33:42\n2024-01-22\t0084ECAD-CD06-4AFA-B382-149A75B6869D\t2024-01-22 04:14:33\n2024-01-22\t0084e0a8-7d87-4b0f-9e37-edb9385900cd\t2024-01-22 20:39:00\n2024-01-22\t00856d29-3a8e-4e49-9b27-a1232e304933\t2024-01-22 19:15:23\n2024-01-22\t0085C7DB-4862-4FD4-A2E0-E82FAD10E66E\t2024-01-22 16:32:49\n2024-01-22\t0085EBEF-DC65-4E23-8F98-E53044FAD2DE\t2024-01-22 19:41:27\n2024-01-22\t0085EE7C-BABC-410C-B697-333B99FB107D\t2024-01-22 23:46:22\n2024-01-22\t00860886-274e-4876-8503-a2bcb999cbd4\t2024-01-22 02:06:13\n2024-01-22\t0086425d-4c10-44ed-8488-d5ea0530d44c\t2024-01-22 20:13:25\n2024-01-22\t0086554C-9D30-4825-B230-0033D04243DF\t2024-01-22 17:08:58\n2024-01-22\t00865745-5aa7-4f14-a391-385950e4e3fe\t2024-01-22 05:19:50\n2024-01-22\t0086BD66-81A0-429A-9E9B-318DD815727E\t2024-01-22 19:08:21\n2024-01-22\t00870FDD-5D7F-427D-923E-4840A17C80CF\t2024-01-22 08:14:57\n2024-01-22\t0087493d-19d0-4930-a54a-4cf66f010efc\t2024-01-22 17:33:07\n2024-01-22\t0087672b-ca09-47a9-8122-a0a3e10e31d4\t2024-01-22 16:08:03\n2024-01-22\t00876B58-42D8-4B39-A984-23A94EFEEC64\t2024-01-22 11:19:44\n2024-01-22\t008781BF-3820-4245-B9E5-479C5DDEF05D\t2024-01-22 16:11:54\n2024-01-22\t0087E2D6-DD45-4320-B1CD-17DAE12D696A\t2024-01-22 23:17:53\n2024-01-22\t0088205A-92D0-42E4-A476-CCA7515DCDAD\t2024-01-22 16:38:27\n2024-01-22\t00883606-F61C-4643-A2BF-A749009FEC23\t2024-01-22 16:53:21\n2024-01-22\t00887F43-E401-41A0-8450-4E5FBBD8B22B\t2024-01-22 16:37:07\n2024-01-22\t0088B9D3-4C32-4B8F-8CA8-811E08A71E12\t2024-01-22 16:39:20\n2024-01-22\t008C1764-61EE-4F91-918D-3534FDF96B5C\t2024-01-22 16:38:15\n2024-01-22\t008C8B44-77FC-4C03-BABE-FF64AFA01206\t2024-01-22 16:42:02\n2024-01-22\t008D1560-D63C-4570-B6AC-DB00EBA31F7E\t2024-01-22 15:41:16\n2024-01-22\t008D3349-698C-44BA-A759-535C8D969C19\t2024-01-22 10:19:46\n2024-01-22\t008D50B5-15B9-46AD-9113-5046CF088C2E\t2024-01-22 00:53:17\n2024-01-22\t008D8AEB-8586-4123-B7F5-15CE1AE0E28D\t2024-01-22 00:19:08\n2024-01-22\t008E90BF-D997-46E2-932D-7C43BC94B692\t2024-01-22 16:53:19\n2024-01-22\t008EA5A8-07E8-49A0-B16E-A6E898BD005B\t2024-01-22 18:42:49\n2024-01-22\t008ED61E-60A5-449C-A366-FD3F49B517BE\t2024-01-22 16:36:33\n2024-01-22\t008EE4F1-58BF-48DE-A02A-32EE43DB9BE2\t2024-01-22 11:56:16\n2024-01-22\t008F215A-775F-4628-ACFE-CFC0D09E99D6\t2024-01-22 20:40:17\n2024-01-22\t008F6D4A-6C82-4645-B191-97E028CCB476\t2024-01-22 18:56:33\n2024-01-22\t008F8632-1151-4CCB-A339-737F5110EA2F\t2024-01-22 13:42:35\n2024-01-22\t008FF518-0694-48D3-AC51-AFABE3F74EDE\t2024-01-22 21:27:33\n2024-01-22\t008a522b-fcfc-4c32-82bc-d82b76550ce1\t2024-01-22 17:27:12\n2024-01-22\t008ac96d-e409-469b-98a1-c26892322f22\t2024-01-22 15:38:09\n2024-01-22\t008ae092-e06f-4f60-94f5-6db06ecac4e1\t2024-01-22 19:29:57\n2024-01-22\t008cbcd4-77e0-4d05-bc75-ab0e45f914fb\t2024-01-22 00:39:15\n2024-01-22\t008cc94d-3b47-4f95-abf9-b50793b937d2\t2024-01-22 08:05:27\n2024-01-22\t008cde05-36be-40dd-af69-e5936f4f22b9\t2024-01-22 20:31:07\n2024-01-22\t008d0672-eaf1-4409-b15a-b2d208a6be52\t2024-01-22 17:00:44\n2024-01-22\t008d988b-c083-4e99-92f5-e224ef8570b3\t2024-01-22 21:28:43\n2024-01-22\t008dc02c-229e-4178-9040-c1da405bb820\t2024-01-22 10:50:47\n2024-01-22\t008e5bc8-d212-49c3-98e1-2098c15f22ae\t2024-01-22 16:58:02\n2024-01-22\t008e5e1f-fe4d-422f-a7b4-02fce4ea940c\t2024-01-22 01:04:33\n2024-01-22\t008f2825-5faa-4fbe-9fdb-3688638be232\t2024-01-22 22:23:20\n2024-01-22\t009013cf-8ba8-4121-a62f-398ec393da85\t2024-01-22 13:16:23\n2024-01-22\t00910ce0-6fad-41c3-9918-3cd94685f996\t2024-01-22 07:02:19\n2024-01-22\t00915a33-58f0-439b-90e6-c5381ce37342\t2024-01-22 00:50:17\n2024-01-22\t00916411-947E-4AC2-9508-7771A55AA0A7\t2024-01-22 03:27:39\n2024-01-22\t0092718E-532B-4A58-AB40-F21CF5D89819\t2024-01-22 17:03:47\n2024-01-22\t0093139e-3246-4c25-9f7e-ae686577be2f\t2024-01-22 16:53:15\n2024-01-22\t00937387-9E2D-4C23-B16F-B23BFB00461B\t2024-01-22 14:35:39\n2024-01-22\t0093A591-32BE-4AD1-B3E2-434CE91597F7\t2024-01-22 16:39:27\n2024-01-22\t0093a13f-0074-4b13-9bf8-29abd214d4c9\t2024-01-22 17:53:02\n2024-01-22\t00941662-4FB2-4035-8346-F7479BEBAE67\t2024-01-22 17:03:19\n2024-01-22\t00943d45-1867-4a03-94ab-735c536fdc5d\t2024-01-22 13:32:36\n2024-01-22\t00952531-DB41-4755-B5E0-C7E51929221C\t2024-01-22 17:06:35\n2024-01-22\t00953E29-30A0-4E76-99AC-48415E1383EA\t2024-01-22 21:28:25\n2024-01-22\t0095C5D6-51D3-42DC-894B-F5F0D0B250E2\t2024-01-22 16:26:06\n2024-01-22\t0095b002-24f7-4982-9670-9c33004346dc\t2024-01-22 04:30:03\n2024-01-22\t0095ce2a-3376-48ee-a5fe-899224c76d0c\t2024-01-22 21:18:13\n2024-01-22\t009604de-a9dc-4990-b9f2-cef0d7b351c3\t2024-01-22 16:43:34\n2024-01-22\t00966EC5-8BA5-45DE-B74F-90CB17492AF8\t2024-01-22 02:34:02\n2024-01-22\t00973b9b-f0dd-474e-9246-f4c996ce4b0c\t2024-01-22 13:59:42\n2024-01-22\t009773e4-cef5-426f-9e5e-147b75dd7ed5\t2024-01-22 11:50:24\n2024-01-22\t00977540-7CAA-49C7-BD80-91733C8F5725\t2024-01-22 16:39:33\n2024-01-22\t00977F33-4A94-426B-8705-8105FED1F375\t2024-01-22 16:35:31\n2024-01-22\t00977fb4-e937-4aa8-a2a6-d7c3ffc0485e\t2024-01-22 12:58:28\n2024-01-22\t009941af-c84f-4f9d-b921-aac8579c7669\t2024-01-22 07:50:36\n2024-01-22\t009947fb-f274-43cf-93f4-828bcdae1ce2\t2024-01-22 14:28:01\n2024-01-22\t00995521-92A3-4143-97DB-1D37E36DD23A\t2024-01-22 16:36:24\n2024-01-22\t00997425-61e0-4ca1-9938-7fb3ce4d687d\t2024-01-22 18:56:29\n2024-01-22\t00997503-d915-4a14-b657-1a9562f3a77d\t2024-01-22 16:55:32\n2024-01-22\t009A45CE-B08E-4825-B6B0-090DEE1ABFF7\t2024-01-22 16:34:39\n2024-01-22\t009B8E15-4FBC-4DFE-8051-F2A4C58DC8C8\t2024-01-22 16:45:45\n2024-01-22\t009BA784-78FD-4727-AD21-570D81ED2C6D\t2024-01-22 16:32:06\n2024-01-22\t009D6C82-89E0-48F0-A08F-E514505D0C7D\t2024-01-22 15:10:23\n2024-01-22\t009E43C8-9AE3-43EC-B9FB-77536948E072\t2024-01-22 11:16:59\n2024-01-22\t009FFB53-FA78-47BE-BDBC-9307A16C8BD0\t2024-01-22 13:07:28\n2024-01-22\t009a5ae5-b67e-4ade-90c5-fee432807e82\t2024-01-22 09:55:23\n2024-01-22\t009a692b-eae9-4d34-8341-d60ba19b3c36\t2024-01-22 02:33:17\n2024-01-22\t009b2db4-17a0-4b0f-b890-ba97a86c336d\t2024-01-22 23:33:23\n2024-01-22\t009c4706-9532-4b8e-a600-129f404e534f\t2024-01-22 01:57:47\n2024-01-22\t009d5f73-f864-4afc-acec-5e4a7caebb99\t2024-01-22 08:51:52\n2024-01-22\t009d9c59-5080-4260-bf58-78b518c48d9f\t2024-01-22 00:33:34\n2024-01-22\t009e2302-dab0-4f4a-b84b-4ba8b61d2cd5\t2024-01-22 11:19:07\n2024-01-22\t009e4e63-e840-4b90-81c1-a5c59871e175\t2024-01-22 03:49:17\n2024-01-22\t009e6197-b19b-4976-b1eb-c1fa8004dbd9\t2024-01-22 00:21:00\n2024-01-22\t009e85d9-337e-439b-910a-8610384261c9\t2024-01-22 16:29:04\n2024-01-22\t009ea83d-8175-473f-8d1f-64fc2f32c017\t2024-01-22 16:31:16\n2024-01-22\t009ed955-5569-445e-9ce5-8ea3d9fd9f78\t2024-01-22 22:26:32\n2024-01-22\t009ee493-0d15-47f7-be96-5bfe6a5735d2\t2024-01-22 23:15:26\n2024-01-22\t009eebb9-5174-4419-94f9-e7be53930625\t2024-01-22 10:24:20\n2024-01-22\t009f8a23-721b-4378-85db-a7b27dad17df\t2024-01-22 19:42:34\n2024-01-22\t00A048FD-4B6D-48CE-9C59-DAD5A7416289\t2024-01-22 11:15:43\n2024-01-22\t00A19BA9-63A5-440C-896E-AD09936ABC60\t2024-01-22 01:25:58\n2024-01-22\t00A1B0F5-3E99-41A2-B827-DD2ED6422657\t2024-01-22 01:32:36\n2024-01-22\t00A1BA9E-AFE3-499E-80CF-B4A4BEE5C221\t2024-01-22 11:33:20\n2024-01-22\t00A1D55B-CD72-4BCD-9977-B055F98671AE\t2024-01-22 04:31:03\n2024-01-22\t00A1D83C-18C6-4133-A906-089E8C7BB2FA\t2024-01-22 17:15:23\n2024-01-22\t00A20A86-5CD1-4377-8E86-93D386584C92\t2024-01-22 03:48:48\n2024-01-22\t00A22C0D-AC21-44D6-845B-0A62E3CB10E3\t2024-01-22 17:21:11\n2024-01-22\t00A2B931-F886-40FE-913A-14A0CC9DEC3B\t2024-01-22 03:44:07\n2024-01-22\t00A34E43-7BBF-48AD-A2D8-AB5519951F7B\t2024-01-22 02:25:47\n2024-01-22\t00A35A22-A4CD-4F17-846E-F139816B9DA6\t2024-01-22 08:47:27\n2024-01-22\t00A3F9A4-6804-4A81-97F5-C771524BD257\t2024-01-22 16:30:55\n2024-01-22\t00A4575F-2AA5-4CAE-B88D-75FEDCB0C83A\t2024-01-22 17:06:09\n2024-01-22\t00A485AE-39DF-4ED1-8C79-38B6EFD686CB\t2024-01-22 16:11:43\n2024-01-22\t00A4E6B8-86D6-48FA-80E9-C2234C2584E3\t2024-01-22 00:00:08\n2024-01-22\t00A5B667-C41C-4F75-BF12-46707537139A\t2024-01-22 00:03:05\n2024-01-22\t00A628D1-C288-44A6-AD3D-C4835C60ADC9\t2024-01-22 16:37:21\n2024-01-22\t00A6E77E-32B6-480B-85FD-D2D3C30DCFE4\t2024-01-22 16:05:59\n2024-01-22\t00A748AD-EC72-44EC-9AFD-16D2500FFBE0\t2024-01-22 16:34:43\n2024-01-22\t00A7D4B2-1544-46ED-85A2-957B21F0B165\t2024-01-22 07:57:09\n2024-01-22\t00A8A54B-86F7-486B-8DA0-5A6895AC3019\t2024-01-22 18:49:38\n2024-01-22\t00A95B6F-64A1-4851-95C8-6E347FE307FF\t2024-01-22 16:47:44\n2024-01-22\t00A96C1F-5DE6-4C32-B4ED-DFD040066598\t2024-01-22 16:30:52\n2024-01-22\t00A97D07-7DCA-4FFF-93EE-EC54D5748C0B\t2024-01-22 10:29:10\n2024-01-22\t00AA1F34-F3CC-4E3C-933B-3725FD239114\t2024-01-22 19:02:10\n2024-01-22\t00AAC2C8-7ABC-4E17-B2C5-ED4DF9681344\t2024-01-22 11:30:18\n2024-01-22\t00AAF2B0-4AD7-4568-A327-2AC23B0F9999\t2024-01-22 21:56:39\n2024-01-22\t00AC3360-1356-45D3-8922-07F5DB74D08F\t2024-01-22 15:16:24\n2024-01-22\t00AC6200-E407-4408-9FC2-FE37930A01A1\t2024-01-22 04:33:18\n2024-01-22\t00AC7221-F176-4A8D-BF84-CBA3D9ED1EF8\t2024-01-22 16:32:06\n2024-01-22\t00AC9127-A7C2-4E5B-AB74-5E4EDD7B4D37\t2024-01-22 21:20:32\n2024-01-22\t00ACEBD5-0FDC-4352-9809-BF98AFEC4ED2\t2024-01-22 13:25:48\n2024-01-22\t00AD8546-29E4-4E9D-BFAB-22AA232B6EA6\t2024-01-22 13:27:32\n2024-01-22\t00AE11B5-498F-4C91-9590-140DB217D0F6\t2024-01-22 00:52:01\n2024-01-22\t00AF4716-70D5-47C6-9A26-5FE78A70F218\t2024-01-22 00:48:41\n2024-01-22\t00B09FF5-8B5A-4EA9-AE95-09F564C4CEB3\t2024-01-22 16:33:58\n2024-01-22\t00B24CEF-0A7D-4A75-A304-421973F74886\t2024-01-22 22:24:43\n2024-01-22\t00B2B116-AEB5-4FC5-8724-4BE4F740F7D1\t2024-01-22 16:31:05\n2024-01-22\t00B2C28A-CEEC-4DB3-BF0B-5FB1213E8574\t2024-01-22 01:45:47\n2024-01-22\t00B2F8C0-91BC-44E8-A1DB-CAC54EAE307C\t2024-01-22 01:05:12\n2024-01-22\t00B355D6-4D14-4EEE-A47D-A85DA5E2F45F\t2024-01-22 17:05:03\n2024-01-22\t00B36828-0C17-4F04-B01E-F025ADA5F8A4\t2024-01-22 12:02:15\n2024-01-22\t00B36996-003C-4292-BC87-0F6FEAC57A11\t2024-01-22 10:32:16\n2024-01-22\t00B3DCF3-1DEB-46F1-82F6-852BF8D413A3\t2024-01-22 16:39:19\n2024-01-22\t00B49E98-3D20-4533-B514-324D47017013\t2024-01-22 11:47:46\n2024-01-22\t00B4EA14-7777-4CBD-9FFA-C2B1BA89838D\t2024-01-22 16:34:34\n2024-01-22\t00B71456-59FA-4EC1-965C-7A8EA01A87A8\t2024-01-22 16:41:30\n2024-01-22\t00B7234A-F3D5-4367-94D4-0EFEF9CE22C2\t2024-01-22 16:33:14\n2024-01-22\t00B72D72-DB7E-45AE-A9EA-084479253C7F\t2024-01-22 16:33:13\n2024-01-22\t00B76ED2-865F-4FB2-BBEE-2B4A043A0A2C\t2024-01-22 17:38:34\n2024-01-22\t00B793BD-6F60-4027-9189-785D200148AC\t2024-01-22 16:32:32\n2024-01-22\t00B7BEEE-8606-4840-B507-0A77AB364CFC\t2024-01-22 19:54:42\n2024-01-22\t00B7C166-317F-4BD1-B5A4-A8D3E5293D1B\t2024-01-22 19:54:25\n2024-01-22\t00B93AB1-3C4F-4B06-86EA-456C8E098FA1\t2024-01-22 16:33:51\n2024-01-22\t00B9BDD6-9D84-4F1A-AEE9-AFCF260A2C2E\t2024-01-22 14:30:30\n2024-01-22\t00B9EBD2-8A98-4606-98C2-0BB6C02C0A75\t2024-01-22 16:31:31\n2024-01-22\t00BAC295-C7D3-47B0-AD66-27363B62DEA7\t2024-01-22 16:39:06\n2024-01-22\t00BB7BEE-DECF-4CA2-B3EF-392A0BBAFE7E\t2024-01-22 17:01:32\n2024-01-22\t00BCF23E-C528-473C-A38B-EDC478A31CC2\t2024-01-22 07:01:40\n2024-01-22\t00BD0A37-9002-4885-9A8F-66E9E3685D08\t2024-01-22 18:47:35\n2024-01-22\t00BD5712-B54C-4BC0-AC59-1A65FAA2F1D5\t2024-01-22 21:54:01\n2024-01-22\t00BD8E5E-DCEC-4CEF-8D12-077A74C2CEB2\t2024-01-22 19:03:04\n2024-01-22\t00BDAB70-EC12-401F-AC83-84FEBA528896\t2024-01-22 17:05:10\n2024-01-22\t00BDC6DF-D831-4DA3-808D-6F454DC729FF\t2024-01-22 09:14:08\n2024-01-22\t00BED651-AB6B-46AA-BC96-E7A670E97CC7\t2024-01-22 11:39:05\n2024-01-22\t00BFA046-88B7-4C4A-B93D-C76752FDD309\t2024-01-22 12:18:22\n2024-01-22\t00BFA173-D424-48C0-BCC6-8105900DD464\t2024-01-22 00:04:33\n2024-01-22\t00C06A31-FD0D-49D5-A6B1-BD9AFDBAEA09\t2024-01-22 07:50:11\n2024-01-22\t00C07FFE-E96F-41CD-86D6-B9206FE3AEF5\t2024-01-22 16:52:22\n2024-01-22\t00C10F1C-8A9E-486E-984A-B8749ACE8EB5\t2024-01-22 20:54:25\n2024-01-22\t00C181AB-F271-4BEA-BEBB-49E735050314\t2024-01-22 16:37:45\n2024-01-22\t00C23594-7E12-441D-8876-E5D744ADCB00\t2024-01-22 22:41:33\n2024-01-22\t00C23766-B51D-485C-9F09-7D4EC62A576F\t2024-01-22 01:21:15\n2024-01-22\t00C2B58E-A374-4FDA-BB94-5762B1F1F231\t2024-01-22 12:23:25\n2024-01-22\t00C2F9FF-C885-4978-A0F1-5E613B8F9CCC\t2024-01-22 13:11:06\n2024-01-22\t00C309BB-2D0D-42EE-BA1E-617D3A4B5F11\t2024-01-22 07:42:43\n2024-01-22\t00C48295-9C4E-42E2-BEF7-481A91E42B6A\t2024-01-22 15:37:05\n2024-01-22\t00C54E70-A3B8-46FE-8DB7-BD81D07201CA\t2024-01-22 16:32:38\n2024-01-22\t00C59CCD-AD95-4F60-A971-B3050A51EA00\t2024-01-22 16:32:48\n2024-01-22\t00C5C026-DA2F-4626-BA02-378D87707BD5\t2024-01-22 01:35:45\n2024-01-22\t00C66D55-773B-4DD2-B2E5-2D5E4A2F754C\t2024-01-22 12:38:26\n2024-01-22\t00C6C18E-6471-4DE8-9D7F-0A6521766D15\t2024-01-22 16:32:39\n2024-01-22\t00C71C00-EA03-4715-A362-BE5E2EB8EAB3\t2024-01-22 13:27:38\n2024-01-22\t00C9A1EF-5205-4772-8AEB-6106FCD79476\t2024-01-22 17:14:58\n2024-01-22\t00CA9E66-0D9B-4C8D-A6B7-1A7554FC71A1\t2024-01-22 15:00:59\n2024-01-22\t00CB81CE-2581-48E0-A57E-C6CE8713C867\t2024-01-22 16:32:37\n2024-01-22\t00CBCFE1-E04D-446B-8101-503AB24A2A05\t2024-01-22 00:34:56\n2024-01-22\t00CC7021-58E4-4247-BBC0-E8214DE63F26\t2024-01-22 18:45:35\n2024-01-22\t00CC990A-AAC3-4302-AFD6-C5DE662351FE\t2024-01-22 17:05:03\n2024-01-22\t00CCA08F-30AF-4183-A1E9-5612296D2C70\t2024-01-22 17:17:09\n2024-01-22\t00CCF1BE-FC60-48B4-BD7D-A0C12E976697\t2024-01-22 01:14:26\n2024-01-22\t00CCF21F-E1DA-47B2-AF82-64D6FB70590D\t2024-01-22 16:31:55\n2024-01-22\t00CCF657-94AD-455B-8E52-92CD29BBD7D0\t2024-01-22 07:47:57\n2024-01-22\t00CD48A9-314A-4E46-B373-564974196F83\t2024-01-22 17:18:30\n2024-01-22\t00CD556B-0576-4F8F-B070-FD3A13D244B3\t2024-01-22 16:04:19\n2024-01-22\t00CDC91F-00F9-401B-B806-DB5CA011D3CB\t2024-01-22 16:57:28\n2024-01-22\t00D0014F-507D-4FAD-AE88-73E7DBAE20AF\t2024-01-22 16:31:40\n2024-01-22\t00D1A30A-B334-44A8-986D-2026654012F1\t2024-01-22 15:13:24\n2024-01-22\t00D26A23-D7EF-45CD-9CF8-DCF207AB749B\t2024-01-22 02:06:22\n2024-01-22\t00D26E45-FB8C-4F93-9606-8E0741E0CA16\t2024-01-22 16:36:23\n2024-01-22\t00D2F7A7-CFA8-4118-A7A9-395EA68ACF0D\t2024-01-22 13:16:58\n2024-01-22\t00D4B689-5261-4623-83BD-BD2895037A9E\t2024-01-22 16:55:36\n2024-01-22\t00D5453E-47DB-409A-97A4-4A00D114AB8A\t2024-01-22 16:30:16\n2024-01-22\t00D56D6C-D6C9-4FCC-B817-A34B91E53BAF\t2024-01-22 16:54:23\n2024-01-22\t00D799A1-6384-4251-9A34-2671C9B9B873\t2024-01-22 08:46:04\n2024-01-22\t00D79DEE-38A6-4ADA-9D8A-BCB069FD7BD1\t2024-01-22 16:58:02\n2024-01-22\t00D85D10-718A-4771-9E68-5D0EA9939B10\t2024-01-22 20:02:25\n2024-01-22\t00D8E729-281D-4BA7-B65B-92D0EBB52495\t2024-01-22 12:42:56\n2024-01-22\t00DA524A-BEFF-4FCC-9956-4D4CD250C0F1\t2024-01-22 12:05:47\n2024-01-22\t00DB40B2-1ACB-4DA6-AA69-E65479FF9FC7\t2024-01-22 21:48:53\n2024-01-22\t00DB99F3-F2E7-4050-A7B6-35F139809B03\t2024-01-22 16:37:09\n2024-01-22\t00DBD5E8-5B9C-41A6-95B8-4621FFE7FC9C\t2024-01-22 17:36:55\n2024-01-22\t00DEEBD7-8176-45C7-B9A3-E477F301950B\t2024-01-22 17:18:20\n2024-01-22\t00DF79D2-C156-4D6F-A54C-825638932BD8\t2024-01-22 00:42:03\n2024-01-22\t00DFD51F-D8B0-4129-B022-850A79978E4E\t2024-01-22 00:39:36\n2024-01-22\t00DFEF02-F39B-4BC2-A0DC-52C8C2E70957\t2024-01-22 02:27:19\n2024-01-22\t00E03532-8C45-4C0D-AAEF-1670CF397FA5\t2024-01-22 14:23:08\n2024-01-22\t00E10439-4165-4421-8F56-C14825F4DC1A\t2024-01-22 12:50:48\n2024-01-22\t00E1E156-8463-4C1F-B28C-0E7E6C8CAEC5\t2024-01-22 16:09:08\n2024-01-22\t00E1F805-9F5B-4425-85D6-F8D663D36D45\t2024-01-22 03:41:01\n2024-01-22\t00E22853-2886-4DB6-BA8D-FFF454D0672E\t2024-01-22 08:23:41\n2024-01-22\t00E23BE7-73A8-4A3C-BCFC-A4C84EC2CFC2\t2024-01-22 16:30:56\n2024-01-22\t00E24482-D849-4E9D-9610-668A9DEF9D56\t2024-01-22 00:07:48\n2024-01-22\t00E27A3C-33D8-4CA2-B4FF-586CDCF993D4\t2024-01-22 16:35:44\n2024-01-22\t00E3C1DF-5E54-4B3C-AF38-EC9BB49A4959\t2024-01-22 16:44:37\n2024-01-22\t00E3E752-88ED-4354-A851-0A8B772D00C9\t2024-01-22 21:16:02\n2024-01-22\t00E5532F-4245-4AF4-B545-1CC098DB8106\t2024-01-22 16:36:58\n2024-01-22\t00E59CA0-423E-4423-B4FE-C27D1030D12F\t2024-01-22 16:45:43\n2024-01-22\t00E622B4-8185-4FEF-80DB-A26FC8425301\t2024-01-22 16:31:51\n2024-01-22\t00E65B63-97F9-41BC-BD21-40CB597AF7A2\t2024-01-22 08:22:56\n2024-01-22\t00E6FA82-03BC-421D-804A-64097508F43C\t2024-01-22 21:47:42\n2024-01-22\t00E74D63-C369-4FCA-BC13-59E81084A634\t2024-01-22 08:46:00\n2024-01-22\t00E7C472-05A9-474C-9250-41200BEDFD1D\t2024-01-22 12:49:53\n2024-01-22\t00E7F18B-C6E5-42CD-A7CC-82A249D8A455\t2024-01-22 16:14:24\n2024-01-22\t00EA1516-EAE9-4E7C-8CDC-9556273711CD\t2024-01-22 16:30:21\n2024-01-22\t00EB387E-39FD-40C0-BDC8-EBA4297A6938\t2024-01-22 16:30:37\n2024-01-22\t00EC8EFF-45CC-48BF-AF0E-F4B6BAC846FB\t2024-01-22 16:56:33\n2024-01-22\t00ECD738-8502-4B2F-B2D1-4074E53596DF\t2024-01-22 16:35:01\n2024-01-22\t00ED0591-9260-4730-89DD-7A1F8161A772\t2024-01-22 17:08:38\n2024-01-22\t00EF563E-5165-4C47-9638-4CE85D1B453A\t2024-01-22 21:43:21\n2024-01-22\t00F0AD8D-6E7A-428C-8AB2-98B3300DFBFF\t2024-01-22 17:04:13\n2024-01-22\t00F15810-2916-4081-BF28-8023CFA59562\t2024-01-22 11:56:13\n2024-01-22\t00F1C7EA-F29C-4D4B-8131-EF0FE098DA3C\t2024-01-22 17:06:42\n2024-01-22\t00F1CFDA-0AD6-4580-8999-AFF450DD80AD\t2024-01-22 04:05:23\n2024-01-22\t00F2A456-AE35-4EC7-A7BF-926FC5809561\t2024-01-22 18:09:42\n2024-01-22\t00F366F9-E802-4402-904A-2D4DA9254FA3\t2024-01-22 17:02:21\n2024-01-22\t00F3B2CD-2A01-4F5C-BFB0-46AF2C930E43\t2024-01-22 16:37:46\n2024-01-22\t00F3F821-9792-4C4B-9F77-673DFEA7D3B7\t2024-01-22 04:49:04\n2024-01-22\t00F4000A-3041-4499-B849-F713F24B1751\t2024-01-22 14:11:34\n2024-01-22\t00F40F50-1D0A-4A5B-85C6-256A605A31B0\t2024-01-22 16:20:36\n2024-01-22\t00F46ABA-2001-4BDA-9258-48C9F8FE98E2\t2024-01-22 16:07:16\n2024-01-22\t00F5FD7F-CB62-4EAA-9683-C9D115281384\t2024-01-22 14:09:40\n2024-01-22\t00F645CA-48B0-45E4-BA35-7C81A1E3C386\t2024-01-22 17:07:42\n2024-01-22\t00F6692A-CDBE-4781-BDAE-CD6B3634D4C6\t2024-01-22 16:35:36\n2024-01-22\t00F6AB51-ECB2-4456-9340-F5694BFE5032\t2024-01-22 17:55:54\n2024-01-22\t00F73BF1-15C3-4611-8E01-55865DF200DD\t2024-01-22 16:36:49\n2024-01-22\t00F8E41D-9BBA-4DA4-A31A-F02F8A152C7F\t2024-01-22 16:41:01\n2024-01-22\t00F9F5A0-2816-488F-AEEF-6EE5B052F7A5\t2024-01-22 16:25:46\n2024-01-22\t00FA0214-DB59-4685-A02F-E55EF5F74690\t2024-01-22 16:38:20\n2024-01-22\t00FA2E56-16ED-46B5-A8F5-22839FD1DF72\t2024-01-22 16:30:43\n2024-01-22\t00FB3FA1-3F7C-4240-BD75-8DD45C23AEDE\t2024-01-22 16:39:39\n2024-01-22\t00FB7A9B-4355-4EFE-9509-4116089A0A79\t2024-01-22 10:41:22\n2024-01-22\t00FCA8AC-B95E-46A1-BCA4-C2B9C8A69EC2\t2024-01-22 16:39:54\n2024-01-22\t00FCE197-304A-40A8-823D-259353DBEB9B\t2024-01-22 16:56:34\n2024-01-22\t00FD9E12-193A-4E09-A79F-525419ED5372\t2024-01-22 17:10:28\n2024-01-22\t00FFAA85-1783-464A-AA86-1DB9CE644D23\t2024-01-22 17:46:33\n2024-01-22\t00a003bc-65a2-4920-838e-404c8ac88164\t2024-01-22 22:45:12\n2024-01-22\t00a0d2e0-06d7-4ca1-bc9b-07ff184cade2\t2024-01-22 16:42:00\n2024-01-22\t00a17b2e-1ac0-42c1-8c91-1f14f4a7aa06\t2024-01-22 14:29:44\n2024-01-22\t00a1897f-276e-44a2-931a-59ac6fad502f\t2024-01-22 14:02:39\n2024-01-22\t00a2c46f-ee1d-4c84-8403-4f1a7eb3dd86\t2024-01-22 03:12:28\n2024-01-22\t00a2f0ef-73c3-41a8-b5c2-62f466bb4fe9\t2024-01-22 15:50:48\n2024-01-22\t00a2f4de-99e6-4a73-bfb9-e0bddde66faf\t2024-01-22 23:07:49\n2024-01-22\t00a32b3a-2a5a-430e-b7a5-208b650756a1\t2024-01-22 11:13:39\n2024-01-22\t00a44507-f14b-4f06-b959-228eb442671b\t2024-01-22 18:51:29\n2024-01-22\t00a45b92-16da-4d4a-810d-7728e76d863d\t2024-01-22 18:21:53\n2024-01-22\t00a532bf-41ae-4cff-9b3d-ee076ef4c747\t2024-01-22 17:07:42\n2024-01-22\t00a54d48-6733-4eb6-9e30-c08ac6f0e8f7\t2024-01-22 11:06:17\n2024-01-22\t00a552c2-9ef4-48f0-a76e-cd6bbae04e31\t2024-01-22 12:24:18\n2024-01-22\t00a7360c-900e-4fca-9f35-9e4b4adfed14\t2024-01-22 19:25:22\n2024-01-22\t00a8b719-ff96-4266-85f2-b77e79c0cc7a\t2024-01-22 07:54:00\n2024-01-22\t00a9462a-fe1d-4141-8d06-4222db2afcf1\t2024-01-22 16:34:45\n2024-01-22\t00a9842d-1157-4243-8ace-763d17e890fe\t2024-01-22 16:41:03\n2024-01-22\t00aa1f75-86e9-454c-9c50-9a760af420db\t2024-01-22 17:57:23\n2024-01-22\t00aa57ca-a591-4dbf-995d-a3a9ba62a8eb\t2024-01-22 17:51:24\n2024-01-22\t00aaa37f-4be3-47d7-a0dc-f43a8384181e\t2024-01-22 21:05:55\n2024-01-22\t00ab846c-ca3f-4dfe-b1f9-40929be52a6b\t2024-01-22 00:19:53\n2024-01-22\t00ac0b67-efd5-48be-ac10-658beb79fda7\t2024-01-22 11:35:52\n2024-01-22\t00ac55e3-ed42-4ac9-a4c5-7a5a8f40f1d6\t2024-01-22 04:34:29\n2024-01-22\t00ac59ff-92af-4e19-a983-72e763997383\t2024-01-22 16:16:01\n2024-01-22\t00ace55b-1934-4b69-a149-10e664af251e\t2024-01-22 16:52:08\n2024-01-22\t00ada8f6-7c4c-40fd-afb2-3b4b47641454\t2024-01-22 04:00:27\n2024-01-22\t00adbd93-e05f-4678-b84d-9468fd278e45\t2024-01-22 13:03:51\n2024-01-22\t00ae187c-c1f5-4b8c-b9e9-0057bea52f03\t2024-01-22 00:17:57\n2024-01-22\t00ae6d99-d1ba-438d-8d52-679d685381cb\t2024-01-22 00:13:53\n2024-01-22\t00afa4f4-d26b-4479-a47c-efc81f03b0a8\t2024-01-22 15:45:08\n2024-01-22\t00b01f6f-e089-4597-8f64-c80b54fc10c0\t2024-01-22 22:21:40\n2024-01-22\t00b236cc-8077-450c-9f7d-88297d44dc28\t2024-01-22 12:53:58\n2024-01-22\t00b23c50-9385-435d-84fe-c36283a59963\t2024-01-22 17:03:17\n2024-01-22\t00b24397-e0ea-41dd-ba85-e8f91e7a0a20\t2024-01-22 00:16:32\n2024-01-22\t00b277ae-1a70-47ef-8c01-8e5f0917c6cf\t2024-01-22 05:19:09\n2024-01-22\t00b2add2-23fa-40ba-91d3-13920103ef1d\t2024-01-22 08:20:07\n2024-01-22\t00b35310-0f81-47cf-881a-66f1d0930b35\t2024-01-22 22:35:40\n2024-01-22\t00b48517-edd1-4465-9c41-0c6bfcd02f0d\t2024-01-22 19:18:59\n2024-01-22\t00b61f3f-063e-4521-b670-363dfb4a2fb5\t2024-01-22 16:58:13\n2024-01-22\t00b6e504-78a6-4726-8386-94432bbb3a53\t2024-01-22 22:50:45\n2024-01-22\t00b78509-dc8c-482f-bca5-af5f5bfb8e77\t2024-01-22 16:09:05\n2024-01-22\t00b870c2-dcd1-442f-899b-0e5e75380ec1\t2024-01-22 16:25:28\n2024-01-22\t00b894af-ea68-4484-b9bf-753142c7ba65\t2024-01-22 09:44:53\n2024-01-22\t00b8b987-9051-43a5-bf81-6c36b33a9674\t2024-01-22 19:37:52\n2024-01-22\t00b8fe3a-984b-4756-8af9-221729e65d30\t2024-01-22 01:34:27\n2024-01-22\t00b94c7b-f1cf-4982-949e-4aa26251a6a3\t2024-01-22 08:00:51\n2024-01-22\t00b9760a-8a79-49de-a118-15bb2b738a50\t2024-01-22 06:54:22\n2024-01-22\t00b98606-9fc8-460a-90e1-afd3cf5dc6b7\t2024-01-22 21:21:05\n2024-01-22\t00ba1a5e-f43d-40b9-8d97-b8e4500ec403\t2024-01-22 17:56:07\n2024-01-22\t00ba29e6-b6c9-48c4-81c8-f4d0555f9cc6\t2024-01-22 13:17:59\n2024-01-22\t00bac894-a1e9-46b9-8315-261c008cb8a6\t2024-01-22 13:18:05\n2024-01-22\t00bac8e8-8062-4018-9252-c608967672d1\t2024-01-22 09:14:20\n2024-01-22\t00bc69d6-f987-4a76-bc20-8280acbc6f40\t2024-01-22 01:21:37\n2024-01-22\t00bc729b-5f35-401f-bf23-053dd63ff25c\t2024-01-22 15:21:05\n2024-01-22\t00bcd454-3054-47f7-b7c8-66ee56b4031c\t2024-01-22 16:44:04\n2024-01-22\t00bdbf68-6a2a-40fd-b705-e5ae1c1faed9\t2024-01-22 13:37:08\n2024-01-22\t00bde555-6a37-490e-90a8-90d968e9b128\t2024-01-22 05:57:29\n2024-01-22\t00bf1690-9d1d-4748-8d4d-95e196fe5202\t2024-01-22 21:57:21\n2024-01-22\t00bfadb6-a7c0-46d9-8185-2f335f5a535b\t2024-01-22 10:30:23\n2024-01-22\t00bfaecf-2631-4fef-9707-385700d2c052\t2024-01-22 02:22:33\n2024-01-22\t00c12906-7025-4f5f-bd62-7153083c4a23\t2024-01-22 11:16:47\n2024-01-22\t00c1ff99-be08-4fc7-b915-a71d1815f88b\t2024-01-22 23:30:44\n2024-01-22\t00c30001-64e3-4efd-98ac-b8fe685e29b8\t2024-01-22 11:41:11\n2024-01-22\t00c4277f-465e-4e6e-a806-33af2f774009\t2024-01-22 00:06:53\n2024-01-22\t00c59022-d443-45b3-a4d0-ac666790b2b5\t2024-01-22 11:06:53\n2024-01-22\t00c6f7a9-4c0e-4f1f-a2c6-1325d49f77d9\t2024-01-22 18:50:42\n2024-01-22\t00c71b95-6f3d-4ea6-9d6d-52ab01040f77\t2024-01-22 03:06:26\n2024-01-22\t00c7a540-7e6b-4201-b08b-e1dc0e4758f2\t2024-01-22 21:27:22\n2024-01-22\t00c7ad6f-ac42-4a33-a3f2-ebcf572f59c0\t2024-01-22 15:48:02\n2024-01-22\t00c7ed28-0d9b-4b79-9e33-6a23f6e9d2a2\t2024-01-22 01:48:31\n2024-01-22\t00c87ed1-a0b9-4cea-a916-5904e7f0969b\t2024-01-22 04:56:39\n2024-01-22\t00c90d3a-ea23-4b1a-bdd7-ffbf92d96bfc\t2024-01-22 21:56:37\n2024-01-22\t00c9553a-5412-48c4-bcd0-b8239f61b6e5\t2024-01-22 02:07:07\n2024-01-22\t00c960b3-7b9f-4516-99e2-185c4f758cfe\t2024-01-22 11:27:06\n2024-01-22\t00c9e602-2410-4191-93af-e095c087ef56\t2024-01-22 09:42:15\n2024-01-22\t00ca1329-d628-4336-9b19-d729dbc684bb\t2024-01-22 19:26:49\n2024-01-22\t00cad868-993b-44a6-be83-dfa20bd7f01e\t2024-01-22 23:38:46\n2024-01-22\t00cb8025-96e7-41df-af77-e63db8971bd5\t2024-01-22 00:25:46\n2024-01-22\t00cb8375-083c-4083-997d-cb5bb9b52258\t2024-01-22 18:07:30\n2024-01-22\t00cbdfa3-9fd9-431b-bdcb-82d464279d6a\t2024-01-22 10:47:04\n2024-01-22\t00cc36dd-269c-4814-9648-962b70e100b8\t2024-01-22 21:33:40\n2024-01-22\t00ccf9e6-c011-4782-b07d-f252d0ab0b71\t2024-01-22 10:12:14\n2024-01-22\t00cd2c70-9e0a-436c-b16e-807bbbace1d0\t2024-01-22 15:54:52\n2024-01-22\t00cdbec6-db35-456d-9025-4efe4d608bef\t2024-01-22 10:44:32\n2024-01-22\t00ce4c7b-4d62-42e9-bc3b-950a9ee9d435\t2024-01-22 12:56:13\n2024-01-22\t00ce9500-d178-458c-9526-75dfe5f8ddbe\t2024-01-22 21:37:49\n2024-01-22\t00cef443-d836-48ef-b51b-54fdb9487958\t2024-01-22 19:35:05\n2024-01-22\t00cfca51-9262-4752-a4b1-b06161426cac\t2024-01-22 11:31:57\n2024-01-22\t00d19434-6431-4479-9641-00893f1e12e6\t2024-01-22 20:49:37\n2024-01-22\t00d2d0ec-255f-4b2a-8541-a3252060985e\t2024-01-22 02:43:43\n2024-01-22\t00d4bc2c-10c3-42bd-81de-4e3f543c8ea1\t2024-01-22 17:50:54\n2024-01-22\t00d4d61e-b729-427f-9c53-53a04e9f7941\t2024-01-22 10:33:46\n2024-01-22\t00d518a6-3818-4a8f-9c89-c1afa2981dae\t2024-01-22 19:51:43\n2024-01-22\t00d58245-b4ff-4824-9329-b856c26f7273\t2024-01-22 15:38:49\n2024-01-22\t00d68d32-f9ed-4c29-8105-7c40cc9e1b1c\t2024-01-22 16:15:24\n2024-01-22\t00d73618-60c0-4735-beef-844bda85ffda\t2024-01-22 13:09:33\n2024-01-22\t00d760e4-7265-4724-843d-c72b2375cb1d\t2024-01-22 12:50:24\n2024-01-22\t00d7e0b8-b0c6-471b-a731-1c50e544d215\t2024-01-22 11:26:44\n2024-01-22\t00d80c12-089f-4a36-b904-753a94ef6b26\t2024-01-22 07:23:17\n2024-01-22\t00d8562f-7f10-48b0-8476-506d19b0d9d1\t2024-01-22 19:15:53\n2024-01-22\t00d94919-9705-4cd9-8705-a7b4d77b1ffc\t2024-01-22 00:53:25\n2024-01-22\t00d993a5-f3b0-4f7b-8d64-68f067a9e00b\t2024-01-22 09:58:04\n2024-01-22\t00da4157-c641-421b-8b65-9f4d51618f33\t2024-01-22 16:21:06\n2024-01-22\t00daaeae-da78-40b1-ad86-3746c289f7cf\t2024-01-22 15:01:08\n2024-01-22\t00db220c-69c0-4c45-93e5-02393e266d7a\t2024-01-22 17:37:50\n2024-01-22\t00dc51f3-6916-4329-ba40-868b6ba519b2\t2024-01-22 14:46:41\n2024-01-22\t00dd318c-230b-4441-961f-9197f862710f\t2024-01-22 00:54:21\n2024-01-22\t00dd58dc-b367-4cda-85d7-a8edb9e62419\t2024-01-22 09:57:35\n2024-01-22\t00dd8f6b-95ea-4f3c-9597-dc618f88038b\t2024-01-22 01:08:31\n2024-01-22\t00ddae19-f509-4249-89f4-6a8e13d25bc3\t2024-01-22 20:32:21\n2024-01-22\t00de153f-9652-45c0-aed5-319012270a26\t2024-01-22 11:03:00\n2024-01-22\t00df79a8-0e4d-4fb6-abcf-ed794bb487fc\t2024-01-22 19:37:16\n2024-01-22\t00df7a2e-9b95-44be-8201-27b33edebea8\t2024-01-22 23:43:29\n2024-01-22\t00df8951-e323-4063-bb50-94df97a1cc94\t2024-01-22 01:20:52\n2024-01-22\t00dfec0d-a925-412f-8171-5881eb22ccbd\t2024-01-22 07:55:51\n2024-01-22\t00e0153c-19b2-48e7-9a6b-0a89540b2ee2\t2024-01-22 17:05:10\n2024-01-22\t00e03b65-a3fa-452c-abbd-5510c85920e5\t2024-01-22 21:14:41\n2024-01-22\t00e08a5d-304e-4e53-ba8a-b77de2ba58ce\t2024-01-22 17:01:49\n2024-01-22\t00e1637b-4cde-44b5-9d12-9925b99e739a\t2024-01-22 08:34:58\n2024-01-22\t00e261bf-0c85-49b6-9726-bd36c622377c\t2024-01-22 11:47:22\n2024-01-22\t00e28e3f-3617-4b0b-a0e9-6804ecd90ef8\t2024-01-22 18:42:52\n2024-01-22\t00e3a465-fb6d-4434-96ef-89552488856d\t2024-01-22 06:34:48\n2024-01-22\t00e40e43-fe7f-4139-9aeb-c410b41861ae\t2024-01-22 10:03:40\n2024-01-22\t00e40e76-81df-4c8c-9ef9-6e6a9c2c47b1\t2024-01-22 10:31:40\n2024-01-22\t00e45a00-a55b-4d33-92db-cf98d905a9c2\t2024-01-22 18:04:01\n2024-01-22\t00e658f4-4f9a-488a-b0bb-82115cc2942b\t2024-01-22 17:26:46\n2024-01-22\t00e65b90-8fa3-4891-a77e-76856ae33277\t2024-01-22 23:26:23\n2024-01-22\t00e76cab-26a6-494f-a98a-1d88672f21f6\t2024-01-22 18:25:56\n2024-01-22\t00e78a5c-738b-483d-b6fd-9a5421912cde\t2024-01-22 10:59:12\n2024-01-22\t00e7f5e6-9aa8-4d0f-b849-1cadd1aa9ca6\t2024-01-22 11:59:37\n2024-01-22\t00e8217e-7a04-40c5-bdc1-04c265832a6a\t2024-01-22 09:52:11\n2024-01-22\t00e886ee-9790-4605-a2e8-3f162957b599\t2024-01-22 03:01:54\n2024-01-22\t00e8959d-e296-46eb-a5d4-61572ed3da48\t2024-01-22 16:36:54\n2024-01-22\t00e8a222-a90f-4937-a9b7-91c25ac23d03\t2024-01-22 07:43:03\n2024-01-22\t00ead9f4-ec50-4250-82a7-239568ad3cb7\t2024-01-22 21:24:25\n2024-01-22\t00ebb418-d9e9-4ff3-8236-75168f607b1d\t2024-01-22 12:34:53\n2024-01-22\t00ebe535-74ea-47bd-863d-ac451dba941d\t2024-01-22 17:26:08\n2024-01-22\t00ecba4f-1eb7-4c9f-aacd-47d8ea89cd7d\t2024-01-22 08:23:19\n2024-01-22\t00ed99f6-d6d9-419a-8d4b-a43f7f1b1a6c\t2024-01-22 14:08:55\n2024-01-22\t00ee3942-cdd7-4840-bf1c-af06c0876565\t2024-01-22 20:14:32\n2024-01-22\t00ee8f57-1f9d-4c0c-8f25-73201936444e\t2024-01-22 18:15:17\n2024-01-22\t00eee59a-f6d6-4511-b0d1-58af0c92d706\t2024-01-22 16:03:23\n2024-01-22\t00f0fb02-e11c-41e6-a9c5-6bff38474a31\t2024-01-22 14:51:35\n2024-01-22\t00f10889-d178-4460-9fa1-a3008ca0cd42\t2024-01-22 13:48:11\n2024-01-22\t00f112bf-da0d-4b5b-b1c8-b9452e44184e\t2024-01-22 16:19:27\n2024-01-22\t00f129ec-6385-4756-8a54-1939398ad2e5\t2024-01-22 00:06:45\n2024-01-22\t00f1cb76-8e73-416b-b628-c0c1b08f105a\t2024-01-22 19:22:42\n2024-01-22\t00f1f420-2b53-4b59-aaaa-0e232ad19e57\t2024-01-22 12:59:20\n2024-01-22\t00f2db8f-a86e-4249-bcdb-b92ccbb4b7a5\t2024-01-22 07:04:35\n2024-01-22\t00f368e5-6c85-4d5d-bc28-7f9eff192579\t2024-01-22 13:38:30\n2024-01-22\t00f38cd3-aa22-492b-82d6-eb5c58c6e741\t2024-01-22 21:20:59\n2024-01-22\t00f3fad1-700b-4a5a-a0ca-2f096a094a36\t2024-01-22 21:42:46\n2024-01-22\t00f52067-ec15-4a84-a799-ad5ee3f73e56\t2024-01-22 22:02:13\n2024-01-22\t00f54288-1dd1-4b98-bfd2-d508ccdb256b\t2024-01-22 22:41:38\n2024-01-22\t00f64a2e-24b2-4e62-b53d-041c544bd0cf\t2024-01-22 20:21:29\n2024-01-22\t00f7007a-a721-46f2-aa0e-869f16ffb503\t2024-01-22 07:43:41\n2024-01-22\t00f7a5df-7367-427d-8452-460b947a7596\t2024-01-22 21:47:19\n2024-01-22\t00f7b691-1242-4a52-987b-7e13e2d6ef64\t2024-01-22 14:43:57\n2024-01-22\t00f7e682-e2e7-41f4-8bd8-be3558f22e08\t2024-01-22 10:56:19\n2024-01-22\t00f7f9e2-935e-4938-92b2-835d1bad41e9\t2024-01-22 15:53:52\n2024-01-22\t00f84a68-084e-4edb-8468-d4e4a4c819a8\t2024-01-22 11:01:07\n2024-01-22\t00f97035-05b5-465a-b2eb-72fdd4857aa2\t2024-01-22 15:15:13\n2024-01-22\t00f992e6-28b4-4621-aedb-99a8f860c8e8\t2024-01-22 00:14:46\n2024-01-22\t00f9d09e-212d-4ae7-9fef-b018343cd1a0\t2024-01-22 00:00:50\n2024-01-22\t00fa62d1-3343-41bb-a913-9d8fe9aca8a5\t2024-01-22 20:50:29\n2024-01-22\t00fb9b8f-5b77-477c-b4d4-a64030e20669\t2024-01-22 18:00:05\n2024-01-22\t00fbb692-e7a0-4cd5-97c4-10eb71545789\t2024-01-22 15:23:39\n2024-01-22\t00fc0685-6b44-417f-8b53-1214ac9db86a\t2024-01-22 17:54:36\n2024-01-22\t00fc1dfc-8747-400f-905a-8a87e041469e\t2024-01-22 10:26:06\n2024-01-22\t00fc8adf-befc-4c1f-833f-b7d73226917d\t2024-01-22 15:40:50\n2024-01-22\t00fcac80-8749-4e07-99f0-35f12f55dc66\t2024-01-22 16:53:17\n2024-01-22\t00fcd309-e21d-4035-87e8-69470d385803\t2024-01-22 17:03:48\n2024-01-22\t00fce2cb-a78e-4dbb-9077-130f1ae01a0c\t2024-01-22 05:14:27\n2024-01-22\t00fd8d7e-ae4c-431f-b0d2-11e9f3ca2b2c\t2024-01-22 16:04:47\n2024-01-22\t00fdc05f-431b-4ccd-8a25-db46273a93e5\t2024-01-22 20:00:32\n2024-01-22\t00fed4af-ece8-44ec-b805-d4743a87be7c\t2024-01-22 20:43:18\n2024-01-22\t00fef3f6-24c5-49da-8937-f32591b2c683\t2024-01-22 23:24:55\n2024-01-22\t00ff6d5e-02fd-4fec-9fe5-e301f06ea265\t2024-01-22 10:27:36\n2024-01-22\t00ffd808-39a8-483f-a313-ec441adc7175\t2024-01-22 18:05:02\n2024-01-22\t01007D51-00D1-441A-93FB-13AF13721122\t2024-01-22 11:29:32\n2024-01-22\t0100A61B-8B13-42F2-A586-6DF87302B6B6\t2024-01-22 18:48:29\n2024-01-22\t0100DDA9-F1AC-487B-B104-C9217B0D41A2\t2024-01-22 01:29:18\n2024-01-22\t0100e0da-b8b3-4ef7-916d-34fd7db5fcc2\t2024-01-22 10:22:31\n2024-01-22\t0100e7ca-c83d-4524-ba18-05cdea0e195e\t2024-01-22 22:08:10\n2024-01-22\t01010190-373D-49D1-9AF0-2D5C702705AE\t2024-01-22 17:11:27\n2024-01-22\t01012E80-A9D2-42B0-8F76-1405BA4C9029\t2024-01-22 20:36:44\n2024-01-22\t01013DC7-13AE-4718-A257-387FF06B17C2\t2024-01-22 11:59:20\n2024-01-22\t0101F7ED-DD65-4F29-B452-9169D6DD0EEA\t2024-01-22 21:43:39\n2024-01-22\t01021f12-8d7c-4b85-a247-a0e81a882eaf\t2024-01-22 15:51:59\n2024-01-22\t01023EB7-2E3F-4A6F-9D8A-252AE6971247\t2024-01-22 19:20:35\n2024-01-22\t010255c8-b24c-49c3-9c79-346b3a1c7616\t2024-01-22 14:12:45\n2024-01-22\t0102FD7B-3827-459F-BE56-CE85578EC9F1\t2024-01-22 16:43:12\n2024-01-22\t0102a08a-df1d-4d54-8d9a-ae587abb3631\t2024-01-22 19:23:59\n2024-01-22\t0102eb9f-39b6-4e7c-b8fb-484943680663\t2024-01-22 15:14:39\n2024-01-22\t0103048E-5F28-4608-BE9F-F1629088A380\t2024-01-22 18:22:54\n2024-01-22\t010337E6-A898-4258-8AA9-357E94BF33E9\t2024-01-22 18:03:39\n2024-01-22\t010358E3-C774-46C0-934D-7DF50294B5C4\t2024-01-22 12:52:10\n2024-01-22\t0103A08B-7528-498E-8940-8A29B046F3B6\t2024-01-22 21:52:16\n2024-01-22\t0103EF34-1DC1-4F30-B7E1-457A2ECE43BD\t2024-01-22 16:36:37\n2024-01-22\t0103ad82-cd51-4a8a-a0b8-3983af6e68d9\t2024-01-22 15:18:50\n2024-01-22\t01047c17-020b-4308-9675-bf10ad657b02\t2024-01-22 21:35:48\n2024-01-22\t0104B6EF-FF6E-41BD-A68B-DBA6ED853DFE\t2024-01-22 08:02:32\n2024-01-22\t0104c4e6-3536-4ffc-8a95-038a6b2cefa6\t2024-01-22 14:51:38\n2024-01-22\t01054f2f-5d83-46c8-b3e4-03d7f3e4b830\t2024-01-22 20:47:59\n2024-01-22\t0105670B-895F-4093-ADE5-30BDFAF8F0BB\t2024-01-22 23:13:30\n2024-01-22\t010595e4-24d3-4e5b-9580-df457007ca82\t2024-01-22 18:13:49\n2024-01-22\t01062A47-2BD9-4F3E-8AEB-1EBFEE7EAB9F\t2024-01-22 13:07:59\n2024-01-22\t01066edb-ac34-4baa-b8e5-00234f2bd9da\t2024-01-22 12:13:43\n2024-01-22\t0106e34f-f4ed-44c1-b883-e6ff057777dd\t2024-01-22 18:56:59\n2024-01-22\t010719F2-E7E6-480E-A52C-24428A165F10\t2024-01-22 11:13:40\n2024-01-22\t01077689-0911-419b-af5d-761b918d3d80\t2024-01-22 16:08:06\n2024-01-22\t01079920-D795-4640-8264-9D05DB5A8E75\t2024-01-22 00:51:30\n2024-01-22\t0107c329-ef6b-48a7-9f1e-01f252c26898\t2024-01-22 18:22:53\n2024-01-22\t0107d18e-85d1-4804-948f-66fab2e3cb8c\t2024-01-22 18:57:19\n2024-01-22\t01080198-bf9d-46dd-964a-674ac8605b9f\t2024-01-22 08:51:16\n2024-01-22\t0108CF5C-AD0F-4CC1-B307-A0160002E951\t2024-01-22 16:32:46\n2024-01-22\t010917D5-9087-4AD6-918A-5C15783F2440\t2024-01-22 11:56:20\n2024-01-22\t01099DD8-AD99-452D-840F-5B4828438C7C\t2024-01-22 21:07:20\n2024-01-22\t010AC176-E600-4AF8-92E9-B8D845D3E50A\t2024-01-22 22:11:54\n2024-01-22\t010B2912-30E5-418A-8F2B-819A17AC436A\t2024-01-22 16:15:31\n2024-01-22\t010B512D-C009-4C4F-BB54-FCDB6F99D657\t2024-01-22 19:40:31\n2024-01-22\t010E4055-1DE6-45AE-97AD-BD94A15E28D8\t2024-01-22 16:56:31\n2024-01-22\t010FACFF-A3A8-4E52-9BF3-CD32C5AFFF8B\t2024-01-22 17:11:27\n2024-01-22\t010FBA2E-2525-4943-B9A6-3C541EA2A8B8\t2024-01-22 16:37:28\n2024-01-22\t010FDD5B-5FAE-4347-9E3C-5199CE8F0673\t2024-01-22 18:24:43\n2024-01-22\t010a99e0-2ffd-48b0-a515-4322840b59b0\t2024-01-22 12:28:06\n2024-01-22\t010ac72c-5c67-45d0-9db1-cec5488b2da5\t2024-01-22 20:46:54\n2024-01-22\t010c5585-a820-4e4a-9316-ebb4748f2bbb\t2024-01-22 19:10:19\n2024-01-22\t010cd3eb-e106-4565-a865-8661894b1ee2\t2024-01-22 06:45:29\n2024-01-22\t010d060d-df0a-4055-b951-7ac5c394830e\t2024-01-22 23:32:46\n2024-01-22\t010d0862-67c7-4c77-9c97-becd03173316\t2024-01-22 03:13:28\n2024-01-22\t010d87c1-81a0-4b13-a3ec-d8f643e0df45\t2024-01-22 10:35:58\n2024-01-22\t010e0ea8-7fdf-4a19-b643-10f4455b2b32\t2024-01-22 20:31:33\n2024-01-22\t010f5af9-11d8-49ad-8ed6-b2db6283ed69\t2024-01-22 21:41:14\n2024-01-22\t01104244-9dd2-41c7-9767-a8ae8b9523ee\t2024-01-22 16:50:14\n2024-01-22\t0110482d-a9c6-40f3-957d-ff9d5308746a\t2024-01-22 10:56:36\n2024-01-22\t01106315-6ffa-472b-8887-2cd3e308fd0c\t2024-01-22 17:15:59\n2024-01-22\t0110b497-fdb3-40ec-b75f-edd0ad91fc0e\t2024-01-22 09:18:50\n2024-01-22\t0110c8d3-db71-40c5-8def-c964b8a410dc\t2024-01-22 22:18:54\n"
+          },
+          {
+            "type": "HTML",
+            "data": "<div class=\"result-alert alert-warning\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>Output is truncated</strong> to 1000 rows. Learn more about <strong>zeppelin.spark.maxResult</strong></div>\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=52",
+              "$$hashKey": "object:12015"
+            },
+            {
+              "jobUrl": "http://ip-172-31-18-104.ap-northeast-2.compute.internal:4040/jobs/job?id=53",
+              "$$hashKey": "object:12016"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_1262566772",
+      "id": "20240323-004941_1338571668",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "dateStarted": "2024-03-24T10:08:28+0000",
+      "dateFinished": "2024-03-24T10:08:31+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:10064"
+    },
+    {
+      "text": "val alluser=spark.sql(\"\"\"select adid \nfrom logs\ngroup by adid  \"\"\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T10:02:31+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_796622117",
+      "id": "20240323-004941_754505413",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "status": "READY",
+      "$$hashKey": "object:10065"
+    },
+    {
+      "text": "%python\nlogsDFAll.sample(false, 0.3).count",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-23T00:49:41+0000",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/text",
+        "editorHide": false,
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_322538678",
+      "id": "20240323-004941_180466588",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "status": "READY",
+      "$$hashKey": "object:10066"
+    },
+    {
+      "text": "%python\nalluser.count",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-23T00:49:41+0000",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/text",
+        "editorHide": false,
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_1509135662",
+      "id": "20240323-004941_1683074531",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "status": "READY",
+      "$$hashKey": "object:10067"
+    },
+    {
+      "text": "%python\n%%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-23T00:49:41+0000",
+      "progress": 0,
+      "config": {
+        "editorMode": "ace/mode/text",
+        "editorHide": false,
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711154981728_874814094",
+      "id": "20240323-004941_1825439398",
+      "dateCreated": "2024-03-23T00:49:41+0000",
+      "status": "READY",
+      "$$hashKey": "object:10068"
+    }
+  ],
+  "name": "Marketing",
+  "id": "2JT38DH9Y",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/Marketing"
+}
