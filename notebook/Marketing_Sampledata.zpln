@@ -1,0 +1,289 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "\n val log1=spark.read.textFile(\"s3://fc-storydata/logs/*.gz\")",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-25T11:18:28+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mlog1\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711365382307_545446164",
+      "id": "20240323-004941_810463164",
+      "dateCreated": "2024-03-25T11:16:22+0000",
+      "status": "READY",
+      "$$hashKey": "object:42283"
+    },
+    {
+      "text": "\nlog1.take(10).foreach(println)",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-25T11:16:22+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "5308579580663|bbfdfe3b-a1af-4ab3-bca0-a7bc8facde4d|0df72fbb-f1df-4fc5-b7a5-7ee4778684bd|view_item|ZigbangApp/4.13.22 (com.chbreeze.jikbang4a; build:239; Android 7.0; SM-G930L; RELEASE)|182.224.45.98|101c79938cc1f258723f91921e3078ea2e2af4e7268a38d308b75eabd344d2ef1fab396cbd78e810d9a991b4ba292a418bbef43a571a1abc46e043aa73e9b89e|1516913010218|2024-01-26 05:43:31|{\"screen_name\":\"원룸 매물상세\",\"room_type\":\"쓰리룸+\",\"item_deposit\":12000,\"near_subway\":\"-\",\"item_category\":\"원룸\",\"activity_name\":\"DetailViewActivity\",\"local3\":\"용이동\",\"local1\":\"경기도\",\"local2\":\"평택시\",\"item_name\":\"★용죽지구 신축!쓰리룸! 전세★\",\"item_price\":0,\"previous_activity\":\"ListItemsActivity\",\"item_id\":10413961}\n1760936602045|427c101a-3ef6-4cdf-858d-c69227f2300e|00480185-4422-4450-bead-686c3179c6f0|zb_screen_view|ZigbangApp/4.13.22 (com.chbreeze.jikbang4a; build:239; Android 6.0; LG-F600K; RELEASE)|110.70.58.157|103c58e329fb3b88639b9bd4ddda0078e978b1a6c160e935619fcb5be60e23c3777fa6d8d8a9a20862fb489956880036bf7c7ecf457279bbc82cb47ec656f893|1516949690772|2024-01-26 15:54:53|{\"screen_name\":\"원룸 매물상세\",\"activity_name\":\"DetailViewActivity\",\"previous_activity\":\"AgentDetailActivity\",\"test_type\":\"ROOM_NUDGE_STRING_2ND_A\"}\n2422361558569|BEBDA003-E1A3-488C-BAFC-860630508779|F724E848-FB96-4FA6-8CE2-21A492FA1CAF|zb_screen_view|ZigbangApp/4.13.22 (com.chbreeze.jikbang4i; build:18; iOS 11.2.2; iPhone 7; RELEASE)|223.38.17.182|105d6ce8a5f609674496c99b0e702b258258901f809690f758df81e191cf255f6e7bf2c5b82d52fca0eb32bc7b66d39e48b26fb9e442007d2886acdb667cd49a|1516958910|2024-01-26 18:28:30|{\"event_name\":\"zb_screen_view\",\"screen_name\":\"메인\",\"activity_name\":\"ZBMainViewController\"}\n3049426793769|C2B561CD-09C6-4D24-B6CE-24A0B700B3D1|DB555C6D-879C-46D3-933E-6139D765C776|zb_screen_view|ZigbangApp/4.13.22 (com.chbreeze.jikbang4i; build:18; iOS 11.0.3; iPhone 8; RELEASE)|175.223.34.36|1083fa72a2ea1c98b9a88b29e931c2f5b81de8532dcf4af240cee92b1b6dae2f74f81e378bd6ce3688b3d3325af41918a4ecb2199ec7e8fd4c094b86e00d239f|1516967780|2024-01-26 20:56:20|{\"event_name\":\"zb_screen_view\",\"screen_name\":\"원룸 매물상세\",\"activity_name\":\"ZBRoomDetailViewController\"}\n1005022352137|07BA404E-71BC-40AE-AF1D-B3ED5B4CEFC0|6752002D-4CAE-41DC-9CE9-041E62732649|zb_view_contents|ZigbangApp/4.13.22 (com.chbreeze.jikbang4i; build:18; iOS 11.2.2; iPhone 6S Plus; RELEASE)|220.122.9.66|10a8101046191f6ad92ae5e59e1d33a67c61cb2280b74fbf69155ae24808d217e281024f8d824fe030f968201c0c960693f0521b27a933560a0ef9a1e1f125aa|1516939036|2024-01-26 12:57:16|{\"event_name\":\"zb_view_contents\",\"screen_name\":\"아파트 지역상세\",\"activity_name\":\"ZBAPTLocalDetailViewController\",\"local_id\":\"27290116\"}\n3384434237880|509e191f-2e10-4a42-aae9-068bf4e30032|d11daa28-9698-4d59-af92-ec8d8c20073b|zb_screen_view|ZigbangApp/4.13.22 (com.chbreeze.jikbang4a; build:239; Android 7.0; SM-N920K; RELEASE)|58.143.58.73|10cd89970f77e6fc9fb2c3ea6170b7e06bbb448d1f5b7aeb34d72d596c47a0bb6bf84abc9f9db22e4c90a2f08b6283a939c6baa3a86ec6d51a0c3d6831635ab|1516972443389|2024-01-26 22:14:03|{\"screen_name\":\"원룸 최근본방\",\"activity_name\":\"ListUserItemsReadActivity\",\"previous_activity\":\"MainActivity\",\"test_type\":\"ROOM_NUDGE_STRING_2ND_A\"}\n2147483660453|6541b750-20d1-424e-9d65-a08710be4d64|3d682946-5cf1-4e18-8183-e71466dbfe1d|view_item|ZigbangApp/4.13.22 (com.chbreeze.jikbang4a; build:239; Android 7.0; SM-G920K; RELEASE)|223.38.18.235|10f3cfe54c3e0bbd97b59ccc53f25d004ffea478ab796db32c5eb001bb8714493712f1ef7127382c9994489f28c16a6c55f056714e8354d03d2a1062ac8e1710|1516955101555|2024-01-26 17:25:02|{\"screen_name\":\"원룸 매물상세\",\"room_type\":\"투룸\",\"item_deposit\":23000,\"near_subway\":\"가좌역(경의선), 홍대입구역(2호선,경의선,공항철도), 망원역(6호선)\",\"item_category\":\"원룸\",\"activity_name\":\"DetailViewActivity\",\"local3\":\"성산동\",\"local1\":\"서울시\",\"local2\":\"마포구\",\"item_name\":\"신축급 넓은집\",\"item_price\":0,\"previous_activity\":\"ListItemsActivity\",\"item_id\":10386049}\n2765958953268|E8E19D69-5090-4BBC-930F-A0120A703D78|782EC501-7E6F-46D0-9BF4-69DD83E7BA11|zb_screen_view|ZigbangApp/4.13.22 (com.chbreeze.jikbang4i; build:18; iOS 10.3.2; iPhone 6S Plus; RELEASE)|223.62.10.86|111a1c5c738e6276ab376b76b3b243bc40ffe78c7e2b72a267fad68d0321ed49d2a198985c91133233388745d8a79cae71ddf52a7289db726b874d62eac47f0|1516963817|2024-01-26 19:50:17|{\"event_name\":\"zb_screen_view\",\"screen_name\":\"원룸 매물상세\",\"activity_name\":\"ZBRoomDetailViewController\"}\n4200478025421|DAA7D546-6C57-4F0A-8EA1-74965F98F0FC|6EF09D83-A6EE-49DB-B944-AEFCE8409F70|zb_screen_view|ZigbangApp/4.13.22 (com.chbreeze.jikbang4i; build:18; iOS 11.2.2; iPhone 8 Plus; RELEASE)|211.228.65.91|114187d5246afd5985017a129dcd9f2bfc7d8d0c9189758574c3893748fa13b088e4e94698f127ae5e273ed5e2246d3b4b263b0d8264973cbaca2243d8547643|1516897488|2024-01-26 01:24:48|{\"test_type\":\"ios_anim_transition_1st_B\",\"event_name\":\"zb_screen_view\",\"screen_name\":\"원룸 지역목록\",\"activity_name\":\"ListAllMapViewController\"}\n4277787436164|1ff65a33-2354-42f5-878f-b2b3313b2db8|7390cc5b-ff06-4540-b0aa-328869589e66|zb_dialog_show|ZigbangApp/4.13.22 (com.chbreeze.jikbang4a; build:239; Android 7.0; SM-G928S; RELEASE)|110.13.198.84|11578709a5e8c55a32f0b073d92e01d1ba64155431c448470b107451f5b6f8052d8a14125d69347a549c5667214e1d98acdbaac917d9dde9aa7ca522e94bdf95|1516898576610|2024-01-26 01:42:58|{\"screen_name\":\"원룸 매물상세\",\"item_category\":\"\",\"activity_name\":\"DetailViewActivity\",\"previous_activity\":\"ListItemsActivity\",\"test_type\":\"ROOM_NUDGE_STRING_2ND_A\",\"dialog_name\":\"문의유도팝업1\"}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711365382307_292930468",
+      "id": "20240323-004941_160556574",
+      "dateCreated": "2024-03-25T11:16:22+0000",
+      "status": "READY",
+      "$$hashKey": "object:42284"
+    },
+    {
+      "text": "\n// 날짜를 변경해서 월 ~ 일요일 데이터를 생성한다. \n\nval log22 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-22\"))\nval log23 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-23\"))\nval log24 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-24\"))\nval log25 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-25\"))\nval log26 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-26\"))\nval log27 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-27\"))\nval log28 = log1.map(line => line.replaceAll(\"2024-01-26\", \"2024-01-28\"))\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-25T11:17:10+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mlog22\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n\u001b[1m\u001b[34mlog23\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n\u001b[1m\u001b[34mlog24\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n\u001b[1m\u001b[34mlog25\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n\u001b[1m\u001b[34mlog26\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n\u001b[1m\u001b[34mlog27\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n\u001b[1m\u001b[34mlog28\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[String]\u001b[0m = [value: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711365382308_589782950",
+      "id": "20240323-004941_359587913",
+      "dateCreated": "2024-03-25T11:16:22+0000",
+      "status": "READY",
+      "$$hashKey": "object:42285"
+    },
+    {
+      "text": "\nimport org.json4s._\nimport org.json4s.jackson.JsonMethods._\nimport org.json4s.JsonDSL._\n\ncase class Cflog(base_date: String, adid: String, uuid: String,name: String, timestamp: String, gtmTimes: String, screen_name: String\n                , item_id: String, content_type: String, item_category: String, is_zb_agent: String, building_id: String, area_type_id: String\n                , agent_id: String, status: String , button_name: String) \n\ndef parseRawJson(line: String) = {\n     val pieces = line.split(\"\\\\|\") \n     \n     val adid = pieces.apply(1).toString\n     val uuid = pieces.apply(2).toString\n     val name = pieces.apply(3).toString\n     val timestamp = pieces.apply(8).toString\n     val gtmTimes =pieces.apply(7).toString  \n    //JSON Parse\n    val jsonString = pieces.apply(9).toString\n    implicit val formats = DefaultFormats\n    val result = parse(jsonString)\n\n    var screen_name      = (result \\ \"screen_name\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    var item_id           = (result \\ \"item_id\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\tcontent_type     = (result \\ \"content_type\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\titem_category    = (result \\ \"item_category\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\tis_zb_agent      = (result \\ \"is_zb_agent\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\tbuilding_id      = (result \\ \"building_id\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\tarea_type_id     = (result \\ \"area_type_id\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\tagent_id         = (result \\ \"agent_id\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val\tbutton_name         = (result \\ \"button_name\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val status  = (result \\ \"status\").extractOpt[String].getOrElse(\"NULL\").replaceAll(\"nil\", \"NULL\")\n    val base_date = timestamp.substring(0,10)\n    \n    \n    Cflog(base_date, adid, uuid, name, timestamp, gtmTimes, screen_name, item_id, content_type, item_category, is_zb_agent, building_id, area_type_id, agent_id, status , button_name)\n}",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-25T11:16:22+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.json4s._\nimport org.json4s.jackson.JsonMethods._\nimport org.json4s.JsonDSL._\ndefined class Cflog\n\u001b[1m\u001b[34mparseRawJson\u001b[0m: \u001b[1m\u001b[32m(line: String)Cflog\u001b[0m\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711365382308_437447889",
+      "id": "20240323-004941_1938902898",
+      "dateCreated": "2024-03-25T11:16:22+0000",
+      "status": "READY",
+      "$$hashKey": "object:42286"
+    },
+    {
+      "text": "val df22 = log22.map(line => parseRawJson(line)).toDF()\nval df23 = log23.map(line => parseRawJson(line)).toDF()\nval df24 = log24.map(line => parseRawJson(line)).toDF()\nval df25 = log25.map(line => parseRawJson(line)).toDF()\nval df26 = log26.map(line => parseRawJson(line)).toDF()\nval df27 = log27.map(line => parseRawJson(line)).toDF()\nval df28 = log28.map(line => parseRawJson(line)).toDF()",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-25T11:16:22+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdf22\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid: string ... 14 more fields]\n\u001b[1m\u001b[34mdf23\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid: string ... 14 more fields]\n\u001b[1m\u001b[34mdf24\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid: string ... 14 more fields]\n\u001b[1m\u001b[34mdf25\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid: string ... 14 more fields]\n\u001b[1m\u001b[34mdf26\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid: string ... 14 more fields]\n\u001b[1m\u001b[34mdf27\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid: string ... 14 more fields]\n\u001b[1m\u001b[34mdf28\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m = [base_date: string, adid...\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711365382308_379163193",
+      "id": "paragraph_1711155269539_763752584",
+      "dateCreated": "2024-03-25T11:16:22+0000",
+      "status": "READY",
+      "$$hashKey": "object:42287"
+    },
+    {
+      "text": "\n//  날짜별 샘플데이터를 생성한다. \n// option 의 순서에 따라서 압축이 안되었다. ㅠ.ㅠ\n\ndf22.repartition(25).sample(false, 0.2).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240122/eventlog20240122\")\ndf23.repartition(25).sample(false, 0.4).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240123/eventlog20240123\")\ndf24.repartition(25).sample(false, 0.5).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240124/eventlog20240124\")\ndf25.repartition(25).sample(false, 0.7).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240125/eventlog20240125\")\ndf26.repartition(25).sample(false, 0.8).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240126/eventlog20240126\")\ndf27.repartition(25).sample(false, 0.9).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240127/eventlog20240127\")\ndf28.repartition(25).sample(false, 1).write.mode(\"overwrite\").option(\"compression\", \"gzip\").json(\"s3://fc-class/marketing/logs/20240128/eventlog20240128\")",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-25T11:16:22+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711365382308_1560683957",
+      "id": "20240323-004941_912735731",
+      "dateCreated": "2024-03-25T11:16:22+0000",
+      "status": "READY",
+      "$$hashKey": "object:42288"
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-25T11:16:22+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711365382310_936433172",
+      "id": "paragraph_1711345546834_1460752509",
+      "dateCreated": "2024-03-25T11:16:22+0000",
+      "status": "READY",
+      "$$hashKey": "object:42305"
+    }
+  ],
+  "name": "Marketing_Sampledata",
+  "id": "2JT229RKX",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/Marketing_Sampledata"
+}
