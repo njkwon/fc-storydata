@@ -1,0 +1,41 @@
+# Spark Insert 하기전에 환경 변수
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.Encoder
+
+val spark: SparkSession =
+    SparkSession
+        .builder()
+        .appName("StatsAnalyzer")
+        .enableHiveSupport()
+        .config("hive.exec.dynamic.partition", "true")
+        .config("hive.exec.dynamic.partition.mode", "nonstrict")
+        .getOrCreate()
+
+
+
+# 고객이 앱에 머문시간 구하기 
+-- session time 을 정한다. 
+-- session time을  1시간 : 3600 초 
+
+
+-- 사용자별로 머문시간을 구한다. 
+select adid, sum(second_diff) as playtime, base_date
+from (
+-- -- 페이지별 머문시간을 초단위로 구한다. 
+    select adid, unix_timestamp(timestamp) - unix_timestamp(EndDT) as second_diff, base_date
+    from (
+    -- 페이지별 머문시간을 위해 페이지 전환했던 시간을 만들어준다
+        select adid, 
+               timestamp, 
+               Lag(timestamp, 1,'1999-09-01')  OVER(PARTITION BY(adid)
+               ORDER BY adid, timestamp ) AS EndDT, 
+               base_date
+        from marketingtb
+        where base_date = "2024-01-22"
+        and adid != ''
+    ) 
+    where EndDT !='1999-09-01'
+) 
+where second_diff < 3600
+group by adid, base_date
+order by playtime desc
