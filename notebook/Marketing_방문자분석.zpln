@@ -1,0 +1,745 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "// 데이터확인작업\nval logDF=spark.read.json(\"s3://fc-class/marketing/logs/*/*\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T11:42:28+0000",
+      "progress": 96,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-30-214.ap-northeast-2.compute.internal:4040/jobs/job?id=34",
+              "$$hashKey": "object:34653"
+            },
+            {
+              "jobUrl": "http://ip-172-31-30-214.ap-northeast-2.compute.internal:4040/jobs/job?id=35",
+              "$$hashKey": "object:34654"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711277109737_2015271999",
+      "id": "20240323-004941_817929271",
+      "dateCreated": "2024-03-24T10:45:09+0000",
+      "dateStarted": "2024-03-24T11:42:28+0000",
+      "dateFinished": "2024-03-24T11:48:11+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:34189"
+    },
+    {
+      "text": "\nlogDF.createOrReplaceTempView(\"marketingtb\")\nsqlContext.cacheTable(\"marketingtb\")",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T11:42:30+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711277109737_914176306",
+      "id": "20240323-004941_1380863694",
+      "dateCreated": "2024-03-24T10:45:09+0000",
+      "dateStarted": "2024-03-24T11:47:40+0000",
+      "dateFinished": "2024-03-24T11:48:12+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:34190"
+    },
+    {
+      "text": "%sql\n\n-- 일주일동안의 DAU 흐름파악하기 \n-- 신규사용자는 어떻게 할것인가?\n-- 그래프로 확인해본다. \n\nselect base_date\n      , count(distinct adid) as cnt\nfrom marketingtb\ngroup by base_date\norder by base_date ",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T11:54:33+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "base_date": "string",
+                      "cnt": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "base_date",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "cnt",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-30-214.ap-northeast-2.compute.internal:4040/jobs/job?id=36",
+              "$$hashKey": "object:34748"
+            },
+            {
+              "jobUrl": "http://ip-172-31-30-214.ap-northeast-2.compute.internal:4040/jobs/job?id=37",
+              "$$hashKey": "object:34749"
+            },
+            {
+              "jobUrl": "http://ip-172-31-30-214.ap-northeast-2.compute.internal:4040/jobs/job?id=38",
+              "$$hashKey": "object:34750"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711277109737_2041272358",
+      "id": "20240323-004941_727544106",
+      "dateCreated": "2024-03-24T10:45:09+0000",
+      "dateStarted": "2024-03-24T11:48:12+0000",
+      "dateFinished": "2024-03-24T11:49:31+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:34191"
+    },
+    {
+      "text": "%sql \n\n-- 밑에서 그래프 확인작업\nselect count(distinct adid) as dau_cnt\nfrom marketingtb\nwhere base_date = \"2024-01-22\"",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-25T04:54:15+0000",
+      "progress": 96,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "dau_cnt": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-30-214.ap-northeast-2.compute.internal:4040/jobs/job?id=43",
+              "$$hashKey": "object:34806"
+            },
+            {
+              "jobUrl": "http://ip-172-31-30-214.ap-northeast-2.compute.internal:4040/jobs/job?id=44",
+              "$$hashKey": "object:34807"
+            },
+            {
+              "jobUrl": "http://ip-172-31-30-214.ap-northeast-2.compute.internal:4040/jobs/job?id=45",
+              "$$hashKey": "object:34808"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711277109737_744588759",
+      "id": "20240323-004941_609896727",
+      "dateCreated": "2024-03-24T10:45:09+0000",
+      "dateStarted": "2024-03-25T04:54:15+0000",
+      "dateFinished": "2024-03-25T04:54:16+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:34192"
+    },
+    {
+      "text": "%sql \n-- 사용자만 뽑는다. \n-- 2024-01-22 12:12:24 \n-- \n\nselect base_date,  \n     adid, \n     min(timestamp) as base_dt\nfrom marketingtb\nwhere base_date = \"2024-01-22\"\nand adid != ''\ngroup by base_date, adid ",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T10:45:09+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711277109737_235311237",
+      "id": "20240323-004941_282019983",
+      "dateCreated": "2024-03-24T10:45:09+0000",
+      "status": "READY",
+      "$$hashKey": "object:34193"
+    },
+    {
+      "text": "%sql\nselect adid, \n      (timestamp) as base_dt\nfrom marketingtb\nwhere base_date = \"2024-01-22\"\nand adid = '0000787A-6350-43FA-9208-2E74EF481725'\norder by timestamp",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T10:45:09+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "adid": "string",
+                      "base_dt": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711277109738_889558718",
+      "id": "paragraph_1711274803921_1438086995",
+      "dateCreated": "2024-03-24T10:45:09+0000",
+      "status": "READY",
+      "$$hashKey": "object:34195"
+    },
+    {
+      "text": "%sql\n\n-- 사용자만 뽑는다. \n-- \n\nselect  \n     adid, \n     min(timestamp) as base_dt, \n     base_date\nfrom marketingtb\nwhere base_date = \"2024-01-22\"\nand adid != ''\ngroup by base_date, adid \n\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T12:06:45+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "base_date": "string",
+                      "adid": "string",
+                      "base_dt": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711277109738_1946522190",
+      "id": "20240323-004941_1338571668",
+      "dateCreated": "2024-03-24T10:45:09+0000",
+      "status": "READY",
+      "$$hashKey": "object:34196"
+    },
+    {
+      "text": "%sql\nshow schemas;",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T12:00:45+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "namespace": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711281635947_539622521",
+      "id": "paragraph_1711281635947_539622521",
+      "dateCreated": "2024-03-24T12:00:35+0000",
+      "dateStarted": "2024-03-24T12:00:44+0000",
+      "dateFinished": "2024-03-24T12:00:45+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:34198"
+    },
+    {
+      "text": "%sql\nCREATE EXTERNAL TABLE storydb.dau\n(\n  adid string,\n  base_dt timestamp\n)\nPARTITIONED BY ( \n  base_date date \n  )\nSTORED AS PARQUET\nLOCATION 's3://fc-class/marketing/silver/dau'\ntblproperties (\"parquet.compress\"=\"SNAPPY\" ,\"classification\"=\"parquet\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T12:08:03+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711281627871_1521382178",
+      "id": "paragraph_1711281627871_1521382178",
+      "dateCreated": "2024-03-24T12:00:27+0000",
+      "dateStarted": "2024-03-24T12:08:03+0000",
+      "dateFinished": "2024-03-24T12:08:03+0000",
+      "status": "ERROR",
+      "$$hashKey": "object:34199"
+    },
+    {
+      "text": "%sql \n   insert overwrite table  storydb.dau\n    PARTITION(base_date) \nselect  \n     adid, \n     min(cast(timestamp as timestamp)) as base_dt, \n     cast(base_date as date) as base_date\nfrom marketingtb\nwhere base_date = \"2024-01-22\"\nand adid != ''\ngroup by base_date, adid ",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T12:10:01+0000",
+      "progress": 96,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-30-214.ap-northeast-2.compute.internal:4040/jobs/job?id=42",
+              "$$hashKey": "object:35158"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711277109740_543607035",
+      "id": "20240323-004941_180466588",
+      "dateCreated": "2024-03-24T10:45:09+0000",
+      "dateStarted": "2024-03-24T12:10:01+0000",
+      "dateFinished": "2024-03-24T12:10:02+0000",
+      "status": "ERROR",
+      "$$hashKey": "object:34200"
+    },
+    {
+      "text": "%sql\nCREATE EXTERNAL TABLE storydb.wau\n(\n  base_dt timestamp, \n  adid string, \n  danji_id int\n)\nPARTITIONED BY ( \n  base_date date \n  )\nSTORED AS PARQUET\nLOCATION 's3://fc-class/hive/silver/wau'\ntblproperties (\"parquet.compress\"=\"SNAPPY\" ,\"classification\"=\"parquet\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-24T12:10:51+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "completionKey": "TAB"
+        },
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12,
+        "editorHide": false,
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711277109740_1525451934",
+      "id": "20240323-004941_1683074531",
+      "dateCreated": "2024-03-24T10:45:09+0000",
+      "status": "READY",
+      "$$hashKey": "object:34201"
+    },
+    {
+      "text": "%sql\nselect *\nfrom marketingtb\nwhere base_date = \"2024-01-22\"\nand adid != ''\norder by adid, timestamp ",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-25T05:12:33+0000",
+      "progress": 92,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "adid": "string",
+                      "agent_id": "string",
+                      "area_type_id": "string",
+                      "base_date": "string",
+                      "building_id": "string",
+                      "button_name": "string",
+                      "content_type": "string",
+                      "gtmTimes": "string",
+                      "is_zb_agent": "string",
+                      "item_category": "string",
+                      "item_id": "string",
+                      "name": "string",
+                      "screen_name": "string",
+                      "status": "string",
+                      "timestamp": "string",
+                      "uuid": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://ip-172-31-30-214.ap-northeast-2.compute.internal:4040/jobs/job?id=54",
+              "$$hashKey": "object:35248"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711343418883_1943519002",
+      "id": "paragraph_1711343418883_1943519002",
+      "dateCreated": "2024-03-25T05:10:18+0000",
+      "dateStarted": "2024-03-25T05:12:33+0000",
+      "dateFinished": "2024-03-25T05:12:34+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:34202"
+    },
+    {
+      "text": "%sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2024-03-25T05:45:46+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711345546834_1460752509",
+      "id": "paragraph_1711345546834_1460752509",
+      "dateCreated": "2024-03-25T05:45:46+0000",
+      "status": "READY",
+      "$$hashKey": "object:34205"
+    }
+  ],
+  "name": "Marketing_방문자분석",
+  "id": "2JV5YCB2F",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/Marketing_방문자분석"
+}
