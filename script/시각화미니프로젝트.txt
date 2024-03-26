@@ -1,0 +1,71 @@
+
+# EC2에 logstash 설치 하기 
+
+$ sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
+$ sudo vi /etc/yum.repos.d/logstash.repo
+[logstash-8.x]
+name=Elastic repository for 8.x packages
+baseurl=https://artifacts.elastic.co/packages/8.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+
+
+$ sudo yum install logstash
+Elastic repository for 8.x packages                                                                                          40 MB/s |  44 MB     00:01    
+Last metadata expiration check: 0:00:11 ago on Thu Nov 30 01:01:17 2023.
+Dependencies resolved.
+
+- 초기화 파일에 추가해준다. : 어느 폴더에서도 logstash 실행가능 
+$ vi ~/.bash_profile
+
+export LS_HOME=/usr/share/logstash
+PATH=$PATH:$LS_HOME/bin
+
+$ source ~/.bash_profile
+
+$ logstash --version
+
+$ vi applog.conf
+input {
+      s3 {
+        access_key_id => "AKIAZ2TB4HK"
+        secret_access_key => "ErSTT6Tu0x/YsBqE7l0T"
+        region => "ap-northeast-2"
+        prefix => "target/applog_json/" #bucket 하위 폴더를 지정해준다. 
+        bucket => "fc-storydata"                         #bucket 명을 지정해준다.
+        additional_settings => {
+          force_path_style => true
+          follow_redirects => false
+        }
+      }
+    }
+
+output {
+  stdout { }
+}
+
+# logstash 실행
+
+$ sudo chown -R ec2-user:ec2-user /usr/share/logstash/
+$ logstash -f /home/ec2-user/applog.conf
+
+Your settings are invalid. Reason: Path "/usr/share/logstash/data" must be a writable directory. It is not writable.
+[FATAL] 2023-11-30 01:30:03.840 [main] Logstash - Logstash stopped processing because of an error: (SystemExit) exit
+org.jruby.exceptions.SystemExit: (SystemExit) exit
+	at org.jruby.RubyKernel.exit(org/jruby/RubyKernel.java:795) ~[jruby.jar:?]
+	at org.jruby.RubyKernel.exit(org/jruby/RubyKernel.java:758) ~[jruby.jar:?]
+	at usr.share.logstash.lib.bootstrap.environment.<main>(/usr/share/logstash/lib/bootstrap/environment.rb:90) ~[?:?]
+
+$ logstash -f /home/ec2-user/logtest/applog.conf
+# config 파일의 위치를 절대경로를 해주어야 한다. 
+{
+       "message" => "{\"id\":\"2923\",\"danji_name\":\"삼성\",\"sido\":\"서울특별시\",\"sigungu\":\"노원구\",\"dong\":\"중계동\",\"address2\":\"593\",\"new_address\":\"서울 노원구 중계로14나길 25\",\"house_count\":\"478세대\",\"dong_count\":\"7개동\",\"build_ym\":\"1999년 10월\"}\n",
+    "@timestamp" => 2023-11-30T01:35:14.332324236Z,
+      "@version" => "1",
+         "event" => {
+        "original" => "{\"id\":\"2923\",\"danji_name\":\"삼성\",\"sido\":\"서울특별시\",\"sigungu\":\"노원구\",\"dong\":\"중계동\",\"address2\":\"593\",\"new_address\":\"서울 노원구 중계로14나길 25\",\"house_count\":\"478세대\",\"dong_count\":\"7개동\",\"build_ym\":\"1999년 10월\"}\n"
+    }
+}
