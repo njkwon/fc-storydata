@@ -66,3 +66,41 @@ $ logstash -f /home/ec2-user/logtest/applog.conf
         "original" => "{\"id\":\"2923\",\"danji_name\":\"삼성\",\"sido\":\"서울특별시\",\"sigungu\":\"노원구\",\"dong\":\"중계동\",\"address2\":\"593\",\"new_address\":\"서울 노원구 중계로14나길 25\",\"house_count\":\"478세대\",\"dong_count\":\"7개동\",\"build_ym\":\"1999년 10월\"}\n"
     }
 }
+
+Opensearch output
+#plugin 을 설치한다. 
+$ /usr/share/logstash/bin/logstash-plugin install logstash-output-opensearch
+---------------
+input {
+      s3 {
+        access_key_id => "AKIAZ2PF"
+        secret_access_key => "1GqdVdqFaVWruo/pSusB69UuLF"
+        region => "ap-northeast-2"
+        prefix => "target/applog_json/" #bucket 하위 폴더를 지정해준다. 
+        bucket => "fc-storydata"                         #bucket 명을 지정해준다.
+        interval => 0.5
+      }
+    }
+
+filter {
+  json {
+    source => "message"
+    remove_field => [ "message"]
+  }
+}
+
+
+output {
+  stdout { }
+	opensearch{
+		hosts => ["https://search-aaa-sney7qlgpjpyr5plnodhcvnwaa.ap-northeast-2.es.amazonaws.com:443"]
+		ssl => true
+    		index => "applog-%{+YYYY.MM.dd}"
+    		user => "awsuser"
+    		password => "Epdlxj12#"
+	}
+}
+
+--------------
+
+
