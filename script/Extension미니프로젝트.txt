@@ -1,0 +1,35 @@
+
+$ aws configure 
+# access key/security key / ap-northeast-2 입력한다.
+$ spark-submit --class org.apache.spark.examples.SparkPi /usr/lib/spark/examples/jars/spark-examples.jar 10
+$ aws emr add-steps --cluster-id j-1YI2GIFLUFA49 --steps Type=Spark,Name="Spark Program",ActionOnFailure=CONTINUE,Args=[--class,org.apache.spark.examples.SparkPi,/usr/lib/spark/examples/jars/spark-examples.jar,10]
+
+# Airflow 설치 
+
+$ python3 -m venv afenv
+$ source afenv/bin/activate
+$ sudo yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel python3-devel.x86_64 cyrus-sasl-devel.x86_64 -y
+$ sudo yum install libevent-devel -y
+$ sudo yum install pip
+$ pip install apache-airflow
+$ vi airflow cfg 
+# True 를 False 로 변경한다. 
+# 여러개의 샘플 Dag 를 없애준다.
+load_examples = False
+
+$ airflow db init
+$ mkdir airflow dags
+% dags 폴더에 2개의 Dag 파일을 생성한다. 
+example_bash_operator.py
+emr_job_flow_auto_terminate_dag.py
+
+$ afenv/bin/airflow users create  --username admin  --firstname nj --lastname kwon  --role Admin  --email njkwon@gmail.com
+
+# airflow 실행
+$ airflow webserver --port 8080
+$ airflow scheduler
+$ pip install apache-airflow-providers-amazon
+
+#airflow 정보 확인하기 
+$ airflow info
+
